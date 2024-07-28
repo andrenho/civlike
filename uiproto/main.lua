@@ -1,4 +1,13 @@
 C = require 'civlike'
+local rules = require 'sample_rules'
+local game
+
+function love.load(args)
+	if args[1] ~= nil then
+		rules = loadfile(args[1])()
+	end
+	game = C.create_game(rules)
+end
 
 function love.draw()
 	love.graphics.print("Hello world", 400, 300)
