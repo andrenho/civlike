@@ -2,6 +2,11 @@ local function check_rules(rules)
 
    local function check_type(field, tp, mandatory, idx)
 
+      assert(type(field) == "string" or type(field) == "table")
+      assert(type(tp) == "string")
+      assert(mandatory == nil or type(mandatory) == "boolean")
+      assert(idx == nil or type(idx) == "string")
+
       mandatory = mandatory or false
 
       local value, field_msg
@@ -39,6 +44,12 @@ local function check_rules(rules)
    end
 
    local function check_id_table(field, subfield, tp, mandatory)
+
+      assert(type(field) == "string")
+      assert(type(subfield) == "string")
+      assert(mandatory == nil or type(mandatory) == "boolean")
+      assert(idx == nil or type(idx) == "string")
+
       if type(rules[field]) ~= "table" then error("Field '" .. field .. "' should be a table.") end
       for id,f in pairs(rules[field]) do
          if type(id) ~= "string" or #id ~= 1 then
@@ -48,9 +59,19 @@ local function check_rules(rules)
       end
    end
 
+   local function check_array(field, subfield, tp, mandatory)
+   end
+
    check_type("map_size", "point", true)
+
+   check_id_table("terrains", "name", "string", true)
    check_id_table("terrains", "color", "color", true)
    check_type("default_terrain", "id", true)
+
+   check_id_table("nations", "name", "string", true)
+   check_id_table("nations", "color", "color", true)
+
+   check_array("players", "nation", "id", true)
 end
 
 return {

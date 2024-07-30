@@ -11,7 +11,6 @@ function love.load(args)
       rules = loadfile(args[1])()
    end
    game = C.create_game(rules)
-	print(inspect(game))
 end
 
 local function tocolor(color)
@@ -38,6 +37,7 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
    if key == "escape" then love.event.quit() end
+	if key == "g" then print(inspect(game)) end
 end
 
 -- vim:ts=3:sts=3:sw=3:noexpandtab
