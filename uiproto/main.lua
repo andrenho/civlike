@@ -1,17 +1,37 @@
-C = require 'civlike'
-local rules = require 'sample_rules'
-local game
+C       = require 'civlike'
+inspect = require 'inspect'
+
+rules = require 'sample_rules'
+game  = nil
+
+TILE_SIZE = 16
 
 function love.load(args)
    if args[1] ~= nil then
       rules = loadfile(args[1])()
    end
    game = C.create_game(rules)
+	print(inspect(game))
+end
+
+local function tocolor(color)
+	return { tonumber(color:sub(2, 3)), tonumber(color:sub(4, 5)), tonumber(color:sub(6, 7)) }
+end
+
+local function draw_tile(x, y)
+	local id = string.sub(game.map.terrain[y], x, x)
+	local color = rules.terrains[id].color
+	love.graphics.setColor(unpack(tocolor(color)))
+	love.graphics.rectangle("fill", x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
 end
 
 function love.draw()
    love.graphics.clear(255, 255, 255)
-
+	for x=1,rules.map_size[1] do
+		for y=1,rules.map_size[2] do
+			draw_tile(x, y)
+		end
+	end
 end
 
 function love.keypressed(key, scancode, isrepeat)

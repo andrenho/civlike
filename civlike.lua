@@ -11,7 +11,7 @@ local function check_rules(rules)
       elseif type(field) == "table" then
          field_msg = "Field '" .. table.concat(field, '.') .. "' "
          value = rules
-         for _,f in ipairs(field) do
+         for _,f in pairs(field) do
             value = value[f]
          end
       end
@@ -38,16 +38,19 @@ local function check_rules(rules)
       end
    end
 
-   local function check_array(field, subfield, tp, mandatory)
+   local function check_id_table(field, subfield, tp, mandatory)
       if type(rules[field]) ~= "table" then error("Field '" .. field .. "' should be a table.") end
-      for i = 1,#rules[field] do
-         check_type({ field, i, subfield }, tp, mandatory)
+      for id,f in pairs(rules[field]) do
+         if type(id) ~= "string" or #id ~= 1 then
+            error("Field '" .. field .. "' id should be a single character.")
+         end
+         check_type({ field, id, subfield }, tp, mandatory)
       end
    end
 
    check_type("map_size", "point", true)
-   check_array("terrains", "id", "id", true)
-   check_array("terrains", "color", "color", true)
+   check_id_table("terrains", "color", "color", true)
+   check_type("default_terrain", "id", true)
 end
 
 return {
@@ -57,13 +60,16 @@ return {
       check_rules(rules)
 
       local game = {
-         map = {},
+         map = {
+            terrain = {},
+         },
          nations = {},
          units = {},
       }
 
       for y=1,rules.map_size[2] do
-
+         local w = rules.map_size[1]
+         game.map.terrain[y] = string.rep(rules.default_terrain, w)
       end
 
       return game
