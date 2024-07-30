@@ -38,12 +38,21 @@ protected:
 struct LuaValue : public LuaObject {
     using LuaObject::LuaObject;
 
-    [[nodiscard]] lua_Integer integer(std::optional<Game> const& game={}) const;
-    [[nodiscard]] std::string string(std::optional<Game> const& game={}) const;
-    [[nodiscard]] std::string id(std::optional<Game> const& game={}) const;
-    [[nodiscard]] Size size(std::optional<Game> const& game={}) const;
-    [[nodiscard]] Position position(std::optional<Game> const& game={}) const;
-    [[nodiscard]] Color color(std::optional<Game> const& game={}) const;
+    [[nodiscard]] std::optional<lua_Integer> opt_integer(std::optional<Game> const& game={}) const;
+    [[nodiscard]] std::optional<std::string> opt_string(std::optional<Game> const& game={}) const;
+    [[nodiscard]] std::optional<std::string> opt_id(std::optional<Game> const& game={}) const;
+    [[nodiscard]] std::optional<Size> opt_size(std::optional<Game> const& game={}) const;
+    [[nodiscard]] std::optional<Position> opt_position(std::optional<Game> const& game={}) const;
+    [[nodiscard]] std::optional<Color> opt_color(std::optional<Game> const& game={}) const;
+
+#define NON_OPT(Type, name) [[nodiscard]] Type name(std::optional<Game> const& game={}) const { std::optional<Type> t = opt_ ## name(game); if (!t.has_value()) luaL_error(L, "Field of '" #name "' type missing mandatory value."); return *t; }
+    NON_OPT(lua_Integer, integer)
+    NON_OPT(std::string, string)
+    NON_OPT(std::string, id)
+    NON_OPT(Size, size)
+    NON_OPT(Position, position)
+    NON_OPT(Color, color)
+#undef NON_OPT
 
 private:
     void execute_if_function(std::optional<Game> const& game) const;

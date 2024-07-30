@@ -50,6 +50,9 @@ struct BaseRules OBJ {
     TABLE(UnitTypes, unit_types)
 };
 
+#undef OBJ
+#undef INIT
+
 struct Rules {
     explicit Rules(std::string const& lua_rules);
     ~Rules();
