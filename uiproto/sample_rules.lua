@@ -2,7 +2,7 @@ return {
    map_size = { 10, 10 },
 
    terrains = {
-      G = { name = "Grassland", color = "#d5f5e3" },
+      G = { name = "Grassland", color = "#a5f5b3" },
    },
 	default_terrain = "G",
 }

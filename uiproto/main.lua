@@ -4,7 +4,7 @@ inspect = require 'inspect'
 rules = require 'sample_rules'
 game  = nil
 
-TILE_SIZE = 16
+TILE_SIZE = 48
 
 function love.load(args)
    if args[1] ~= nil then
@@ -15,14 +15,16 @@ function love.load(args)
 end
 
 local function tocolor(color)
-	return { tonumber(color:sub(2, 3)), tonumber(color:sub(4, 5)), tonumber(color:sub(6, 7)) }
+	return { tonumber(color:sub(2, 3), 16) / 255.0, tonumber(color:sub(4, 5), 16) / 255.0, tonumber(color:sub(6, 7), 16) / 255.0 }
 end
 
 local function draw_tile(x, y)
 	local id = string.sub(game.map.terrain[y], x, x)
 	local color = rules.terrains[id].color
 	love.graphics.setColor(unpack(tocolor(color)))
-	love.graphics.rectangle("fill", x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+	love.graphics.rectangle("fill", (x-1) * TILE_SIZE, (y-1) * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+	love.graphics.setColor(0, 0, 0)
+	love.graphics.points((x-1) * TILE_SIZE, (y-1) * TILE_SIZE)
 end
 
 function love.draw()
