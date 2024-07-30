@@ -4,8 +4,19 @@
 
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_primitives.h>
 
 #include "civlike.hh"
+
+#define TILE_SIZE 48
+
+static void draw_tile(cl::Rules const& rules, cl::Game const& game, ssize_t x, ssize_t y)
+{
+    std::string terrain_id = std::string("") + game.map.terrain.at(y).at(x);
+    auto c = rules().terrains()[terrain_id].color().color(game);
+    al_draw_filled_rectangle(x * TILE_SIZE, y * TILE_SIZE, (x+1) * TILE_SIZE, (y+1) * TILE_SIZE,
+                             al_map_rgb(c.r, c.g, c.b));
+}
 
 int main(int argc, char** argv)
 {
@@ -57,10 +68,11 @@ int main(int argc, char** argv)
             break;
 
         if (redraw && al_is_event_queue_empty(queue)) {
-            al_clear_to_color(al_map_rgb(0, 0, 0));
-            al_draw_text(font, al_map_rgb(255, 255, 255), 0, 0, 0, "Hello world!");
+            al_clear_to_color(al_map_rgb(255, 255, 255));
+            for (ssize_t x = 0; x < game.map.w; ++x)
+                for (ssize_t y = 0; y < game.map.h; ++y)
+                    draw_tile(rules, game, x, y);
             al_flip_display();
-
             redraw = false;
         }
     }
