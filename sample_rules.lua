@@ -9,7 +9,7 @@ return {
 
 	nations = {
 		B = { name = "Brazil", color = "#990000" },
-	}
+	},
 
 	players = {
 		{ 
@@ -18,7 +18,7 @@ return {
 				type = "C", position = { 5, 5 },
 			},
 		},
-	}
+	},
 
 	unit_types = {
 		C = { name = "Colonist", moves_per_round = 1 },
