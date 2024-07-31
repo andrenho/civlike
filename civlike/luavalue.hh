@@ -10,9 +10,9 @@
 
 #include "game.hh"
 
-#define VALUE(name) [[nodiscard]] LuaValue name() const { lua_getfield(L, -1, #name); return LuaValue(L); }
+#define VALUE(name) [[nodiscard]] LuaValue name() const { return LuaValue(L, table_path + "." + #name); }
+#define TABLE(Type, name) [[nodiscard]] LuaTable<Type> name() const { return LuaTable<Type>(L, table_path + "." + #name); }
 #define STRUCT(Type, name) [[nodiscard]] Type name() const { lua_getfield(L, -1, #name); return Type(L); }
-#define TABLE(Type, name) [[nodiscard]] LuaTable<Type> name() const { lua_getfield(L, -1, #name); if (lua_isnil(L, -1)) luaL_error(L, "Table '" #name "' not found"); return LuaTable<Type>(L); }
 
 namespace cl {
 
@@ -29,18 +29,22 @@ struct Color {
 };
 
 struct LuaObject {
-    explicit LuaObject(lua_State* L) : L(L) {}
+    LuaObject(lua_State* L, std::string const& table_path) : L(L), table_path(table_path) {}
 
 protected:
+    void execute_path() const;
+
     lua_State* L;
+    std::string table_path;
 };
 
 struct LuaValue : public LuaObject {
     using LuaObject::LuaObject;
 
+    [[nodiscard]] char id(std::optional<Game> const& game={}) const;
+
     [[nodiscard]] std::optional<lua_Integer> opt_integer(std::optional<Game> const& game={}) const;
     [[nodiscard]] std::optional<std::string> opt_string(std::optional<Game> const& game={}) const;
-    [[nodiscard]] std::optional<std::string> opt_id(std::optional<Game> const& game={}) const;
     [[nodiscard]] std::optional<Size> opt_size(std::optional<Game> const& game={}) const;
     [[nodiscard]] std::optional<Position> opt_position(std::optional<Game> const& game={}) const;
     [[nodiscard]] std::optional<Color> opt_color(std::optional<Game> const& game={}) const;
@@ -48,7 +52,6 @@ struct LuaValue : public LuaObject {
 #define NON_OPT(Type, name) [[nodiscard]] Type name(std::optional<Game> const& game={}) const { std::optional<Type> t = opt_ ## name(game); if (!t.has_value()) luaL_error(L, "Field of '" #name "' type missing mandatory value."); return *t; }
     NON_OPT(lua_Integer, integer)
     NON_OPT(std::string, string)
-    NON_OPT(std::string, id)
     NON_OPT(Size, size)
     NON_OPT(Position, position)
     NON_OPT(Color, color)
@@ -62,18 +65,17 @@ template <typename T>
 struct LuaTable : public LuaObject {
     using LuaObject::LuaObject;
 
-    T operator[](lua_Integer key) const {
-        lua_geti(L, -1, key + 1);
-        return T(L);
+    T operator[](size_t key) const {
+        return T(L, table_path + ".#" + std::to_string(key));
     }
 
     T operator[](std::string const& key) const {
-        lua_getfield(L, -1, key.c_str());
-        return T(L);
+        return T(L, table_path + ".@" + key);
     }
 
-    lua_Integer size() const {
-        return luaL_len(L, -1);
+    [[nodiscard]] size_t size() const {
+        execute_path();
+        return (size_t) luaL_len(L, -1);
     }
 };
 

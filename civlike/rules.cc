@@ -24,8 +24,7 @@ Rules::~Rules()
 
 BaseRules Rules::operator()() const
 {
-    lua_getglobal(L, "__rules");
-    return BaseRules(L);
+    return BaseRules(L, "$__rules");
 }
 
 }

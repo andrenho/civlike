@@ -1,9 +1,36 @@
 #include "luavalue.hh"
 
+#include <ranges>
+#include <string_view>
+
 namespace cl {
+
+void LuaObject::execute_path() const
+{
+    auto split = table_path
+                 | std::ranges::views::split('.')
+                 | std::ranges::views::transform([](auto&& str) { return std::string_view(&*str.begin(), std::ranges::distance(str)); });
+
+    for (auto&& token : split) {
+
+        if (token.starts_with('$')) {
+            lua_getglobal(L, std::string(token.substr(1)).c_str());
+        } else if (token.starts_with('@')) {
+            lua_getfield(L, -1, std::string(token.substr(1)).c_str());
+        } else if (token.starts_with('#')) {
+            lua_geti(L, -1, std::strtol(std::string(token.substr(1)).c_str(), nullptr, 10));
+        } else {
+            lua_getfield(L, -1, std::string(token).c_str());
+        }
+
+        if (lua_isnil(L, -1))
+            luaL_error(L, "Field '%s' not found.", table_path.c_str());
+    }
+}
 
 std::optional<lua_Integer> LuaValue::opt_integer(std::optional<Game> const& game) const
 {
+    execute_path();
     execute_if_function(game);
     if (lua_isnil(L, -1))
         return {};
@@ -14,6 +41,7 @@ std::optional<lua_Integer> LuaValue::opt_integer(std::optional<Game> const& game
 
 std::optional<std::string> LuaValue::opt_string(std::optional<Game> const& game) const
 {
+    execute_path();
     execute_if_function(game);
     if (lua_isnil(L, -1))
         return {};
@@ -22,18 +50,17 @@ std::optional<std::string> LuaValue::opt_string(std::optional<Game> const& game)
     return str;
 }
 
-std::optional<std::string> LuaValue::opt_id(std::optional<Game> const& game) const
+char LuaValue::id(std::optional<Game> const& game) const
 {
-    auto r = this->opt_string(game);
-    if (!r)
-        return {};
-    if (r->length() != 1)
+    auto r = this->string(game);
+    if (r.length() != 1)
         luaL_error(L, "Ids should have a single character.");
-    return r;
+    return r.at(0);
 }
 
 std::optional<Size> LuaValue::opt_size(std::optional<Game> const &game) const
 {
+    execute_path();
     execute_if_function(game);
     if (lua_isnil(L, -1))
         return {};
@@ -46,6 +73,7 @@ std::optional<Size> LuaValue::opt_size(std::optional<Game> const &game) const
 
 std::optional<Position> LuaValue::opt_position(std::optional<Game> const &game) const
 {
+    execute_path();
     execute_if_function(game);
     if (lua_isnil(L, -1))
         return {};
@@ -58,6 +86,7 @@ std::optional<Position> LuaValue::opt_position(std::optional<Game> const &game) 
 
 std::optional<Color> LuaValue::opt_color(std::optional<Game> const& game) const
 {
+    execute_path();
     execute_if_function(game);
     if (lua_isnil(L, -1))
         return {};

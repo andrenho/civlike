@@ -14,7 +14,14 @@ struct Game {
         std::vector<std::string> terrain {};
     };
 
+    struct Unit {
+        char nation;
+        char type;
+        size_t x, y;
+    };
+
     Map map;
+    std::vector<Unit> units;
 
     void push_lua_table(lua_State* L) const;
 };
