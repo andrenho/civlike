@@ -1,3 +1,5 @@
+print(package.path)
+
 -- C       = require 'civlike'
 inspect = require 'inspect'
 
