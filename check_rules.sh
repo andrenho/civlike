@@ -11,4 +11,4 @@ sed '0,/return/{s/return/require "civlike.rules"; local _ : Rules =/}' $1 > $TFI
 
 tl check -q $TFILE
 
-# rm $TFILE
+rm $TFILE
