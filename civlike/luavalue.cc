@@ -18,7 +18,7 @@ void LuaObject::execute_path() const
         } else if (token.starts_with('@')) {
             lua_getfield(L, -1, std::string(token.substr(1)).c_str());
         } else if (token.starts_with('#')) {
-            lua_geti(L, -1, std::strtol(std::string(token.substr(1)).c_str(), nullptr, 10));
+            lua_geti(L, -1, std::strtol(std::string(token.substr(1)).c_str(), nullptr, 10) + 1);
         } else {
             lua_getfield(L, -1, std::string(token).c_str());
         }

@@ -77,6 +77,44 @@ struct LuaTable : public LuaObject {
         execute_path();
         return (size_t) luaL_len(L, -1);
     }
+
+    template <typename F>
+    void foreach_id(F f) {
+        execute_path();
+
+        std::vector<char> key_list;
+        lua_pushnil(L);
+        while (lua_next(L, -2) != 0) {
+            key_list.emplace_back(lua_tostring(L, -2)[0]);
+            lua_pop(L, 1);
+        }
+
+        for (char key: key_list)
+            f(key, this->operator[](std::string(1, key)));
+    }
+
+    template <typename F>
+    void foreach_key(F f) {
+        execute_path();
+
+        std::vector<std::string> key_list;
+        lua_pushnil(L);
+        while (lua_next(L, -2) != 0) {
+            key_list.emplace_back(lua_tostring(L, -2));
+            lua_pop(L, 1);
+        }
+
+        for (std::string key: key_list)
+            f(key, this->operator[](key));
+    }
+
+    template <typename F>
+    void foreach_array(F f) {
+        execute_path();
+        lua_Integer n = luaL_len(L, -1);
+        for (lua_Integer i = 0; i < n; ++i)
+            f(i, this->operator[](i));
+    }
 };
 
 }
