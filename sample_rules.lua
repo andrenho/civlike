@@ -15,7 +15,7 @@ return {
 		{ 
 			nation = "B",
 			initial_units = {
-				type = "C", position = { 5, 5 },
+				{ type = "C", position = { 5, 5 } },
 			},
 		},
 	},

@@ -3,7 +3,9 @@
 
 #include <string>
 
-#include "luavalue.hh"
+#include "lua/luavalue.hh"
+#include "lua/luaobject.hh"
+#include "lua/luatable.hh"
 
 namespace cl {
 

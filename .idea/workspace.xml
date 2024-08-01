@@ -9,6 +9,7 @@
       <config projectName="civlike" targetName="all" />
       <config projectName="civlike" targetName="cltests" />
       <config projectName="civlike" targetName="uiproto" />
+      <config projectName="civlike" targetName="GNUmakefile" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -18,10 +19,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ae1ba4-6369-45e7-9ef8-f48743820ee5" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/civlike/lua/luaobject.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/lua/luaobject.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/lua/luatable.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/lua/types.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/luavalue.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/luavalue.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/luavalue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/luavalue.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GNUmakefile" beforeDir="false" afterPath="$PROJECT_DIR$/GNUmakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/luavalue.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/luavalue.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/luavalue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/luavalue.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/tests.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/tests.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_rules.lua" beforeDir="false" afterPath="$PROJECT_DIR$/sample_rules.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,10 +108,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Native Application.cltests">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/civlike/lua" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Native Application.uiproto">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GNUmakefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="GNUmakefile" CONFIG_NAME="GNUmakefile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="all" CONFIG_NAME="all" version="1">
@@ -129,6 +147,7 @@
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.cltests" />
+      <item itemvalue="Native Application.GNUmakefile" />
       <item itemvalue="Native Application.libcivlike.so" />
       <item itemvalue="Native Application.uiproto" />
     </list>
@@ -148,7 +167,7 @@
       <workItem from="1722361002196" duration="5010000" />
       <workItem from="1722373297775" duration="1880000" />
       <workItem from="1722461081468" duration="2571000" />
-      <workItem from="1722541463251" duration="1779000" />
+      <workItem from="1722541463251" duration="3439000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -182,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722364616797</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".">
+      <option name="closed" value="true" />
+      <created>1722543311222</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722543311222</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

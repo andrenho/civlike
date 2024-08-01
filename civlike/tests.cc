@@ -13,7 +13,7 @@ return {
        G = { name = "Grassland", color = "#a5f5b3" },
     },
 
-	default_terrain = "G",
+	default_terrain = function(rules, game) return "G" end,
 
 	nations = {
 		B = { name = "Brazil", color = "#990000" },
@@ -23,7 +23,7 @@ return {
 		{
 			nation = "B",
 			initial_units = {
-				type = "C", position = { 5, 5 },
+				{ type = "C", position = { 5, 5 } },
 			},
 		},
 	},
