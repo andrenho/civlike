@@ -5,7 +5,7 @@ if [ "$#" -ne 1 ] ; then
   exit 1
 fi
 
-TFILE="$(basename $0).$$.tl"
+TFILE="$$_$(basename $1 .lua).lua"
 
 echo "require 'civlike.rules'; local function _() : Rules" > $TFILE
 cat $1 >> $TFILE

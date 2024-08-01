@@ -6,7 +6,7 @@ inspect = require 'inspect'
 rules = require 'sample_rules'
 game  = nil
 
-TILE_SIZE = 48
+TILE_SIZE = 32
 
 function love.load(args)
    if args[1] ~= nil then
