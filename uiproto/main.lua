@@ -30,13 +30,11 @@ end
 
 function love.draw()
    love.graphics.clear(255, 255, 255)
-	--[[
-	for x=1,rules.map_size[1] do
-		for y=1,rules.map_size[2] do
+	for x=1,rules.map_size.w do
+		for y=1,rules.map_size.h do
 			draw_tile(x, y)
 		end
 	end
-	--]]
 end
 
 function love.keypressed(key, scancode, isrepeat)
