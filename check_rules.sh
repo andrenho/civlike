@@ -7,7 +7,9 @@ fi
 
 TFILE="$(basename $0).$$.tl"
 
-sed '0,/return/{s/return/require "civlike.rules"; local _ : Rules =/}' $1 > $TFILE
+echo "require 'civlike.rules'; local function _() : Rules" > $TFILE
+cat $1 >> $TFILE
+echo "end" >> $TFILE
 
 tl check -q $TFILE
 
