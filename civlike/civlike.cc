@@ -3,34 +3,35 @@
 
 namespace cl {
 
-Game create_game(Rules const& rules)
+Game create_game(Rules const& rules, bool& success)
 {
     Game game {};
 
-    /*
     Size map_size = rules().map_size().size();
-    char default_terrain = rules().default_terrain().id_char();
+    Id default_terrain = rules().default_terrain().id();
     for (ssize_t y = 0; y < map_size.h; ++y)
         game.map.terrain.emplace_back(map_size.w, default_terrain);
-    game.map.w = map_size.w;
-    game.map.h = map_size.h;
+    game.map.size = map_size;
 
-    for (size_t i = 0; i < rules().players().size(); ++i) {
-        char nation_id = rules().players()[i].nation().id_char();
-        for (size_t j = 0; j < rules().players()[i].initial_units().size(); ++j) {
-            auto position = rules().players()[i].initial_units()[j].position().position();
+    rules().players().foreach_array([&game](Player const& player) {
+        player.initial_units().foreach_array([&game, &player](PlayerInitialUnits const& pu) {
+            game.units.emplace_back(Game::Unit {
+                .nation = player.nation().id(),
+                .type = pu.type().id(),
+                .pos = pu.position().position(),
+            });
+        });
+    });
 
-            Game::Unit unit {};
-            unit.nation = nation_id;
-            unit.type = rules().players()[i].initial_units()[j].type().id_char();
-            unit.x = position.x;
-            unit.y = position.y;
-            game.units.emplace_back(unit);
-        }
-    }
-     */
-
+    success = true;
     return game;
+}
+
+Game move_unit(Rules const& rules, Game const& game, Direction direction, bool& success)
+{
+    Game g = game;
+    // TODO
+    return g;
 }
 
 }

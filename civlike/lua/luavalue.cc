@@ -24,12 +24,12 @@ std::optional<std::string> LuaValue::opt_string(std::optional<Game> const& game)
     return str;
 }
 
-char LuaValue::id(std::optional<Game> const& game) const
+Id LuaValue::id(std::optional<Game> const& game) const
 {
     auto r = this->string(game);
     if (r.length() != 1)
         luaL_error(L, "Ids should have a single character.");
-    return r.at(0);
+    return { r.at(0) };
 }
 
 std::optional<Size> LuaValue::opt_size(std::optional<Game> const &game) const

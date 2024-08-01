@@ -8,7 +8,11 @@ struct LuaTable : public LuaObject {
 
     using LuaObject::LuaObject;
 
-    T operator[](size_t key) const {
+    T operator[](Id key) const {
+        return T(L, table_path + ".@" + key.value);
+    }
+
+    T operator[](ssize_t key) const {
         return T(L, table_path + ".#" + std::to_string(key));
     }
 
@@ -25,15 +29,15 @@ struct LuaTable : public LuaObject {
     void foreach_id(F f) {
         execute_path();
 
-        std::vector<char> key_list;
+        std::vector<Id> key_list;
         lua_pushnil(L);
         while (lua_next(L, -2) != 0) {
             key_list.emplace_back(lua_tostring(L, -2)[0]);
             lua_pop(L, 1);
         }
 
-        for (char key: key_list)
-            f(key, this->operator[](std::string(1, key)));
+        for (Id key: key_list)
+            f(key, this->operator[](key));
     }
 
     template <typename F>
@@ -56,7 +60,7 @@ struct LuaTable : public LuaObject {
         execute_path();
         lua_Integer n = luaL_len(L, -1);
         for (lua_Integer i = 0; i < n; ++i)
-            f(i, this->operator[](i));
+            f(this->operator[](i));
     }
 };
 

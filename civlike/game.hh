@@ -5,19 +5,20 @@
 
 #include <string>
 #include <vector>
+#include "lua/types.hh"
 
 namespace cl {
 
 struct Game {
     struct Map {
-        size_t w, h;
+        Size size;
         std::vector<std::string> terrain {};
     };
 
     struct Unit {
-        char nation;
-        char type;
-        size_t x, y;
+        Id nation;
+        Id type;
+        Position pos;
     };
 
     Map map;

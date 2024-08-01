@@ -6,6 +6,12 @@
 
 namespace cl {
 
+struct Id {
+    char value;
+    Id(char value) : value(value) {}
+    operator char() const { return value; }
+};
+
 struct Size {
     lua_Integer w, h;
 };

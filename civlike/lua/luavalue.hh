@@ -19,7 +19,7 @@ namespace cl {
 struct LuaValue : public LuaObject {
     using LuaObject::LuaObject;
 
-    [[nodiscard]] char id(std::optional<Game> const& game={}) const;
+    [[nodiscard]] Id id(std::optional<Game> const& game={}) const;
 
     [[nodiscard]] std::optional<lua_Integer> opt_integer(std::optional<Game> const& game={}) const;
     [[nodiscard]] std::optional<std::string> opt_string(std::optional<Game> const& game={}) const;

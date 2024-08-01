@@ -4,6 +4,8 @@
 #include <lua.hpp>
 #include <string>
 
+struct LuaValue;
+
 namespace cl {
 
 struct LuaObject {

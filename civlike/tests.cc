@@ -56,18 +56,15 @@ int main()
     ASSERT(terrain.name().string(), "Grassland");
     ASSERT(terrain.name().string(), "Grassland");
 
-    rules().terrains().foreach_id([](char id, cl::Terrain const& terrain) {
+    rules().terrains().foreach_id([](cl::Id id, cl::Terrain const& terrain) {
         ASSERT(id, 'G');
         ASSERT(terrain.name().string(), "Grassland");
     });
 
-    rules().players().foreach_array([](int i, cl::Player const& player) {
-        ASSERT(i, 0);
+    rules().players().foreach_array([](cl::Player const& player) {
         ASSERT(player.nation().id(), 'B');
     });
 
-    /*
     ASSERT(rules().nations()["B"].color().color(game).r, 0x99);
     ASSERT(rules().players().size(), 1);
-     */
 }
