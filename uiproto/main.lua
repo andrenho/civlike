@@ -1,10 +1,10 @@
-print(package.path)
+package.path = package.path .. ";../?.lua;lib/?.lua"
 
--- C       = require 'civlike'
+C       = require 'civlike'
 inspect = require 'inspect'
 
--- rules = require 'sample_rules'
--- game  = nil
+rules = require 'sample_rules'
+game  = nil
 
 TILE_SIZE = 48
 
@@ -12,7 +12,7 @@ function love.load(args)
    if args[1] ~= nil then
       rules = loadfile(args[1])()
    end
-   -- game = C.create_game(rules)
+   game = C.create_game(rules)
 end
 
 local function tocolor(color)
@@ -41,7 +41,7 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
    if key == "escape" then love.event.quit() end
-	-- if key == "g" then print(inspect(game)) end
+	if key == "g" then print(inspect(game)) end
 end
 
 -- vim:ts=3:sts=3:sw=3:noexpandtab
