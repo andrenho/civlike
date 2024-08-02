@@ -38,11 +38,11 @@ Game new_round(Rules const& rules, Game const& game)
     return g;
 }
 
-std::pair<Game, bool> move_unit(Rules const& rules, Game const& game, Direction direction)
+MoveResponse move_focused_unit(Rules const& rules, Game const& game, Direction direction)
 {
     Game g = game;
     // TODO
-    return { g, false };
+    return { .game = game, .unit_moved = {} };
 }
 
 }

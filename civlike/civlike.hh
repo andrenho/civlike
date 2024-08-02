@@ -12,9 +12,15 @@ static bool _opt;
 
 enum class Direction { NW, N, NE, W, E, SW, S, SE };
 
-Game create_game(Rules const& rules);
-Game new_round(Rules const& rules, Game const& game);
-std::pair<Game, bool> move_unit(Rules const& rules, Game const& game, Direction direction);
+struct MoveResponse {
+    Game game;
+    std::optional<Id> unit_moved;
+    Position from {0, 0};
+};
+
+Game         create_game(Rules const& rules);
+Game         new_round(Rules const& rules, Game const& game);
+MoveResponse move_focused_unit(Rules const& rules, Game const& game, Direction direction);
 
 }
 

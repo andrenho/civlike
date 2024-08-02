@@ -13,6 +13,57 @@
 static ALLEGRO_FONT* font;
 static ALLEGRO_TIMER* timer;
 
+struct Event {
+    enum class Type { Quit, Move };
+
+    Type type;
+    union {
+        cl::Direction move_direction;
+    };
+};
+
+static std::optional<Event> keypress(cl::Rules const& rules, cl::Game const& game, ALLEGRO_KEYBOARD_EVENT k)
+{
+    switch (k.keycode) {
+        case ALLEGRO_KEY_Q:
+            return Event { .type = Event::Type::Quit };
+        case ALLEGRO_KEY_1:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::SE };
+        case ALLEGRO_KEY_2:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::S };
+        case ALLEGRO_KEY_3:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::SW };
+        case ALLEGRO_KEY_4:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::W };
+        case ALLEGRO_KEY_6:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::E };
+        case ALLEGRO_KEY_7:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::NE };
+        case ALLEGRO_KEY_8:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::N };
+        case ALLEGRO_KEY_9:
+            return Event { .type = Event::Type::Move, .move_direction = cl::Direction::NW };
+    }
+
+    return {};
+}
+
+
+static cl::Game do_event(cl::Rules const& rules, cl::Game const& game, Event const& e)
+{
+    switch (e.type) {
+        case Event::Type::Move: {
+            cl::MoveResponse move = cl::move_focused_unit(rules, game, e.move_direction);
+            // TODO - move animation
+            return move.game;
+        }
+        case Event::Type::Quit: break;
+    }
+
+    return game;
+}
+
+
 static void draw_tile(cl::Rules const& rules, cl::Game const& game, ssize_t x, ssize_t y)
 {
     std::string terrain_id = std::string("") + game.map.terrain.at(y).at(x);
@@ -74,7 +125,17 @@ int main(int argc, char** argv)
                 redraw = true;
                 break;
 
-            case ALLEGRO_EVENT_KEY_DOWN:
+            case ALLEGRO_EVENT_KEY_DOWN: {
+                    auto e = keypress(rules, game, event.keyboard);
+                    if (e) {
+                        if (e->type == Event::Type::Quit)
+                            done = true;
+                        else
+                            game = do_event(rules, game, *e);
+                    }
+                }
+                break;
+
             case ALLEGRO_EVENT_DISPLAY_CLOSE:
                 done = true;
                 break;
