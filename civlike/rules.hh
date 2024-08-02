@@ -30,12 +30,6 @@ struct Nation OBJ {
     VALUE(color)
 };
 
-struct Player OBJ {
-    INIT
-    VALUE(nation);
-    TABLE(PlayerInitialUnits, initial_units)
-};
-
 struct UnitTypes OBJ {
     INIT
     VALUE(name)
@@ -48,7 +42,8 @@ struct BaseRules OBJ {
     TABLE(Terrain, terrains)
     VALUE(default_terrain)
     TABLE(Nation, nations)
-    TABLE(Player, players)
+    VALUE(player_nation)
+    TABLE(PlayerInitialUnits, initial_units)
     TABLE(UnitTypes, unit_types)
 };
 

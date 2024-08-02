@@ -12,8 +12,9 @@ static bool _opt;
 
 enum class Direction { NW, N, NE, W, E, SW, S, SE };
 
-Game create_game(Rules const& rules, bool& success=_opt);
-Game move_unit(Rules const& rules, Game const& game, Direction direction, bool& success=_opt);
+Game create_game(Rules const& rules);
+Game new_round(Rules const& rules, Game const& game);
+std::pair<Game, bool> move_unit(Rules const& rules, Game const& game, Direction direction);
 
 }
 

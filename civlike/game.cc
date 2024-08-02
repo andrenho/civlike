@@ -4,7 +4,7 @@ namespace cl {
 
 void Game::push_lua_table(lua_State *L) const
 {
-    lua_pushnil(L);  // TODO
+    lua_pushnil(L);
 }
 
 }

@@ -11,6 +11,7 @@
 #define TILE_SIZE 32
 
 static ALLEGRO_FONT* font;
+static ALLEGRO_TIMER* timer;
 
 static void draw_tile(cl::Rules const& rules, cl::Game const& game, ssize_t x, ssize_t y)
 {
@@ -21,8 +22,11 @@ static void draw_tile(cl::Rules const& rules, cl::Game const& game, ssize_t x, s
     al_draw_rectangle(x * TILE_SIZE, y * TILE_SIZE, x * TILE_SIZE, y * TILE_SIZE, al_map_rgb(0, 0, 0), 2);
 }
 
-static void draw_unit(cl::Rules const& rules, cl::Game const& game, cl::Game::Unit const& unit)
+static void draw_unit(cl::Rules const& rules, cl::Game const& game, size_t id, cl::Game::Unit const& unit)
 {
+    if (id == game.focused_unit.value_or(-1) && (al_get_timer_count(timer) / 20) % 2 == 1)  // blink focused unit
+        return;
+
     auto c = rules().nations()[unit.nation].color().color(game);
     al_draw_rectangle(unit.pos.x * TILE_SIZE, unit.pos.y * TILE_SIZE, (unit.pos.x+1) * TILE_SIZE, (unit.pos.y+1) * TILE_SIZE,
                       al_map_rgb(c.r, c.g, c.b), 3);
@@ -45,7 +49,7 @@ int main(int argc, char** argv)
     al_init();
     al_install_keyboard();
 
-    ALLEGRO_TIMER* timer = al_create_timer(1.0 / 30.0);
+    timer = al_create_timer(1.0 / 30.0);
     ALLEGRO_EVENT_QUEUE* queue = al_create_event_queue();
 
     ALLEGRO_DISPLAY* disp = al_create_display(800, 600);
@@ -84,8 +88,8 @@ int main(int argc, char** argv)
             for (ssize_t x = 0; x < game.map.size.w; ++x)
                 for (ssize_t y = 0; y < game.map.size.h; ++y)
                     draw_tile(rules, game, x, y);
-            for (auto const& unit: game.units)
-                draw_unit(rules, game, unit);
+            for (auto const& [id, unit]: game.units)
+                draw_unit(rules, game, id, unit);
             al_flip_display();
             redraw = false;
         }

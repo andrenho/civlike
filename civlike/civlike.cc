@@ -3,35 +3,46 @@
 
 namespace cl {
 
-Game create_game(Rules const& rules, bool& success)
+Game create_game(Rules const& rules)
 {
-    Game game {};
+    Game g {};
 
     Size map_size = rules().map_size().size();
     Id default_terrain = rules().default_terrain().id();
     for (ssize_t y = 0; y < map_size.h; ++y)
-        game.map.terrain.emplace_back(map_size.w, default_terrain);
-    game.map.size = map_size;
+        g.map.terrain.emplace_back(map_size.w, default_terrain);
+    g.map.size = map_size;
 
-    rules().players().foreach_array([&game](Player const& player) {
-        player.initial_units().foreach_array([&game, &player](PlayerInitialUnits const& pu) {
-            game.units.emplace_back(Game::Unit {
-                .nation = player.nation().id(),
-                .type = pu.type().id(),
-                .pos = pu.position().position(),
-            });
+    Id player_nation = rules().player_nation().id();
+    rules().initial_units().foreach_array([&](PlayerInitialUnits const& pu) {
+        g.units.emplace(g.last_unit_id++, Game::Unit {
+            .nation = player_nation,
+            .type = pu.type().id(),
+            .pos = pu.position().position(),
+            .moves_left = 0,
         });
     });
 
-    success = true;
-    return game;
+    g = new_round(rules, g);
+    return g;
 }
 
-Game move_unit(Rules const& rules, Game const& game, Direction direction, bool& success)
+Game new_round(Rules const& rules, Game const& game)
+{
+    Game g = game;
+    for (auto& [id, unit]: g.units) {
+        unit.moves_left = rules().unit_types()[unit.type].moves_per_round().integer(game);
+        if (!g.focused_unit)
+            g.focused_unit = id;
+    }
+    return g;
+}
+
+std::pair<Game, bool> move_unit(Rules const& rules, Game const& game, Direction direction)
 {
     Game g = game;
     // TODO
-    return g;
+    return { g, false };
 }
 
 }

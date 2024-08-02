@@ -19,16 +19,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ae1ba4-6369-45e7-9ef8-f48743820ee5" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/civlike.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/civlike.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/civlike.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/civlike.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/lua/luaobject.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/luaobject.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/lua/luatable.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/luatable.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/lua/luavalue.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/luavalue.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/lua/luavalue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/luavalue.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/lua/types.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/lua/types.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/tests.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/tests.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_rules.lua" beforeDir="false" afterPath="$PROJECT_DIR$/sample_rules.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/uiproto.cc" beforeDir="false" afterPath="$PROJECT_DIR$/ui/uiproto.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,26 +86,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Native Application.cltests.executor&quot;: &quot;Run&quot;,
-    &quot;Native Application.uiproto.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tmp&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/aw98156/prj/civlike&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Native Application.cltests.executor": "Run",
+    "Native Application.uiproto.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "tmp",
+    "last_opened_file_path": "/Users/aw98156/prj/civlike",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C/C++",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/civlike/lua" />
@@ -209,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722543311222</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary=".">
+      <option name="closed" value="true" />
+      <created>1722550094994</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722550094994</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

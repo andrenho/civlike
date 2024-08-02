@@ -10,14 +10,10 @@ return {
 	nations = {
 		B = { name = "Brazil", color = "#990000" },
 	},
+	player_nation = "B",
 
-	players = {
-		{ 
-			nation = "B",
-			initial_units = {
-				{ type = "C", position = { 5, 5 } },
-			},
-		},
+	initial_units = {
+		{ type = "C", position = { 5, 5 } },
 	},
 
 	unit_types = {
