@@ -7,24 +7,24 @@ module;
 #include <string>
 #include <vector>
 
-export module ruleset;
+export module civlike:ruleset;
 
-import color;
-import geometry;
-import id;
+import :id;
+import :color;
+import :geometry;
 
 export struct Terrain {
     std::string name;
     Color       color;
 
-    struct Id : public ::Id<uint8_t> {};
+    struct Id : ::Id<uint8_t> {};
 };
 
 export struct UnitType {
     std::string name;
     char        char_display;
 
-    struct Id : public ::Id<uint8_t> {};
+    struct Id : ::Id<uint8_t> {};
 };
 
 export struct Nation {
@@ -32,7 +32,7 @@ export struct Nation {
     Color       color;
     bool        playable;
 
-    struct Id : public ::Id<uint8_t> {};
+    struct Id : ::Id<uint8_t> {};
 };
 
 export struct StartingUnit {
@@ -62,10 +62,9 @@ struct GFnValue {
     std::optional<T> optional(Ruleset const& ruleset, GameParameters const& game_par) const {
         if (value_.has_value())
             return value_;
-        else if (function_.has_value())
+        if (function_.has_value())
             return function_.value()(ruleset, game_par);
-        else
-            return {};
+        return {};
     }
 
 private:

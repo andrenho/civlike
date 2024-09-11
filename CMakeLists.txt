@@ -2,11 +2,12 @@ cmake_minimum_required(VERSION 3.28)
 project(civlike LANGUAGES CXX)
 
 set(MODULES_SRC
-        common/color.ccm
-        common/geometry.ccm
-        ruleset/colonization.ccm
-        ruleset/ruleset.ccm
-        ruleset/id.ccm
+        civlike/civlike.ccm
+        civlike/common/color.ccm
+        civlike/common/geometry.ccm
+        civlike/rules/colonization.ccm
+        civlike/rules/ruleset.ccm
+        civlike/rules/id.ccm
 )
 
 add_executable(civlike
@@ -14,7 +15,7 @@ add_executable(civlike
 
 target_sources(civlike
     PUBLIC FILE_SET CXX_MODULES
-        BASE_DIRS ruleset common
+        BASE_DIRS civlike
         FILES ${MODULES_SRC})
 
 target_compile_features(civlike PUBLIC cxx_std_20)

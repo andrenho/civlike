@@ -1,8 +1,8 @@
-export module colonization;
+export module civlike:colonization;
 
-import color;
-import geometry;
-import ruleset;
+import :ruleset;
+import :color;
+import :geometry;
 
 export Ruleset colonization_ruleset() {
 

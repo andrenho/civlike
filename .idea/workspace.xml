@@ -21,15 +21,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/common/color.ccm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/geometry.ccm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ruleset/colonization.ccm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ruleset/id.ccm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ruleset/ruleset.ccm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/civlike.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello/hello.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/color.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/color.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/geometry.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/geometry.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleset/colonization.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/colonization.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleset/id.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruleset/ruleset.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -60,6 +64,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake Application.civlike.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
@@ -73,12 +78,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CPPToolchains",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "advanced.settings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/civlike" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -105,6 +112,12 @@
       <workItem from="1726064467101" duration="3456000" />
       <workItem from="1726067935729" duration="22000" />
       <workItem from="1726067986660" duration="5657000" />
+      <workItem from="1726080764748" duration="44000" />
+      <workItem from="1726080811927" duration="108000" />
+      <workItem from="1726080921115" duration="25000" />
+      <workItem from="1726080949470" duration="139000" />
+      <workItem from="1726081091027" duration="86000" />
+      <workItem from="1726081180883" duration="260000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -128,17 +141,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cc</url>
-          <line>10</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
