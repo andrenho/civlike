@@ -25,13 +25,21 @@ export Ruleset colonization_ruleset() {
                 { .name = "Colonist", .char_display = 'C' },
         },
 
-        .default_terrain = Terrain::Id { 0 },
+        .map = { [](Ruleset const&, GameParameters const&) {
+            Map map;
+            for (size_t x = 0; x < 10; ++x) {
+                std::vector<TerrainSquare> sq;
+                for (size_t y = 0; y < 10; ++y)
+                    sq.push_back({ Terrain::Id { 1 } });
+                map.push_back(sq);
+            }
+            return map;
+        } },
 
-        .map_size = Size { 10, 10 },
-        // .map_size = { [](Ruleset const&, GameParameters const&) { return Size { 9, 9 }; } },
         .initial_nations = { { Nation::Id { 0 } } },
+
         .starting_units = { {
-            { .nation_id = { 0 }, .unit_type = { 0 }, .initial_pos = { 0, 0 } },
+            { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 0, 0 } },
         } },
     };
 

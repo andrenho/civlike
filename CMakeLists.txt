@@ -9,6 +9,8 @@ set(MODULES_SRC
         civlike/rules/fnval.ccm
         civlike/rules/ruleset.ccm
         civlike/rules/id.ccm
+        civlike/game/game.ccm
+        civlike/game/unit.ccm
 )
 
 add_executable(civlike

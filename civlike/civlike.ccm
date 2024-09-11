@@ -6,3 +6,5 @@ export import :colonization;
 export import :fnval;
 export import :id;
 export import :ruleset;
+export import :game;
+export import :unit;

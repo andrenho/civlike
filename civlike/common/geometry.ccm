@@ -1,3 +1,7 @@
+module;
+
+#include <cstddef>
+
 export module civlike:geometry;
 
 export struct Point {
@@ -5,5 +9,5 @@ export struct Point {
 };
 
 export struct Size {
-    const int w, h;
+    size_t w, h;
 };

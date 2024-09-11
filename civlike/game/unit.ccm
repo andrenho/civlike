@@ -1,0 +1,12 @@
+export module civlike:unit;
+
+import :ruleset;
+
+export struct Unit {
+    Nation::Id   nation_id;
+    UnitType::Id unit_type_id;
+    Point        pos;
+
+    Unit(StartingUnit const& su)
+        : nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos) {}
+};

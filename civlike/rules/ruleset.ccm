@@ -35,9 +35,14 @@ export struct Nation {
 
 export struct StartingUnit {
     Nation::Id   nation_id;
-    UnitType::Id unit_type;
+    UnitType::Id unit_type_id;
     Point        initial_pos;
 };
+
+export struct TerrainSquare {
+    Terrain::Id terrain_id;
+};
+export using Map = std::vector<std::vector<TerrainSquare>>;
 
 export struct GameParameters {};   // TODO - ???
 
@@ -47,9 +52,7 @@ export struct Ruleset {
     const std::vector<Nation>                 nations;
     const std::vector<UnitType>               unit_types;
 
-    const Terrain::Id                         default_terrain;
-
-    const GFnValue<Size>                      map_size;
+    const GFnValue<Map>                       map;
     const GFnValue<std::vector<Nation::Id>>   initial_nations;
     const GFnValue<std::vector<StartingUnit>> starting_units;
 

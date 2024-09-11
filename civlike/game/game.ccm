@@ -1,0 +1,56 @@
+module;
+
+#include <algorithm>
+#include <vector>
+
+export module civlike:game;
+
+import :geometry;
+import :ruleset;
+import :unit;
+
+export struct Tile {
+    Terrain::Id terrain_id;
+
+    explicit Tile(TerrainSquare const& ts) : terrain_id(ts.terrain_id) {}
+};
+using Tiles = std::vector<std::vector<Tile>>;
+
+export struct GameNation {
+    Nation::Id nation_id;
+};
+
+export struct Game {
+
+    Ruleset const&          ruleset;
+    Size                    map_size { 0, 0 };
+    Tiles                   tiles;
+    std::vector<GameNation> nations;
+    std::vector<Unit>       units;
+    size_t                  round_nr = 0;
+
+    Game(Ruleset const& ruleset, GameParameters const& game_par)
+        : ruleset(ruleset)
+    {
+        Map map = ruleset.map(ruleset, game_par);
+
+        map_size.w = map.size();
+        map_size.h = map[0].size();
+
+        tiles.reserve(map_size.w);
+        for (size_t x = 0; x < map_size.w; ++x) {
+            auto& tt = tiles.emplace_back();
+            tt.reserve(map_size.h);
+            for (size_t y = 0; y < map_size.h; ++y)
+                tt.emplace_back(Tile(map[x][y]));
+        }
+
+        auto initial_nations = ruleset.initial_nations(ruleset, game_par);
+        for (auto const& initial_nation: initial_nations)
+            nations.push_back(GameNation(initial_nation));
+
+        auto starting_units = ruleset.starting_units(ruleset, game_par);
+        for (auto const& s_unit: starting_units)
+            units.push_back(s_unit);
+    }
+};
