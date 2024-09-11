@@ -6,6 +6,7 @@ set(MODULES_SRC
         civlike/common/color.ccm
         civlike/common/geometry.ccm
         civlike/rules/colonization.ccm
+        civlike/rules/fnval.ccm
         civlike/rules/ruleset.ccm
         civlike/rules/id.ccm
 )

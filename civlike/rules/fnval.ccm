@@ -1,0 +1,39 @@
+module;
+
+#include <functional>
+#include <optional>
+#include <stdexcept>
+
+export module civlike:fnval;
+
+export struct Ruleset;
+export struct GameParameters;
+
+export template <typename T>
+struct GFnValue {
+    using Function = std::function<T(Ruleset const&, GameParameters const&)>;
+
+    GFnValue() = default;
+    explicit GFnValue(T t) : value_(t) {}
+    explicit GFnValue(Function f) : function_(f) {}
+
+    T operator()(Ruleset const& ruleset, GameParameters const& game_par) const {
+        auto o_value = optional(ruleset, game_par);
+        if (!o_value.has_value())
+            throw std::runtime_error("Field is mandatory");
+        return o_value.value();
+    }
+
+    std::optional<T> optional(Ruleset const& ruleset, GameParameters const& game_par) const {
+        if (value_.has_value())
+            return value_;
+        if (function_.has_value())
+            return function_.value()(ruleset, game_par);
+        return {};
+    }
+
+private:
+    std::optional<T> value_;
+    std::optional<Function> function_;
+};
+

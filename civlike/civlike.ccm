@@ -3,5 +3,6 @@ export module civlike;
 export import :color;
 export import :geometry;
 export import :colonization;
+export import :fnval;
 export import :id;
 export import :ruleset;
