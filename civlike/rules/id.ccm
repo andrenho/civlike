@@ -3,4 +3,6 @@ export module civlike:id;
 export template <typename T>
 struct Id {
     T id;
+
+    operator T() const { return id; }
 };

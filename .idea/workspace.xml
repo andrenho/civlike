@@ -23,8 +23,9 @@
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/fnval.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/fnval.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/id.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/uiproto.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uiproto.ccm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_algo.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_rect.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_render.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_stdinc.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_video.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
@@ -126,7 +131,7 @@
       <workItem from="1726080949470" duration="139000" />
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
-      <workItem from="1726087222139" duration="1473000" />
+      <workItem from="1726087222139" duration="4102000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -176,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726087323846</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=".">
+      <option name="closed" value="true" />
+      <created>1726088887037</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726088887037</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

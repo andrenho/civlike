@@ -21,14 +21,14 @@ struct GFnValue {
         auto o_value = optional(ruleset, game_par);
         if (!o_value.has_value())
             throw std::runtime_error("Field is mandatory");
-        return o_value.value();
+        return *o_value;
     }
 
     std::optional<T> optional(Ruleset const& ruleset, GameParameters const& game_par) const {
         if (value_.has_value())
             return value_;
         if (function_.has_value())
-            return function_.value()(ruleset, game_par);
+            return (*function_)(ruleset, game_par);
         return {};
     }
 
