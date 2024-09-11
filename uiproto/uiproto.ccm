@@ -1,0 +1,11 @@
+export module uiproto;
+
+import civlike;
+
+export class UIProto {
+public:
+    UIProto(Nation::Id player_nation_id) {}
+
+    void run(Game& game) {}
+
+};

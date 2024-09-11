@@ -40,5 +40,4 @@ luac.out
 *.hex
 
 cltests
-uiproto
 cmake-build-debug
