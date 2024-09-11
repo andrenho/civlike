@@ -1,0 +1,7 @@
+export module hello;
+
+#include <cstdio>
+
+export void hello_world() {
+    printf("hello world\n");
+}
