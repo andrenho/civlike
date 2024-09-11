@@ -1,19 +1,21 @@
-CPPFLAGS += -O0 -ggdb -MMD -Wall -Wextra -fPIC -Icivlike $(shell pkg-config --cflags allegro-5 allegro_main-5 allegro_font-5 allegro_primitives-5 lua)
-CXXFLAGS += --std=c++20
-OBJ := civlike/civlike.o civlike/rules.o civlike/game.o civlike/lua/luavalue.o civlike/lua/luaobject.o
+CXX=clang++
+
+CPPFLAGS += -O0 -ggdb -MMD -Wall -Wextra -Icommon -Iruleset -fPIC $(shell sdl2-config --cflags)
+CXXFLAGS += --std=c++20 -fmodules-ts
+OBJ := common/geometry.o ruleset/ruleset.o # ruleset/gameparam.o
 
 all: libcivlike.so uiproto cltests
 
-libcivlike.so: ${OBJ}
-	$(CXX) $^ -shared -o $@ $(shell pkg-config --libs lua)
+%.o: %.cppm
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $^
 
-cltests: civlike/tests.o libcivlike.so
-	$(CXX) $^ -o cltests $(shell pkg-config --libs lua)
+libcivlike.so: ${OBJ}
+	$(CXX) $^ -shared -o $@
 
 uiproto: ui/uiproto.o libcivlike.so
-	$(CXX) $^ -o uiproto $(shell pkg-config --libs allegro-5 allegro_main-5 allegro_font-5 allegro_primitives-5 lua)
+	$(CXX) $^ -o uiproto $(shell sdl2-config --static-libs)
 
 clean:
-	rm -f libcivlike.so civlike/*.[do] civlike/lua/*.[do] ui/*.[do] uiproto cltests
+	rm -f libcivlike.so uiproto ${OBJ} $(OBJ:.o=.d)
 
 -include $(OBJ:.o=.d)

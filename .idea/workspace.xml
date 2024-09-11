@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
@@ -19,9 +19,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ae1ba4-6369-45e7-9ef8-f48743820ee5" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/.old/ui/uiproto.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/geometry.cppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ruleset/gameparam.cppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ruleset/ruleset.cppm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/civlike.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/civlike.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/civlike.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/civlike.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.old/civlike.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.old/uiproto/civlike.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.old/uiproto/inspect.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.old/uiproto/main.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GNUmakefile" beforeDir="false" afterPath="$PROJECT_DIR$/GNUmakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/civlike.cc" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/civlike.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/civlike.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/civlike.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/game.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/game.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/lua/luaobject.cc" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/lua/luaobject.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/lua/luaobject.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/lua/luaobject.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/lua/luatable.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/lua/luatable.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/lua/luavalue.cc" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/lua/luavalue.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/lua/luavalue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/lua/luavalue.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/lua/types.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/lua/types.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules.cc" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/rules.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules.hh" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/rules.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/tests.cc" beforeDir="false" afterPath="$PROJECT_DIR$/.old/civlike/tests.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_rules.lua" beforeDir="false" afterPath="$PROJECT_DIR$/.old/sample_rules.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/uiproto.cc" beforeDir="false" afterPath="$PROJECT_DIR$/ui/uiproto.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +60,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="8ak52j2r" />
   </component>
   <component name="MakefileLocalSettings">
     <option name="availableProjects">
@@ -88,6 +112,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
@@ -98,12 +123,15 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C/C++",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "settings.editor.selected.configurable": "preferences.editor",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/common" />
+      <recent name="$PROJECT_DIR$/.old" />
       <recent name="$PROJECT_DIR$/civlike/lua" />
     </key>
   </component>
@@ -123,7 +151,7 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cltests" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="cltests" CONFIG_NAME="cltests" version="1" RUN_PATH="$PROJECT_DIR$/cltests">
+    <configuration name="cltests" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="cltests" CONFIG_NAME="cltests" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -137,6 +165,16 @@
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="lua.app" factoryName="Lua Application">
+      <option name="program" value="/opt/homebrew/bin/lua" />
+      <option name="file" value="" />
+      <option name="workingDir" value="$PROJECT_DIR$/civlike/rules.cc" />
+      <option name="debuggerType" value="2" />
+      <option name="params" value="" />
+      <option name="charset" value="UTF-8" />
+      <option name="showConsole" value="true" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Native Application.all" />
@@ -162,6 +200,9 @@
       <workItem from="1722373297775" duration="1880000" />
       <workItem from="1722461081468" duration="2571000" />
       <workItem from="1722541463251" duration="3439000" />
+      <workItem from="1722632435994" duration="1201000" />
+      <workItem from="1725755424629" duration="6000" />
+      <workItem from="1726021961592" duration="3909000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -219,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722561627356</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1722610027784</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722610027784</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
