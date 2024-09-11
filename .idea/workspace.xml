@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -20,18 +20,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/civlike.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/common/color.ccm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/geometry.ccm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ruleset/colonization.ccm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ruleset/id.ccm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ruleset/ruleset.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.old/civlike.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.old/uiproto/civlike.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.old/uiproto/inspect.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.old/uiproto/main.lua" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello/hello.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/hello/hello.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello/hello.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +49,9 @@
     <option name="minorVersion" value="1" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2lvdQJq8LjVmJoYH6Fcfno73JtE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -75,10 +73,15 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.webpack",
+    "settings.editor.selected.configurable": "CPPToolchains",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -99,8 +102,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726064466069</updated>
-      <workItem from="1726064467101" duration="995000" />
+      <workItem from="1726064467101" duration="3456000" />
+      <workItem from="1726067935729" duration="22000" />
+      <workItem from="1726067986660" duration="5657000" />
     </task>
+    <task id="LOCAL-00001" summary=".">
+      <option name="closed" value="true" />
+      <created>1726065475412</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726065475413</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,5 +124,24 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cc</url>
+          <line>10</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,0 +1,91 @@
+module;
+
+#include <cstdint>
+#include <functional>
+#include <optional>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+export module ruleset;
+
+import color;
+import geometry;
+import id;
+
+export struct Terrain {
+    std::string name;
+    Color       color;
+
+    struct Id : public ::Id<uint8_t> {};
+};
+
+export struct UnitType {
+    std::string name;
+    char        char_display;
+
+    struct Id : public ::Id<uint8_t> {};
+};
+
+export struct Nation {
+    std::string name;
+    Color       color;
+    bool        playable;
+
+    struct Id : public ::Id<uint8_t> {};
+};
+
+export struct StartingUnit {
+    Nation::Id   nation_id;
+    UnitType::Id unit_type;
+    Point        initial_pos;
+};
+
+export struct Ruleset;
+export struct GameParameters;
+
+export template <typename T>
+struct GFnValue {
+    using Function = std::function<T(Ruleset const&, GameParameters const&)>;
+
+    GFnValue() = default;
+    explicit GFnValue(T t) : value_(t) {}
+    explicit GFnValue(Function f) : function_(f) {}
+
+    T operator()(Ruleset const& ruleset, GameParameters const& game_par) const {
+        auto o_value = optional(ruleset, game_par);
+        if (!o_value.has_value())
+            throw std::runtime_error("Field is mandatory");
+        return o_value.value();
+    }
+
+    std::optional<T> optional(Ruleset const& ruleset, GameParameters const& game_par) const {
+        if (value_.has_value())
+            return value_;
+        else if (function_.has_value())
+            return function_.value()(ruleset, game_par);
+        else
+            return {};
+    }
+
+private:
+    std::optional<T> value_;
+    std::optional<Function> function_;
+};
+
+export struct GameParameters {};   // TODO - ???
+
+export struct Ruleset {
+
+    const std::vector<Terrain>  terrains;
+    const std::vector<Nation>   nations;
+    const std::vector<UnitType> unit_types;
+
+    const Terrain::Id           default_terrain;
+
+    const GFnValue<Size>        map_size;
+
+    static Ruleset create_from_cpp(Ruleset&& ruleset) {
+        return ruleset;
+    }
+};

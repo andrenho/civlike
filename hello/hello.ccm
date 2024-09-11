@@ -1,9 +1,0 @@
-module;
-
-#include <cstdio>
-
-export module hello;
-
-export void hello_world() {
-    printf("hello world\n");
-}

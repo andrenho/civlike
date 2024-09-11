@@ -1,0 +1,30 @@
+export module colonization;
+
+import color;
+import geometry;
+import ruleset;
+
+export Ruleset colonization_ruleset() {
+
+    return {
+
+        .terrains = {
+                { .name = "Water", .color = { 59, 62, 163 } },
+                { .name = "Grassland", .color = { 74, 219, 48 } },
+        },
+
+        .nations = {
+                { .name = "England", .color = { 128, 0, 0 }, .playable = true },
+        },
+
+        .unit_types = {
+                { .name = "Colonist", .char_display = 'C' },
+        },
+
+        .default_terrain = Terrain::Id { 0 },
+
+        .map_size = GFnValue { Size { 10, 10 } },
+
+    };
+
+}

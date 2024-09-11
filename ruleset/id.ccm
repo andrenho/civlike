@@ -1,0 +1,6 @@
+export module id;
+
+export template <typename T>
+struct Id {
+    T id;
+};

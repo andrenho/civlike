@@ -1,0 +1,9 @@
+export module geometry;
+
+export struct Point {
+    const int x, y;
+};
+
+export struct Size {
+    const int w, h;
+};

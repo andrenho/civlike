@@ -1,0 +1,9 @@
+module;
+
+#include <cstdint>
+
+export module color;
+
+export struct Color {
+    const uint8_t r, g, b;
+};
