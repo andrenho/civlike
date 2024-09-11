@@ -1,3 +1,7 @@
+module;
+
+#include <functional>
+
 export module civlike:colonization;
 
 import :ruleset;
@@ -24,7 +28,7 @@ export Ruleset colonization_ruleset() {
         .default_terrain = Terrain::Id { 0 },
 
         .map_size = GFnValue { Size { 10, 10 } },
-
+        // .map_size = GFnValue<Size> { [](Ruleset const&, GameParameters const&) { return Size { 9, 9 }; } },
     };
 
 }
