@@ -43,13 +43,15 @@ export struct GameParameters {};   // TODO - ???
 
 export struct Ruleset {
 
-    const std::vector<Terrain>  terrains;
-    const std::vector<Nation>   nations;
-    const std::vector<UnitType> unit_types;
+    const std::vector<Terrain>                terrains;
+    const std::vector<Nation>                 nations;
+    const std::vector<UnitType>               unit_types;
 
-    const Terrain::Id           default_terrain;
+    const Terrain::Id                         default_terrain;
 
-    const GFnValue<Size>        map_size;
+    const GFnValue<Size>                      map_size;
+    const GFnValue<std::vector<Nation::Id>>   initial_nations;
+    const GFnValue<std::vector<StartingUnit>> starting_units;
 
     static Ruleset create_from_cpp(Ruleset&& ruleset) {
         return ruleset;

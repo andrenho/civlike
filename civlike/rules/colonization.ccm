@@ -27,8 +27,12 @@ export Ruleset colonization_ruleset() {
 
         .default_terrain = Terrain::Id { 0 },
 
-        .map_size = GFnValue { Size { 10, 10 } },
-        // .map_size = GFnValue<Size> { [](Ruleset const&, GameParameters const&) { return Size { 9, 9 }; } },
+        .map_size = Size { 10, 10 },
+        // .map_size = { [](Ruleset const&, GameParameters const&) { return Size { 9, 9 }; } },
+        .initial_nations = { { Nation::Id { 0 } } },
+        .starting_units = { {
+            { .nation_id = { 0 }, .unit_type = { 0 }, .initial_pos = { 0, 0 } },
+        } },
     };
 
 }

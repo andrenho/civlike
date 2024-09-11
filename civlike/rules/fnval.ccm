@@ -14,8 +14,8 @@ struct GFnValue {
     using Function = std::function<T(Ruleset const&, GameParameters const&)>;
 
     GFnValue() = default;
-    explicit GFnValue(T t) : value_(t) {}
-    explicit GFnValue(Function f) : function_(f) {}
+    GFnValue(T t) : value_(t) {}              // NOLINT(*-explicit-constructor)
+    GFnValue(Function f) : function_(f) {}    // NOLINT(*-explicit-constructor)
 
     T operator()(Ruleset const& ruleset, GameParameters const& game_par) const {
         auto o_value = optional(ruleset, game_par);
