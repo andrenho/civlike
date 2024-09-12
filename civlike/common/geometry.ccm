@@ -2,7 +2,7 @@ module;
 
 #include <cstddef>
 
-export module civlike:geometry;
+export module civlike.geometry;
 
 export struct Point {
     const int x, y;

@@ -23,9 +23,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/uiproto/ui.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/civlike.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/civlike.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/common/color.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/color.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/common/geometry.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/geometry.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/unit.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/unit.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/fnval.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/fnval.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/id.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/uiproto.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uiproto.ccm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +149,7 @@
       <workItem from="1726080949470" duration="139000" />
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
-      <workItem from="1726087222139" duration="17812000" />
+      <workItem from="1726087222139" duration="19015000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -244,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726153025285</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=".">
+      <option name="closed" value="true" />
+      <created>1726153537562</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1726153537562</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

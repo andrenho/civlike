@@ -4,7 +4,7 @@ module;
 #include <optional>
 #include <stdexcept>
 
-export module civlike:fnval;
+export module civlike.ruleset:fnval;
 
 export struct Ruleset;
 export struct GameParameters;

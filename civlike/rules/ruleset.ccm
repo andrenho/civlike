@@ -4,12 +4,12 @@ module;
 #include <string>
 #include <vector>
 
-export module civlike:ruleset;
+export module civlike.ruleset;
 
+import civlike.color;
+import civlike.geometry;
 import :id;
-import :color;
 import :fnval;
-import :geometry;
 
 export struct Terrain {
     std::string name;

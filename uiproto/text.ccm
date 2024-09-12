@@ -10,14 +10,14 @@ module;
 
 #include "font.h"
 
-export module uiproto:text;
+export module uiproto.text;
 
-struct TextTexture {
+export struct TextTexture {
     SDL_Texture* tx;
     int w, h;
 };
 
-class Text {
+export class Text {
 
     struct TextureDeleter {
         void operator()(SDL_Texture* tx) const { SDL_DestroyTexture(tx); }
@@ -30,57 +30,13 @@ class Text {
     };
 
 public:
-    Text(SDL_Renderer* ren)
-        : ren_(ren)
-    {
-        TTF_Init();
-        SDL_RWops* font_mem = SDL_RWFromMem(font, font_len);
-        font_ = TTF_OpenFontRW(font_mem, 1, 18);
-    }
+    explicit Text(SDL_Renderer* ren);
+    ~Text();
 
-    ~Text()
-    {
-        TTF_CloseFont(font_);
-        TTF_Quit();
-    }
-
-    [[nodiscard]] TextTexture text_tx(std::string const& text, SDL_Color const& color)
-    {
-        clear_cache();
-
-        if (const auto it = cache_.find(text); it != cache_.end())
-            return { .tx = it->second.texture.get(), .w = it->second.w, .h = it->second.h };
-
-        SDL_Surface* sf = TTF_RenderText_Blended(font_, text.c_str(), color);
-        SDL_Texture* tx = SDL_CreateTextureFromSurface(ren_, sf);
-        SDL_FreeSurface(sf);
-        TextTexture r { .tx = tx };
-        SDL_QueryTexture(tx, nullptr, nullptr, &r.w, &r.h);
-        cache_[text] = {
-            .texture = std::unique_ptr<SDL_Texture, TextureDeleter>{ tx },
-            .w = r.w,
-            .h = r.h,
-            .last_used = SDL_GetTicks64()
-        };
-        return { .tx = tx, .w = r.w, .h = r.h };
-
-        // TODO - remove used values from cache
-    }
+    [[nodiscard]] TextTexture text_tx(std::string const& text, SDL_Color const& color);
 
 private:
-    void clear_cache()
-    {
-        ++call_count_;
-        if (call_count_ % 100 == 0) {
-            uint64_t now = SDL_GetTicks64();
-            for (auto it = cache_.begin(); it != cache_.end();) {
-                if (it->second.last_used < (now - (CACHE_KEEP_SECONDS * 1000)))
-                    it = cache_.erase(it);
-                else
-                    ++it;
-            }
-        }
-    }
+    void clear_cache();
 
     TTF_Font* font_ = nullptr;
     SDL_Renderer* ren_ = nullptr;
@@ -89,3 +45,54 @@ private:
 
     static constexpr uint64_t CACHE_KEEP_SECONDS = 10;
 };
+
+module : private;
+
+Text::Text(SDL_Renderer* ren)
+    : ren_(ren)
+{
+    TTF_Init();
+    SDL_RWops* font_mem = SDL_RWFromMem(font, font_len);
+    font_ = TTF_OpenFontRW(font_mem, 1, 18);
+}
+
+Text::~Text()
+{
+    TTF_CloseFont(font_);
+    TTF_Quit();
+}
+
+TextTexture Text::text_tx(std::string const& text, SDL_Color const& color)
+{
+    clear_cache();
+
+    if (const auto it = cache_.find(text); it != cache_.end())
+        return { .tx = it->second.texture.get(), .w = it->second.w, .h = it->second.h };
+
+    SDL_Surface* sf = TTF_RenderText_Blended(font_, text.c_str(), color);
+    SDL_Texture* tx = SDL_CreateTextureFromSurface(ren_, sf);
+    SDL_FreeSurface(sf);
+    TextTexture r { .tx = tx };
+    SDL_QueryTexture(tx, nullptr, nullptr, &r.w, &r.h);
+    cache_[text] = {
+        .texture = std::unique_ptr<SDL_Texture, TextureDeleter>{ tx },
+        .w = r.w,
+        .h = r.h,
+        .last_used = SDL_GetTicks64()
+    };
+    return { .tx = tx, .w = r.w, .h = r.h };
+}
+
+void Text::clear_cache()
+{
+    ++call_count_;
+    if (call_count_ % 100 == 0) {
+        uint64_t now = SDL_GetTicks64();
+        for (auto it = cache_.begin(); it != cache_.end();) {
+            if (it->second.last_used < (now - (CACHE_KEEP_SECONDS * 1000)))
+                it = cache_.erase(it);
+            else
+                ++it;
+        }
+    }
+}

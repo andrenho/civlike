@@ -3,11 +3,11 @@ module;
 #include <algorithm>
 #include <vector>
 
-export module civlike:game;
+export module civlike.game;
 
-import :geometry;
-import :ruleset;
-import :unit;
+import civlike.geometry;
+import civlike.ruleset;
+import civlike.unit;
 
 export struct Tile {
     Terrain::Id terrain_id;

@@ -1,4 +1,4 @@
-export module civlike:id;
+export module civlike.ruleset:id;
 
 export template <typename T>
 struct Id {
