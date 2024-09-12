@@ -2,9 +2,11 @@ module;
 
 #include <memory>
 #include <optional>
+#include <ranges>
 
 #include "SDL2/SDL.h"
 
+namespace r = std::ranges;
 
 export module uiproto.ui;
 
@@ -26,9 +28,10 @@ private:
 
     [[nodiscard]] std::optional<Unit const*> unit_to_draw(Game const& game, size_t x, size_t y) const;
 
-    SDL_Window* window_ = nullptr;
-    SDL_Renderer* ren_ = nullptr;
-    std::unique_ptr<Text> text_;
+    Nation::Id              player_nation_id_;
+    SDL_Window*             window_ = nullptr;
+    SDL_Renderer*           ren_ = nullptr;
+    std::unique_ptr<Text>   text_;
     static constexpr size_t TILE_SIZE = 32;
 };
 
@@ -37,6 +40,7 @@ module : private;
 #endif
 
 UI::UI(Nation::Id player_nation_id)
+    : player_nation_id_(player_nation_id)
 {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER);
     SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
@@ -107,12 +111,21 @@ void UI::draw_tile(Game const& game, size_t x, size_t y) const
         draw_unit(game, **o_unit);
 }
 
-// TODO - actual implementation
 std::optional<Unit const*> UI::unit_to_draw(Game const& game, size_t x, size_t y) const
 {
     auto units = game.units_in_xy(x, y);
-    // TODO - std::find_if(units.begin(), units.end(), [](Unit const* unit) { return unit->focused; });
-    return units.empty() ? std::optional<Unit const*>{} : units[0];
+
+    // find focused
+    auto focused_it = r::find_if(game.units, [this](Unit const& u) -> bool { return u.nation_id == player_nation_id_ && u.focused; });
+    if (focused_it != game.units.end()) {
+        bool blink = (SDL_GetTicks64() / 500) % 2 == 1;
+        return blink ? &*focused_it : std::optional<Unit const*>{};
+    }
+
+    if (!units.empty())   // not focused, return the first found
+        return units.at(0);
+
+    return {};  // no units found
 }
 
 void UI::draw_unit(Game const& game, Unit const& unit) const
