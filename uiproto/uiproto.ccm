@@ -1,38 +1,32 @@
 module;
 
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_ttf.h"
-
-#include <algorithm>
+#include <memory>
 #include <optional>
 
-#include "font.h"
+#include "SDL2/SDL.h"
+
 
 export module uiproto;
 
+export import :text;
 import civlike;
 
-export class UIProto {
-public:
+export struct UIProto {
+
     explicit UIProto(Nation::Id player_nation_id)
     {
         SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER);
         SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
-        TTF_Init();
-        window = SDL_CreateWindow("civlike (uiproto)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+        window_ = SDL_CreateWindow("civlike (uiproto)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
             800, 600, SDL_WINDOW_RESIZABLE);
-        ren = SDL_CreateRenderer(window, -1, 0);
-
-        SDL_RWops* font_mem = SDL_RWFromMem(font, font_len);
-        font = TTF_OpenFontRW(font_mem, 1, 16);
+        ren_ = SDL_CreateRenderer(window_, -1, 0);
+        text_ = std::make_unique<Text>(ren_);
     }
 
     ~UIProto()
     {
-        TTF_CloseFont(font);
-        SDL_DestroyRenderer(ren);
-        SDL_DestroyWindow(window);
-        TTF_Quit();
+        SDL_DestroyRenderer(ren_);
+        SDL_DestroyWindow(window_);
         SDL_Quit();
     }
 
@@ -67,24 +61,24 @@ private:
 
     void draw(Game const& game) const
     {
-        SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(ren);
+        SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderClear(ren_);
 
         for (size_t x = 0; x < game.map_size.w; ++x)
             for (size_t y = 0; y < game.map_size.h; ++y)
                 draw_tile(game, x, y);
 
-        SDL_RenderPresent(ren);
+        SDL_RenderPresent(ren_);
     }
 
     void draw_tile(Game const& game, size_t x, size_t y) const
     {
         auto t_clr = game.ruleset.terrains.at(game.tiles.at(x).at(y).terrain_id).color;
-        SDL_SetRenderDrawColor(ren, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(ren_, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
         SDL_Rect r { .x = (int) (x * TILE_SIZE), .y = (int) (y * TILE_SIZE), .w = TILE_SIZE, .h = TILE_SIZE };
-        SDL_RenderFillRect(ren, &r);
-        SDL_SetRenderDrawColor(ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawPoint(ren, r.x, r.y);
+        SDL_RenderFillRect(ren_, &r);
+        SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawPoint(ren_, r.x, r.y);
 
         std::optional<Unit const*> o_unit = unit_to_draw(game, x, y);
         if (o_unit.has_value())
@@ -102,15 +96,25 @@ private:
     void draw_unit(Game const& game, Unit const& unit) const
     {
         auto color = game.ruleset.nations.at(unit.nation_id).color;
-        SDL_SetRenderDrawColor(ren, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
+
+        // square
+        SDL_SetRenderDrawColor(ren_, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
         SDL_Rect r { .x = (int) (unit.pos.x * TILE_SIZE), .y = (int) (unit.pos.y * TILE_SIZE), .w = TILE_SIZE, .h = TILE_SIZE };
-        SDL_RenderDrawRect(ren, &r);
+        SDL_RenderDrawRect(ren_, &r);
         ++r.x, ++r.y, r.w -= 2, r.h -= 2;
-        SDL_RenderDrawRect(ren, &r);
+        SDL_RenderDrawRect(ren_, &r);
+        ++r.x, ++r.y, r.w -= 2, r.h -= 2;
+        SDL_RenderDrawRect(ren_, &r);
+
+        // letter
+        const auto unit_char = std::string(1, game.ruleset.unit_types.at(unit.unit_type_id).char_display);
+        const auto [tx, tw, th] = text_->text_tx(unit_char, { color.r, color.g, color.b, SDL_ALPHA_OPAQUE });
+        r.x += 9, r.y += 4, r.w = tw, r.h = th;
+        SDL_RenderCopy(ren_, tx, nullptr, &r);
     }
 
-    SDL_Window* window = nullptr;
-    SDL_Renderer* ren = nullptr;
-    TTF_Font* font = nullptr;
+    SDL_Window* window_ = nullptr;
+    SDL_Renderer* ren_ = nullptr;
+    std::unique_ptr<Text> text_;
     static constexpr size_t TILE_SIZE = 32;
 };

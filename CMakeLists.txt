@@ -55,7 +55,7 @@ add_dependencies(uiproto generate_font)
 target_sources(uiproto
         PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS uiproto
-        FILES uiproto/uiproto.ccm)
+        FILES uiproto/uiproto.ccm uiproto/text.ccm)
 
 target_compile_features(uiproto PUBLIC cxx_std_20)
 target_include_directories(uiproto PUBLIC ${SDL2_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
