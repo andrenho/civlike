@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.28)
 project(civlike LANGUAGES CXX)
 
+set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")
+
 ##### LIBRARY #####
 
 set(MODULES_SRC
         civlike/civlike.ccm
         civlike/common/color.ccm
         civlike/common/geometry.ccm
-        civlike/rules/colonization.ccm
         civlike/rules/fnval.ccm
         civlike/rules/ruleset.ccm
         civlike/rules/id.ccm

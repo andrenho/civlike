@@ -29,35 +29,41 @@ export struct Game {
     std::vector<Unit>       units;
     size_t                  round_nr = 0;
 
-    Game(Ruleset const& ruleset, GameParameters const& game_par)
-        : ruleset(ruleset)
-    {
-        const Map map = ruleset.map(ruleset, game_par);
+    Game(Ruleset const& ruleset, GameParameters const& game_par);
 
-        map_size.w = map.size();
-        map_size.h = map[0].size();
-
-        tiles.reserve(map_size.w);
-        for (size_t x = 0; x < map_size.w; ++x) {
-            auto& tt = tiles.emplace_back();
-            tt.reserve(map_size.h);
-            for (size_t y = 0; y < map_size.h; ++y)
-                tt.emplace_back(Tile(map[x][y]));
-        }
-
-        for (auto const& initial_nation: ruleset.initial_nations(ruleset, game_par))
-            nations.push_back(GameNation(initial_nation));
-
-        for (auto const& s_unit: ruleset.starting_units(ruleset, game_par))
-            units.push_back(s_unit);
-    }
-
-    [[nodiscard]] std::vector<Unit const*> units_in_xy(const size_t x, const size_t y) const
-    {
-        std::vector<Unit const*> r;
-        for (auto const& unit: units)
-            if (unit.pos.x == x && unit.pos.y == y)
-                r.push_back(&unit);
-        return r;
-    }
+    [[nodiscard]] std::vector<Unit const*> units_in_xy(const size_t x, const size_t y) const;
 };
+
+module : private;
+
+Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
+    : ruleset(ruleset)
+{
+    const Map map = ruleset.map(ruleset, game_par);
+
+    map_size.w = map.size();
+    map_size.h = map[0].size();
+
+    tiles.reserve(map_size.w);
+    for (size_t x = 0; x < map_size.w; ++x) {
+        auto& tt = tiles.emplace_back();
+        tt.reserve(map_size.h);
+        for (size_t y = 0; y < map_size.h; ++y)
+            tt.emplace_back(Tile(map[x][y]));
+    }
+
+    for (auto const& initial_nation: ruleset.initial_nations(ruleset, game_par))
+        nations.push_back(GameNation(initial_nation));
+
+    for (auto const& s_unit: ruleset.starting_units(ruleset, game_par))
+        units.push_back(s_unit);
+}
+
+std::vector<Unit const*> Game::units_in_xy(const size_t x, const size_t y) const
+{
+    std::vector<Unit const*> r;
+    for (auto const& unit: units)
+        if (unit.pos.x == x && unit.pos.y == y)
+            r.push_back(&unit);
+    return r;
+}

@@ -1,5 +1,45 @@
+#include <functional>
+#include <vector>
+
 import civlike;
 import uiproto;
+
+static Ruleset colonization_ruleset() {
+
+    return {
+
+        .terrains = {
+                { .name = "Water", .color = { 59, 62, 163 } },
+                { .name = "Grassland", .color = { 74, 219, 48 } },
+        },
+
+        .nations = {
+                { .name = "England", .color = { 128, 0, 0 }, .playable = true },
+        },
+
+        .unit_types = {
+                { .name = "Colonist", .char_display = 'C' },
+        },
+
+        .map = { [](Ruleset const&, GameParameters const&) {
+            Map map;
+            for (size_t x = 0; x < 10; ++x) {
+                std::vector<TerrainSquare> sq;
+                for (size_t y = 0; y < 10; ++y)
+                    sq.push_back({ Terrain::Id { 1 } });
+                map.push_back(sq);
+            }
+            return map;
+        } },
+
+        .initial_nations = { { { Nation::Id { 0 } } } },
+
+        .starting_units = { {
+            { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 3, 3 } },
+        } },
+    };
+
+}
 
 int main()
 {
