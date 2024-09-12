@@ -32,7 +32,9 @@ private:
     static constexpr size_t TILE_SIZE = 32;
 };
 
+#ifndef __GNUG__
 module : private;
+#endif
 
 UI::UI(Nation::Id player_nation_id)
 {

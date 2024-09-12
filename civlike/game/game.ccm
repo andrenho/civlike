@@ -34,7 +34,9 @@ export struct Game {
     [[nodiscard]] std::vector<Unit const*> units_in_xy(const size_t x, const size_t y) const;
 };
 
+#ifndef __GNUG__
 module : private;
+#endif
 
 Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
     : ruleset(ruleset)

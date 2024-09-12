@@ -46,7 +46,9 @@ private:
     static constexpr uint64_t CACHE_KEEP_SECONDS = 10;
 };
 
+#ifndef __GNUG__
 module : private;
+#endif
 
 Text::Text(SDL_Renderer* ren)
     : ren_(ren)
