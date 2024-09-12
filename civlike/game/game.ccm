@@ -1,6 +1,9 @@
 module;
 
+#include <ranges>
 #include <vector>
+
+namespace r = std::ranges;
 
 export module civlike.game;
 
@@ -30,7 +33,10 @@ export struct Game {
 
     Game(Ruleset const& ruleset, GameParameters const& game_par);
 
-    [[nodiscard]] std::vector<Unit const*> units_in_xy(const size_t x, const size_t y) const;
+    void new_round();
+    void focus_next(GameNation& nation);
+
+    [[nodiscard]] std::vector<Unit const*> units_in_xy(size_t x, size_t y) const;
 };
 
 #ifndef __GNUG__
@@ -57,10 +63,55 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
         nations.push_back(GameNation(initial_nation));
 
     for (auto const& s_unit: ruleset.starting_units(ruleset, game_par))
-        units.push_back(s_unit);
+        units.push_back(Unit(s_unit));
+
+    new_round();
 }
 
-std::vector<Unit const*> Game::units_in_xy(const size_t x, const size_t y) const
+void Game::new_round()
+{
+    for (auto& unit: units)
+        unit.new_round();
+    for (auto& nation: nations)
+        focus_next(nation);
+    ++round_nr;
+}
+
+void Game::focus_next(GameNation& nation)
+{
+    // find focused unit
+    auto it = r::find_if(units, [&nation](Unit const& u) { return u.nation_id == nation.nation_id && u.focused; });
+    Unit* focused_unit = nullptr;
+    if (it != units.end()) {
+        focused_unit = &*it;
+        focused_unit->focused = false;
+        ++it;
+    } else {
+        it = units.begin();  // if not a focused unit, start from the beginning
+    }
+
+    // go to next
+    while (it != units.end()) {
+        if (it->nation_id == nation.nation_id and it->can_focus()) {
+            it->focused = true;
+            return;
+        }
+        ++it;
+    }
+
+    // if not found, but there was a focused one, try again
+    if (focused_unit) {
+        it = units.begin();
+        for (; !it->focused; ++it) {
+            if (it->nation_id == nation.nation_id and it->can_focus()) {
+                it->focused = true;
+                return;
+            }
+        }
+    }
+}
+
+std::vector<Unit const*> Game::units_in_xy(size_t x, size_t y) const
 {
     std::vector<Unit const*> r;
     for (auto const& unit: units)

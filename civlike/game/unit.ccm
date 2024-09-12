@@ -7,7 +7,21 @@ export struct Unit {
     Nation::Id   nation_id;
     UnitType::Id unit_type_id;
     Point        pos;
+    bool         focused;
 
-    Unit(StartingUnit const& su)
-        : nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos) {}
+    explicit Unit(StartingUnit const& su)
+        : nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos), focused(false) {}
+
+    void new_round();
+
+    [[nodiscard]] bool can_focus() const { return true; }
 };
+
+#ifndef __GNUG__
+module : private;
+#endif
+
+void Unit::new_round()
+{
+
+}
