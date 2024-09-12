@@ -1,6 +1,7 @@
 module;
 
 #include <ranges>
+#include <queue>
 #include <vector>
 
 namespace r = std::ranges;
@@ -10,6 +11,8 @@ export module civlike.game;
 import civlike.geometry;
 import civlike.ruleset;
 import civlike.unit;
+import civlike.direction;
+import civlike.visualcue;
 
 export struct Tile {
     Terrain::Id terrain_id;
@@ -30,6 +33,7 @@ export struct Game {
     std::vector<GameNation> nations;
     std::vector<Unit>       units;
     size_t                  round_nr = 0;
+    std::queue<VisualCue>   visual_cues_;
 
     Game(Ruleset const& ruleset, GameParameters const& game_par);
 
@@ -37,6 +41,8 @@ export struct Game {
     void focus_next(GameNation& nation);
 
     [[nodiscard]] std::vector<Unit const*> units_in_xy(size_t x, size_t y) const;
+
+    bool move_focused_unit(Nation::Id nation_id, Direction dir);  // in moveunit.ccm
 };
 
 #ifndef __GNUG__
@@ -118,4 +124,9 @@ std::vector<Unit const*> Game::units_in_xy(size_t x, size_t y) const
         if (unit.pos.x == x && unit.pos.y == y)
             r.push_back(&unit);
     return r;
+}
+
+bool Game::move_focused_unit(Nation::Id nation_id, Direction dir)
+{
+    return false;
 }

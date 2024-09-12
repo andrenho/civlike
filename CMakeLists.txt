@@ -12,8 +12,10 @@ set(MODULES_SRC
         civlike/rules/fnval.ccm
         civlike/rules/ruleset.ccm
         civlike/rules/id.ccm
+        civlike/game/direction.ccm
         civlike/game/game.ccm
         civlike/game/unit.ccm
+        civlike/game/visualcue.ccm
 )
 
 add_library(civlike SHARED)

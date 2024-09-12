@@ -1,0 +1,17 @@
+module;
+
+#include <cstddef>
+#include <variant>
+
+export module civlike.visualcue;
+
+import civlike.geometry;
+import civlike.direction;
+
+export struct MoveUnit {
+    size_t    unit_idx;
+    Point     src_pos;
+    Direction direction;
+};
+
+export using VisualCue = std::variant<MoveUnit>;
