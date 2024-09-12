@@ -25,8 +25,7 @@
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.ccm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/text.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.ccm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,7 @@
       <workItem from="1726080949470" duration="139000" />
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
-      <workItem from="1726087222139" duration="19290000" />
+      <workItem from="1726087222139" duration="19727000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -261,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726154657579</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary=".">
+      <option name="closed" value="true" />
+      <created>1726154914774</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1726154914774</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

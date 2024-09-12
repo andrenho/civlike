@@ -8,8 +8,8 @@ export module civlike.ruleset;
 
 import civlike.color;
 import civlike.geometry;
-import :id;
-import :fnval;
+export import :id;
+export import :fnval;
 
 export struct Terrain {
     std::string name;
