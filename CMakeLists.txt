@@ -31,7 +31,7 @@ target_compile_features(civlike PUBLIC cxx_std_20)
 
 find_package(PkgConfig)
 find_package(SDL2 REQUIRED)
-pkg_search_module(SDL2_TTF REQUIRED sdl2_ttf)
+pkg_search_module(SDL2_TTF REQUIRED SDL2_ttf)
 
 find_program(XXD xxd)
 if(NOT XXD)
