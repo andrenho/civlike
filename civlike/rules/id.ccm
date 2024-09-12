@@ -5,4 +5,5 @@ struct Id {
     T id;
 
     operator T() const { return id; }
+    bool operator==(Id const& other) const { return id == other.id; }
 };
