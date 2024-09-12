@@ -11,6 +11,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="civlike" targetName="generate_font" />
       <config projectName="civlike" targetName="civlike" />
       <config projectName="civlike" targetName="uiproto" />
     </generated>
@@ -25,8 +26,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.ccm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/colonization.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/colonization.ccm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/fnval.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/fnval.ccm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/uiproto.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uiproto.ccm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +84,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "RiderInlayHintsCppOptions",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -106,6 +105,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="generate_font" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="generate_font" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="uiproto" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="uiproto" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="civlike" RUN_TARGET_NAME="uiproto">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -113,6 +117,7 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.civlike" />
+      <item itemvalue="CMake Application.generate_font" />
       <item itemvalue="CMake Application.uiproto" />
     </list>
   </component>
@@ -133,7 +138,7 @@
       <workItem from="1726080949470" duration="139000" />
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
-      <workItem from="1726087222139" duration="6799000" />
+      <workItem from="1726087222139" duration="9506000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -199,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726091505475</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary=".">
+      <option name="closed" value="true" />
+      <created>1726102538034</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1726102538034</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

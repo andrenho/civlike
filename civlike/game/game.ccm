@@ -32,7 +32,7 @@ export struct Game {
     Game(Ruleset const& ruleset, GameParameters const& game_par)
         : ruleset(ruleset)
     {
-        Map map = ruleset.map(ruleset, game_par);
+        const Map map = ruleset.map(ruleset, game_par);
 
         map_size.w = map.size();
         map_size.h = map[0].size();
@@ -45,16 +45,14 @@ export struct Game {
                 tt.emplace_back(Tile(map[x][y]));
         }
 
-        auto initial_nations = ruleset.initial_nations(ruleset, game_par);
-        for (auto const& initial_nation: initial_nations)
+        for (auto const& initial_nation: ruleset.initial_nations(ruleset, game_par))
             nations.push_back(GameNation(initial_nation));
 
-        auto starting_units = ruleset.starting_units(ruleset, game_par);
-        for (auto const& s_unit: starting_units)
+        for (auto const& s_unit: ruleset.starting_units(ruleset, game_par))
             units.push_back(s_unit);
     }
 
-    std::vector<Unit const*> units_in_xy(size_t x, size_t y) const
+    [[nodiscard]] std::vector<Unit const*> units_in_xy(const size_t x, const size_t y) const
     {
         std::vector<Unit const*> r;
         for (auto const& unit: units)

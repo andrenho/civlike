@@ -32,7 +32,25 @@ find_package(PkgConfig)
 find_package(SDL2 REQUIRED)
 pkg_search_module(SDL2_TTF REQUIRED sdl2_ttf)
 
-add_executable(uiproto main.cc)
+find_program(XXD xxd)
+if(NOT XXD)
+    message(FATAL_ERROR "xxd not found")
+endif()
+
+set(FONT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/uiproto/ShareTechMono-Regular.ttf")
+set(FONT_HEADER "${CMAKE_CURRENT_BINARY_DIR}/font.h")
+
+add_custom_command(
+        OUTPUT ${FONT_HEADER}
+        COMMAND ${XXD} -n font -i ${FONT_FILE} > ${FONT_HEADER}
+        DEPENDS ${FONT_FILE}
+        COMMENT "Generating font header from ${FONT_HEADER}"
+)
+
+add_custom_target(generate_font DEPENDS ${FONT_FILE})
+
+add_executable(uiproto main.cc ${FONT_HEADER})
+add_dependencies(uiproto generate_font)
 
 target_sources(uiproto
         PUBLIC FILE_SET CXX_MODULES
@@ -40,6 +58,6 @@ target_sources(uiproto
         FILES uiproto/uiproto.ccm)
 
 target_compile_features(uiproto PUBLIC cxx_std_20)
-target_include_directories(uiproto PUBLIC ${SDL2_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
+target_include_directories(uiproto PUBLIC ${SDL2_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
 target_link_directories(uiproto PUBLIC ${SDL2_TTF_LIBRARY_DIRS})
 target_link_libraries(uiproto LINK_PUBLIC civlike ${SDL2_LIBRARIES} ${SDL2_TTF_LIBRARIES})
