@@ -1,6 +1,7 @@
 export module civlike:unit;
 
 import :ruleset;
+import :geometry;
 
 export struct Unit {
     Nation::Id   nation_id;
