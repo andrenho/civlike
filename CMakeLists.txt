@@ -28,7 +28,9 @@ target_compile_features(civlike PUBLIC cxx_std_20)
 
 ##### EXECUTABLE #####
 
+find_package(PkgConfig)
 find_package(SDL2 REQUIRED)
+pkg_search_module(SDL2_TTF REQUIRED sdl2_ttf)
 
 add_executable(uiproto main.cc)
 
@@ -38,5 +40,6 @@ target_sources(uiproto
         FILES uiproto/uiproto.ccm)
 
 target_compile_features(uiproto PUBLIC cxx_std_20)
-target_include_directories(uiproto PUBLIC ${SDL2_INCLUDE_DIRS})
-target_link_libraries(uiproto LINK_PUBLIC civlike ${SDL2_LIBRARIES})
+target_include_directories(uiproto PUBLIC ${SDL2_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
+target_link_directories(uiproto PUBLIC ${SDL2_TTF_LIBRARY_DIRS})
+target_link_libraries(uiproto LINK_PUBLIC civlike ${SDL2_LIBRARIES} ${SDL2_TTF_LIBRARIES})

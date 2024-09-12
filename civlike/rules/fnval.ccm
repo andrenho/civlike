@@ -9,6 +9,8 @@ export module civlike:fnval;
 export struct Ruleset;
 export struct GameParameters;
 
+// TODO - create several variations accepting different parameters
+
 export template <typename T>
 struct GFnValue {
     using Function = std::function<T(Ruleset const&, GameParameters const&)>;

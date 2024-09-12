@@ -53,4 +53,13 @@ export struct Game {
         for (auto const& s_unit: starting_units)
             units.push_back(s_unit);
     }
+
+    std::vector<Unit const*> units_in_xy(size_t x, size_t y) const
+    {
+        std::vector<Unit const*> r;
+        for (auto const& unit: units)
+            if (unit.pos.x == x && unit.pos.y == y)
+                r.push_back(&unit);
+        return r;
+    }
 };

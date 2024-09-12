@@ -2,6 +2,7 @@ module;
 
 #include "SDL2/SDL.h"
 
+#include <algorithm>
 #include <optional>
 
 export module uiproto;
@@ -79,13 +80,22 @@ private:
             draw_unit(game, **o_unit);
     }
 
+    // TODO - actual implementation
     std::optional<Unit const*> unit_to_draw(Game const& game, size_t x, size_t y) const
     {
-        return {};
+        auto units = game.units_in_xy(x, y);
+        // TODO - std::find_if(units.begin(), units.end(), [](Unit const* unit) { return unit->focused; });
+        return units.empty() ? std::optional<Unit const*>{} : units[0];
     }
 
     void draw_unit(Game const& game, Unit const& unit) const
     {
+        auto color = game.ruleset.nations.at(unit.nation_id).color;
+        SDL_SetRenderDrawColor(ren, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
+        SDL_Rect r { .x = (int) (unit.pos.x * TILE_SIZE), .y = (int) (unit.pos.y * TILE_SIZE), .w = TILE_SIZE, .h = TILE_SIZE };
+        SDL_RenderDrawRect(ren, &r);
+        ++r.x, ++r.y, r.w -= 2, r.h -= 2;
+        SDL_RenderDrawRect(ren, &r);
     }
 
     SDL_Window* window = nullptr;

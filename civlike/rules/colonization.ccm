@@ -39,7 +39,7 @@ export Ruleset colonization_ruleset() {
         .initial_nations = { { Nation::Id { 0 } } },
 
         .starting_units = { {
-            { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 0, 0 } },
+            { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 3, 3 } },
         } },
     };
 
