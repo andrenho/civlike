@@ -5,6 +5,11 @@
 
 struct Point {
     const int x, y;
+
+    bool operator==(Point const& p) const { return p.x == x && p.y == y; }
+    bool operator!=(Point const& p) const { return !(*this == p); }
+    Point operator+(Point const& p) const { return { x + p.x, y + p.y } ;};
+    Point operator*(int v) const { return { x * v, y * v } ;};
 };
 
 struct Size {

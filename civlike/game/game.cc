@@ -25,11 +25,11 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
     new_round();
 }
 
-std::vector<Unit const*> Game::units_in_xy(size_t x, size_t y) const
+std::vector<Unit const*> Game::units_in_xy(Point p) const
 {
     std::vector<Unit const*> r;
     for (auto const& unit: units_)
-        if (unit.pos.x == x && unit.pos.y == y)
+        if (unit.pos == p)
             r.push_back(&unit);
     return r;
 }

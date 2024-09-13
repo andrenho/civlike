@@ -36,7 +36,7 @@ public:
 
     // queries
 
-    [[nodiscard]] std::vector<Unit const*> units_in_xy(size_t x, size_t y) const;
+    [[nodiscard]] std::vector<Unit const*> units_in_xy(Point p) const;
 
     // getters
 

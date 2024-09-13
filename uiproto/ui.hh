@@ -18,10 +18,10 @@ public:
 private:
     void do_events(Game& game);
     void draw(Game const& game) const;
-    void draw_tile(Game const& game, size_t x, size_t y) const;
+    void draw_tile(Game const& game, Point p) const;
     void draw_unit(Game const& game, Unit const& unit) const;
 
-    [[nodiscard]] std::optional<Unit const*> unit_to_draw(Game const& game, size_t x, size_t y) const;
+    [[nodiscard]] std::optional<Unit const*> unit_to_draw(Game const& game, Point p) const;
 
     Nation::Id                  player_nation_id_;
     SDL_Window*                 window_ = nullptr;
