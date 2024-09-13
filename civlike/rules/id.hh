@@ -7,6 +7,9 @@ struct Id {
 
     operator T() const { return id; }
     bool operator==(Id const& other) const { return id == other.id; }
+
+    template <std::derived_from<Id> U>
+    U next() { return U { ++id }; }
 };
 
 #endif //ID_HH

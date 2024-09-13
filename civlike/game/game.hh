@@ -1,6 +1,7 @@
 #ifndef GAME_GAME_HH_
 #define GAME_GAME_HH_
 
+#include <map>
 #include <queue>
 #include <vector>
 
@@ -18,7 +19,8 @@ struct Tile {
 using Tiles = std::vector<std::vector<Tile>>;
 
 struct GameNation {
-    Nation::Id nation_id;
+    Nation::Id              nation_id;
+    std::optional<Unit::Id> focused_unit;
 };
 
 class Game {
@@ -28,7 +30,7 @@ public:
     // Round/Focus (see roundfocus.cc)
 
     void new_round();
-    void focus_next(GameNation& nation);
+    void focus_next(Nation::Id nation_id);
 
     // Move unit (see moveunit.cc)
 
@@ -37,13 +39,14 @@ public:
     // queries
 
     [[nodiscard]] std::vector<Unit const*> units_in_xy(Point p) const;
+    [[nodiscard]] std::optional<Unit const*> focused_unit(Nation::Id nation_id) const;
 
     // getters
 
     [[nodiscard]] Size const& map_size() const { return map_size_; }
     [[nodiscard]] Tiles const& tiles() const { return tiles_; }
     [[nodiscard]] std::vector<GameNation> const& nations() const { return nations_; }
-    [[nodiscard]] std::vector<Unit> const& units() const { return units_; }
+    [[nodiscard]] std::map<Unit::Id, Unit> const& units() const { return units_; }
     [[nodiscard]] size_t round_nr() const { return round_nr_; }
 
     [[nodiscard]] std::queue<VisualCue> const& visual_cues() const { return visual_cues_; }
@@ -54,12 +57,12 @@ public:
     Ruleset const& ruleset;
 
 private:
-    Size                    map_size_ { 0, 0 };
-    Tiles                   tiles_;
-    std::vector<GameNation> nations_;
-    std::vector<Unit>       units_;
-    size_t                  round_nr_ = 0;
-    std::queue<VisualCue>   visual_cues_;
+    Size                     map_size_ { 0, 0 };
+    Tiles                    tiles_;
+    std::vector<GameNation>  nations_;
+    std::map<Unit::Id, Unit> units_;
+    size_t                   round_nr_ = 0;
+    std::queue<VisualCue>    visual_cues_;
 };
 
 #endif

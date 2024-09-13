@@ -37,6 +37,7 @@ static Ruleset colonization_ruleset() {
         .starting_units = { {
             { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 3, 3 } },
             { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 5, 5 } },
+            { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 7, 7 } },
         } },
     };
 

@@ -1,5 +1,8 @@
 #include "game.hh"
 
+#include <ranges>
+namespace r = std::ranges;
+
 Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
     : ruleset(ruleset)
 {
@@ -19,8 +22,10 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
     for (auto const& initial_nation: ruleset.initial_nations(ruleset, game_par))
         nations_.push_back(GameNation(initial_nation));
 
-    for (auto const& s_unit: ruleset.starting_units(ruleset, game_par))
-        units_.push_back(Unit(s_unit));
+    for (auto const& s_unit: ruleset.starting_units(ruleset, game_par)) {
+        Unit::Id id = Unit::next_id();
+        units_.emplace(id, Unit { id, s_unit });
+    }
 
     new_round();
 }
@@ -28,8 +33,17 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
 std::vector<Unit const*> Game::units_in_xy(Point p) const
 {
     std::vector<Unit const*> r;
-    for (auto const& unit: units_)
+    for (auto const& [_, unit]: units_)
         if (unit.pos == p)
             r.push_back(&unit);
     return r;
+}
+
+std::optional<Unit const*> Game::focused_unit(Nation::Id nation_id) const
+{
+    const auto& funit = nations_.at(nation_id).focused_unit;
+    if (funit)
+        return &units_.at(*funit);
+    else
+        return {};
 }

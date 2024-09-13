@@ -5,21 +5,23 @@ namespace r = std::ranges;
 
 void Game::new_round()
 {
-    for (auto& unit: units_)
-        unit.new_round();
-    for (auto& nation: nations_)
-        focus_next(nation);
+    for (auto& nation: nations_) {
+        nation.focused_unit = {};
+        focus_next(nation.nation_id);
+    }
     ++round_nr_;
 }
 
-void Game::focus_next(GameNation& nation)
+void Game::focus_next(Nation::Id nation_id)
 {
+    auto& nation = nations_.at(nation_id);
+
     // find focused unit
-    auto it = r::find_if(units_, [&nation](Unit const& u) { return u.nation_id == nation.nation_id && u.focused; });
-    Unit* focused_unit = nullptr;
-    if (it != units_.end()) {
-        focused_unit = &*it;
-        focused_unit->focused = false;
+    std::map<Unit::Id, Unit>::iterator it;
+    auto f_unit = nation.focused_unit;
+    if (nation.focused_unit) {
+        it = units_.find(*nation.focused_unit);
+        nation.focused_unit = {};
         ++it;
     } else {
         it = units_.begin();  // if not a focused unit, start from the beginning
@@ -27,19 +29,21 @@ void Game::focus_next(GameNation& nation)
 
     // go to next
     while (it != units_.end()) {
-        if (it->nation_id == nation.nation_id and it->can_focus()) {
-            it->focused = true;
+        auto const& [id, unit] = *it;
+        if (unit.nation_id == nation_id and unit.can_focus()) {
+            nation.focused_unit = id;
             return;
         }
         ++it;
     }
 
     // if not found, but there was a focused one, try again
-    if (focused_unit) {
+    if (f_unit) {
         it = units_.begin();
-        for (; !it->focused; ++it) {
-            if (it->nation_id == nation.nation_id and it->can_focus()) {
-                it->focused = true;
+        for (; it->first != *nation.focused_unit; ++it) {
+            auto const& [id, unit] = *it;
+            if (unit.nation_id == nation_id and unit.can_focus()) {
+                nation.focused_unit = id;
                 return;
             }
         }

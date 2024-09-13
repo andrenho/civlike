@@ -37,16 +37,19 @@ void UI::do_events(Game& game)
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         switch (e.type) {
-            case SDL_QUIT:
-                SDL_Quit();
-                exit(0);
-                break;
+            case SDL_QUIT: SDL_Quit(); exit(0);
             case SDL_KEYDOWN:
                 switch (e.key.keysym.sym) {
-                    case SDLK_q:
-                        SDL_Quit();
-                        exit(0);
-                        break;
+                    case SDLK_w: game.focus_next(player_nation_id_); break;
+                    case SDLK_KP_1: game.move_focused_unit(player_nation_id_, Direction::SW);
+                    case SDLK_KP_2: game.move_focused_unit(player_nation_id_, Direction::S);
+                    case SDLK_KP_3: game.move_focused_unit(player_nation_id_, Direction::SE);
+                    case SDLK_KP_4: game.move_focused_unit(player_nation_id_, Direction::W);
+                    case SDLK_KP_6: game.move_focused_unit(player_nation_id_, Direction::E);
+                    case SDLK_KP_7: game.move_focused_unit(player_nation_id_, Direction::NW);
+                    case SDLK_KP_8: game.move_focused_unit(player_nation_id_, Direction::N);
+                    case SDLK_KP_9: game.move_focused_unit(player_nation_id_, Direction::NE);
+                    case SDLK_q: SDL_Quit(); exit(0);
                 }
         }
     }
@@ -82,12 +85,10 @@ std::optional<Unit const*> UI::unit_to_draw(Game const& game, Point p) const
     const auto units = game.units_in_xy(p);
 
     // find focused
-    const auto focused_it = r::find_if(game.units(), [this, p](Unit const& u) -> bool {
-        return u.nation_id == player_nation_id_ && u.pos == p && u.focused;
-    });
-    if (focused_it != game.units().end()) {
+    const auto focused_unit = game.focused_unit(player_nation_id_);
+    if (focused_unit && focused_unit.value()->pos == p) {
         const bool blink = (SDL_GetTicks64() / 500) % 2 == 1;
-        return blink ? &*focused_it : std::optional<Unit const*>{};
+        return blink ? *focused_unit : std::optional<Unit const*>{};
     }
 
     if (!units.empty())   // not focused, return the first found
