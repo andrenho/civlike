@@ -1,8 +1,0 @@
-export module civlike;
-
-export import civlike.color;
-export import civlike.geometry;
-export import civlike.ruleset;
-export import civlike.game;
-export import civlike.unit;
-export import civlike.visualcue;

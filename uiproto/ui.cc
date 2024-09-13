@@ -1,43 +1,10 @@
-module;
+#include "ui.hh"
 
-#include <memory>
-#include <optional>
 #include <ranges>
-
-#include "SDL2/SDL.h"
-
 namespace r = std::ranges;
 
-export module uiproto.ui;
-
-import uiproto.text;
-import civlike;
-
-export struct UI {
-
-    explicit UI(Nation::Id player_nation_id);
-    ~UI();
-
-    void run(Game& game);
-
-private:
-    void do_events(Game& game);
-    void draw(Game const& game) const;
-    void draw_tile(Game const& game, size_t x, size_t y) const;
-    void draw_unit(Game const& game, Unit const& unit) const;
-
-    [[nodiscard]] std::optional<Unit const*> unit_to_draw(Game const& game, size_t x, size_t y) const;
-
-    Nation::Id              player_nation_id_;
-    SDL_Window*             window_ = nullptr;
-    SDL_Renderer*           ren_ = nullptr;
-    std::unique_ptr<Text>   text_;
-    static constexpr size_t TILE_SIZE = 32;
-};
-
-#ifndef __GNUG__
-module : private;
-#endif
+#include "SDL2/SDL.h"
+#include "text.hh"
 
 UI::UI(Nation::Id player_nation_id)
     : player_nation_id_(player_nation_id)

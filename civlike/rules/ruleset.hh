@@ -1,31 +1,30 @@
-module;
+#ifndef RULES_RULESET_HH_
+#define RULES_RULESET_HH_
 
 #include <cstdint>
 #include <string>
 #include <vector>
 
-export module civlike.ruleset;
+#include "common/color.hh"
+#include "common/geometry.hh"
+#include "id.hh"
+#include "fnval.hh"
 
-import civlike.color;
-import civlike.geometry;
-export import :id;
-export import :fnval;
-
-export struct Terrain {
+struct Terrain {
     std::string name;
     Color       color;
 
     struct Id : ::Id<uint8_t> {};
 };
 
-export struct UnitType {
+struct UnitType {
     std::string name;
     char        char_display;
 
     struct Id : ::Id<uint8_t> {};
 };
 
-export struct Nation {
+struct Nation {
     std::string name;
     Color       color;
     bool        playable;
@@ -33,20 +32,20 @@ export struct Nation {
     struct Id : ::Id<uint8_t> {};
 };
 
-export struct StartingUnit {
+struct StartingUnit {
     Nation::Id   nation_id;
     UnitType::Id unit_type_id;
     Point        initial_pos;
 };
 
-export struct TerrainSquare {
+struct TerrainSquare {
     Terrain::Id terrain_id;
 };
-export using Map = std::vector<std::vector<TerrainSquare>>;
+using Map = std::vector<std::vector<TerrainSquare>>;
 
-export struct GameParameters {};   // TODO - ???
+struct GameParameters {};   // TODO - ???
 
-export struct Ruleset {
+struct Ruleset {
 
     const std::vector<Terrain>                terrains;
     const std::vector<Nation>                 nations;
@@ -60,3 +59,5 @@ export struct Ruleset {
         return ruleset;
     }
 };
+
+#endif

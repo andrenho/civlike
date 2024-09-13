@@ -11,9 +11,11 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="civlike" targetName="civlike_shared" />
       <config projectName="civlike" targetName="generate_font" />
       <config projectName="civlike" targetName="civlike" />
       <config projectName="civlike" targetName="uiproto" />
+      <config projectName="civlike" targetName="civlike_static" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -23,9 +25,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/civlike/civlike.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/game/game.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/game/visualcue.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/rules/fnval.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/rules/id.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/text.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/text.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/game.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.ccm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/id.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.ccm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/civlike.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/common/color.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/color.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/common/geometry.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/geometry.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/direction.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/direction.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/unit.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/visualcue.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/fnval.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/id.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/uiproto.ccm" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +77,7 @@
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_video.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -80,18 +106,22 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/aw98156/prj/civlike",
+    "last_opened_file_path": "/Users/aw98156/prj/civlike/civlike/game",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CPPToolchains",
+    "settings.editor.selected.configurable": "fileTemplates",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/civlike/game" />
+      <recent name="$PROJECT_DIR$/civlike/common" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/civlike" />
       <recent name="$PROJECT_DIR$" />
@@ -108,6 +138,16 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="civlike_shared" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="civlike_shared" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="civlike_static" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="civlike_static" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="generate_font" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="generate_font" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -120,6 +160,8 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.civlike" />
+      <item itemvalue="CMake Application.civlike_shared" />
+      <item itemvalue="CMake Application.civlike_static" />
       <item itemvalue="CMake Application.generate_font" />
       <item itemvalue="CMake Application.uiproto" />
     </list>
@@ -142,7 +184,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="2860000" />
+      <workItem from="1726175645807" duration="6545000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -304,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726178494866</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary=".">
+      <option name="closed" value="true" />
+      <created>1726178768358</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1726178768358</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

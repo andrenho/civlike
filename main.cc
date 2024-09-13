@@ -1,8 +1,8 @@
 #include <functional>
 #include <vector>
 
-import civlike;
-import uiproto;
+#include "civlike.hh"
+#include "uiproto/ui.hh"
 
 static Ruleset colonization_ruleset() {
 

@@ -1,53 +1,7 @@
-module;
+#include "game.hh"
 
 #include <ranges>
-#include <queue>
-#include <vector>
-
 namespace r = std::ranges;
-
-export module civlike.game;
-
-import civlike.geometry;
-import civlike.ruleset;
-import civlike.unit;
-import civlike.direction;
-import civlike.visualcue;
-
-export struct Tile {
-    Terrain::Id terrain_id;
-
-    explicit Tile(TerrainSquare const& ts) : terrain_id(ts.terrain_id) {}
-};
-using Tiles = std::vector<std::vector<Tile>>;
-
-export struct GameNation {
-    Nation::Id nation_id;
-};
-
-export struct Game {
-
-    Ruleset const&          ruleset;
-    Size                    map_size { 0, 0 };
-    Tiles                   tiles;
-    std::vector<GameNation> nations;
-    std::vector<Unit>       units;
-    size_t                  round_nr = 0;
-    std::queue<VisualCue>   visual_cues_;
-
-    Game(Ruleset const& ruleset, GameParameters const& game_par);
-
-    void new_round();
-    void focus_next(GameNation& nation);
-
-    [[nodiscard]] std::vector<Unit const*> units_in_xy(size_t x, size_t y) const;
-
-    bool move_focused_unit(Nation::Id nation_id, Direction dir);  // in moveunit.ccm
-};
-
-#ifndef __GNUG__
-module : private;
-#endif
 
 Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
     : ruleset(ruleset)

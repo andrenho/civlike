@@ -1,16 +1,16 @@
-module;
+#ifndef GAME_DIRECTION_HH
+#define GAME_DIRECTION_HH
 
 #include <unordered_map>
 
-export module civlike.direction;
+#include "common/geometry.hh"
 
-import civlike.geometry;
-
-export enum class Direction {
+enum class Direction {
     NW, N, NE, W, E, SW, S, SE,
 };
 
-export const inline std::unordered_map<Direction, Point> directions = {
+// TODO - move to source file
+const inline std::unordered_map<Direction, Point> directions = {
     { Direction::NW, Point { -1,  1 } },
     { Direction::N,  Point {  0,  1 } },
     { Direction::NE, Point {  1,  1 } },
@@ -20,3 +20,5 @@ export const inline std::unordered_map<Direction, Point> directions = {
     { Direction::S,  Point {  0, -1 } },
     { Direction::SE, Point {  1, -1 } },
 };
+
+#endif

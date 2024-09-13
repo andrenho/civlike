@@ -1,9 +1,10 @@
-export module civlike.unit;
+#ifndef UNIT_HH
+#define UNIT_HH
 
-import civlike.ruleset;
-import civlike.geometry;
+#include "common/geometry.hh"
+#include "rules/ruleset.hh"
 
-export struct Unit {
+struct Unit {
     Nation::Id   nation_id;
     UnitType::Id unit_type_id;
     Point        pos;
@@ -12,16 +13,9 @@ export struct Unit {
     explicit Unit(StartingUnit const& su)
         : nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos), focused(false) {}
 
-    void new_round();
+    void new_round() {}
 
     [[nodiscard]] bool can_focus() const { return true; }
 };
 
-#ifndef __GNUG__
-module : private;
-#endif
-
-void Unit::new_round()
-{
-
-}
+#endif //UNIT_HH

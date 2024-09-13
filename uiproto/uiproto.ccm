@@ -1,4 +1,0 @@
-export module uiproto;
-
-export import uiproto.ui;
-export import uiproto.text;

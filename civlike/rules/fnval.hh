@@ -1,13 +1,9 @@
-module;
+#ifndef FNVAL_HH
+#define FNVAL_HH
 
 #include <functional>
 #include <optional>
 #include <stdexcept>
-
-export module civlike.ruleset:fnval;
-
-export struct Ruleset;
-export struct GameParameters;
 
 template <typename T, typename... P>
 struct FnValue {
@@ -38,9 +34,13 @@ private:
 };
 
 #define EXTERN_FNVALUE(KLASS, ...) \
-    export template <typename T> \
+    template <typename T> \
     struct KLASS : FnValue<T, __VA_ARGS__> { \
         using FnValue<T, __VA_ARGS__>::FnValue; \
     };
 
-EXTERN_FNVALUE(GFnValue, Ruleset const&, GameParameters const&)
+EXTERN_FNVALUE(GFnValue, struct Ruleset const&, struct GameParameters const&)
+
+#undef EXTERN_FNVALUE
+
+#endif //FNVAL_HH
