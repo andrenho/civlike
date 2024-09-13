@@ -168,6 +168,8 @@ void UI::draw_status(Game const& game) const
     int x = sw - 250;
     int y = sh - 100;
 
+    y = write_line("Round: " + std::to_string(game.round_nr()), x, y);
+
     auto f_unit = game.focused_unit(player_nation_id_);
     if (f_unit) {
         Unit const& unit = **f_unit;

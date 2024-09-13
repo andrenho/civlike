@@ -3,20 +3,40 @@
 #include <ranges>
 namespace r = std::ranges;
 
+bool Game::unit_can_focus(Unit const& unit) const
+{
+    return unit.moves_left > 0;
+}
+
 void Game::new_round()
 {
     for (auto& [_, unit]: units_)
         unit.moves_left = unit_starting_moves(unit);
     for (auto& nation: nations_) {
+        nation.round_ended = false;
         nation.focused_unit = {};
         focus_next(nation.nation_id);
     }
     ++round_nr_;
 }
 
+void Game::end_round(Nation::Id nation_id)
+{
+    nations_.at(nation_id).round_ended = true;
+
+    size_t nations_ended = r::count_if(nations_, [](GameNation const& gn) { return gn.round_ended; });
+    if (nations_ended == nations_.size())
+        new_round();
+}
+
 void Game::focus_next(Nation::Id nation_id)
 {
     auto& nation = nations_.at(nation_id);
+
+    // return if nation has no units available
+    size_t n_units_available = r::count_if(units_, [this](auto const& kv) { return unit_can_focus(kv.second); });
+    if (n_units_available == 0)
+        return;
 
     // find focused unit
     std::map<Unit::Id, Unit>::iterator it;
@@ -32,7 +52,7 @@ void Game::focus_next(Nation::Id nation_id)
     // go to next
     while (it != units_.end()) {
         auto const& [id, unit] = *it;
-        if (unit.nation_id == nation_id and unit.moves_left > 0) {
+        if (unit.nation_id == nation_id and unit_can_focus(unit)) {
             nation.focused_unit = id;
             return;
         }
@@ -42,13 +62,16 @@ void Game::focus_next(Nation::Id nation_id)
     // if not found, but there was a focused one, try again
     if (f_unit) {
         it = units_.begin();
-        for (; it->first != *nation.focused_unit; ++it) {
+        for (; it->first != *nation.focused_unit && it != units_.end(); ++it) {
             auto const& [id, unit] = *it;
-            if (unit.nation_id == nation_id and unit.moves_left > 0) {
+            if (unit.nation_id == nation_id and unit_can_focus(unit)) {
                 nation.focused_unit = id;
                 return;
             }
         }
     }
+
+    // if we get here, it means no more units are available, so we end the round
+    end_round(nation_id);
 }
 

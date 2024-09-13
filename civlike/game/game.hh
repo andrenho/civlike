@@ -21,6 +21,7 @@ using Tiles = std::vector<std::vector<Tile>>;
 struct GameNation {
     Nation::Id              nation_id;
     std::optional<Unit::Id> focused_unit;
+    bool                    round_ended = false;
 };
 
 class Game {
@@ -56,7 +57,10 @@ public:
     Ruleset const& ruleset;
 
 private:
+    void end_round(Nation::Id nation_id);
+
     [[nodiscard]] unsigned long unit_starting_moves(Unit const& unit) const;
+    [[nodiscard]] bool unit_can_focus(Unit const& unit) const;
     [[nodiscard]] unsigned long tile_moves_to_enter(Point p) const;
 
     Size                     map_size_ { 0, 0 };

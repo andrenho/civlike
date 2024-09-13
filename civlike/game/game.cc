@@ -62,3 +62,4 @@ unsigned long Game::tile_moves_to_enter(Point p) const
 {
     return ruleset.terrains.at(tiles_[p.x][p.y].terrain_id).cost_to_enter;
 }
+
