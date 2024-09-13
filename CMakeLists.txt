@@ -18,6 +18,8 @@ add_library(civlike OBJECT
         civlike/game/game.cc
         civlike/game/unit.hh
         civlike/game/visualcue.hh
+        civlike/game/moveunit.cc
+        civlike/game/roundfocus.cc
 )
 
 add_library(civlike_shared SHARED $<TARGET_OBJECTS:civlike>)
