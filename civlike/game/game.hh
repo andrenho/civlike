@@ -50,8 +50,7 @@ public:
     [[nodiscard]] std::map<Unit::Id, Unit> const& units() const { return units_; }
     [[nodiscard]] size_t round_nr() const { return round_nr_; }
 
-    [[nodiscard]] std::queue<VisualCue> const& visual_cues() const { return visual_cues_; }
-    void clear_visual_cues() { visual_cues_ = {}; }
+    [[nodiscard]] std::queue<VisualCue>& visual_cues() { return visual_cues_; }
 
     // fields
 

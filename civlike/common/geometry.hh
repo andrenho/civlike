@@ -10,6 +10,7 @@ struct Point {
     bool operator!=(Point const& p) const { return !(*this == p); }
     Point operator+(Point const& p) const { return { x + p.x, y + p.y } ;};
     Point operator*(int v) const { return { x * v, y * v } ;};
+    Point operator-() const { return { -x, -y }; }
 };
 
 struct Size {
