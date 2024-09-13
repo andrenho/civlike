@@ -4,7 +4,7 @@
 #include <cstddef>
 
 struct Point {
-    const int x, y;
+    int x, y;
 
     bool operator==(Point const& p) const { return p.x == x && p.y == y; }
     bool operator!=(Point const& p) const { return !(*this == p); }

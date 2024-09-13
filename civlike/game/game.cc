@@ -44,6 +44,11 @@ std::optional<Unit const*> Game::focused_unit(Nation::Id nation_id) const
     const auto& funit = nations_.at(nation_id).focused_unit;
     if (funit)
         return &units_.at(*funit);
-    else
-        return {};
+    return {};
+}
+
+std::optional<Unit*> Game::focused_unit(Nation::Id nation_id)
+{
+    auto f_unit = const_cast<Game const*>(this)->focused_unit(nation_id);
+    return f_unit ? std::optional(const_cast<Unit *>(*f_unit)) : std::optional<Unit*>();
 }

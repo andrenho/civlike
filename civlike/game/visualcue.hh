@@ -5,7 +5,7 @@
 #include "direction.hh"
 
 struct MoveUnit {
-    size_t    unit_idx;
+    Unit::Id  unit_id;
     Point     src_pos;
     Direction direction;
 };

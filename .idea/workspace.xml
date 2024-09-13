@@ -26,13 +26,11 @@
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/common/geometry.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/geometry.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/moveunit.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/moveunit.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/roundfocus.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/unit.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/id.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/visualcue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/visualcue.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +80,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake Application.civlike.executor": "Debug",
-    "CMake Application.uiproto.executor": "Debug",
+    "CMake Application.uiproto.executor": "Run",
     "CMake Debug.civlike.executor": "Debug",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -170,7 +168,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="15891000" />
+      <workItem from="1726175645807" duration="19036000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -372,7 +370,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726236362265</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary=".">
+      <option name="closed" value="true" />
+      <created>1726243307909</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1726243307909</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,18 +392,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <condition expression="p.x == 7 &amp;&amp; p.y == 7" language="C++" />
-          <url>file://$PROJECT_DIR$/uiproto/ui.cc</url>
-          <line>84</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

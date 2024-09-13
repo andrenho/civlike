@@ -40,6 +40,7 @@ public:
 
     [[nodiscard]] std::vector<Unit const*> units_in_xy(Point p) const;
     [[nodiscard]] std::optional<Unit const*> focused_unit(Nation::Id nation_id) const;
+    [[nodiscard]] std::optional<Unit*> focused_unit(Nation::Id nation_id);
 
     // getters
 

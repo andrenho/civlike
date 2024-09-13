@@ -41,14 +41,14 @@ void UI::do_events(Game& game)
             case SDL_KEYDOWN:
                 switch (e.key.keysym.sym) {
                     case SDLK_w: game.focus_next(player_nation_id_); break;
-                    case SDLK_KP_1: game.move_focused_unit(player_nation_id_, Direction::SW);
-                    case SDLK_KP_2: game.move_focused_unit(player_nation_id_, Direction::S);
-                    case SDLK_KP_3: game.move_focused_unit(player_nation_id_, Direction::SE);
-                    case SDLK_KP_4: game.move_focused_unit(player_nation_id_, Direction::W);
-                    case SDLK_KP_6: game.move_focused_unit(player_nation_id_, Direction::E);
-                    case SDLK_KP_7: game.move_focused_unit(player_nation_id_, Direction::NW);
-                    case SDLK_KP_8: game.move_focused_unit(player_nation_id_, Direction::N);
-                    case SDLK_KP_9: game.move_focused_unit(player_nation_id_, Direction::NE);
+                    case SDLK_KP_1: game.move_focused_unit(player_nation_id_, Direction::SE); break;
+                    case SDLK_KP_2: game.move_focused_unit(player_nation_id_, Direction::S); break;
+                    case SDLK_KP_3: game.move_focused_unit(player_nation_id_, Direction::SW); break;
+                    case SDLK_KP_4: game.move_focused_unit(player_nation_id_, Direction::W); break;
+                    case SDLK_KP_6: game.move_focused_unit(player_nation_id_, Direction::E); break;
+                    case SDLK_KP_7: game.move_focused_unit(player_nation_id_, Direction::NE); break;
+                    case SDLK_KP_8: game.move_focused_unit(player_nation_id_, Direction::N); break;
+                    case SDLK_KP_9: game.move_focused_unit(player_nation_id_, Direction::NW); break;
                     case SDLK_q: SDL_Quit(); exit(0);
                 }
         }
