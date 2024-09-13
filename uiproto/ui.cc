@@ -66,6 +66,8 @@ void UI::draw(Game const& game) const
     for (int x = 0; x < game.map_size().w; ++x)
         for (int y = 0; y < game.map_size().h; ++y)
             draw_tile(game, Point { x, y });
+
+    draw_status(game);
 }
 
 void UI::draw_tile(Game const& game, Point p) const
@@ -118,7 +120,7 @@ void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
 
     // letter
     const auto unit_char = std::string(1, game.ruleset.unit_types.at(unit.unit_type_id).char_display);
-    const auto [tx, tw, th] = text_->text_tx(unit_char, { color.r, color.g, color.b, SDL_ALPHA_OPAQUE });
+    const auto [tx, tw, th, _] = text_->text_tx(unit_char, { color.r, color.g, color.b, SDL_ALPHA_OPAQUE });
     r.x += 9, r.y += 4, r.w = tw, r.h = th;
     SDL_RenderCopy(ren_, tx, nullptr, &r);
 }
@@ -149,4 +151,27 @@ void UI::visual_cue_move_unit(Game const& game, MoveUnit const& mu)
         SDL_RenderPresent(ren_);
     }
     moving_focused_unit_ = false;
+}
+
+void UI::draw_status(Game const& game) const
+{
+    int sw, sh;
+    SDL_GetWindowSize(window_, &sw, &sh);
+
+    auto write_line = [this](std::string const& text, int x, int y) {
+        const auto [tx, tw, th, lineskip] = text_->text_tx(text, { 0, 0, 0, SDL_ALPHA_OPAQUE });
+        const SDL_Rect r { x, y, tw, th };
+        SDL_RenderCopy(ren_, tx, nullptr, &r);
+        return y + lineskip;
+    };
+
+    int x = sw - 250;
+    int y = sh - 100;
+
+    auto f_unit = game.focused_unit(player_nation_id_);
+    if (f_unit) {
+        Unit const& unit = **f_unit;
+        y = write_line(game.ruleset.unit_types.at(unit.unit_type_id).name, x, y);
+        y = write_line("Moves left: " + std::to_string(unit.moves_left), x, y);
+    }
 }

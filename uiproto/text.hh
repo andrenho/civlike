@@ -12,6 +12,7 @@
 struct TextTexture {
     SDL_Texture* tx;
     int w, h;
+    int lineskip;
 };
 
 class Text {
@@ -39,6 +40,7 @@ private:
     SDL_Renderer* ren_ = nullptr;
     std::unordered_map<std::string, CachedText> cache_;
     size_t call_count_ = 0;
+    int    lineskip = 0;
 
     static constexpr uint64_t CACHE_KEEP_SECONDS = 10;
 };

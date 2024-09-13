@@ -21,6 +21,7 @@ private:
     void draw(Game const& game) const;
     void draw_tile(Game const& game, Point p) const;
     void draw_unit(Game const& game, Unit const& unit, Point displacement={0,0}) const;
+    void draw_status(Game const& game) const;
 
     void process_visual_cues(Game& game);
     void visual_cue_move_unit(Game const& game, MoveUnit const& mu);

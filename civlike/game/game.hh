@@ -34,7 +34,7 @@ public:
 
     // Move unit (see moveunit.cc)
 
-    bool move_focused_unit(Nation::Id nation_id, Direction dir);
+    void move_focused_unit(Nation::Id nation_id, Direction dir);
 
     // queries
 
