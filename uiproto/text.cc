@@ -41,7 +41,7 @@ void Text::clear_cache()
 {
     ++call_count_;
     if (call_count_ % 100 == 0) {
-        uint64_t now = SDL_GetTicks64();
+        const uint64_t now = SDL_GetTicks64();
         for (auto it = cache_.begin(); it != cache_.end();) {
             if (it->second.last_used < (now - (CACHE_KEEP_SECONDS * 1000)))
                 it = cache_.erase(it);

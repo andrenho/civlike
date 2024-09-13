@@ -25,33 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/civlike/civlike.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/civlike/game/game.cc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/civlike/game/visualcue.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/civlike/rules/fnval.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/civlike/rules/id.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/text.cc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/text.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/civlike.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/common/color.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/color.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/common/geometry.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/geometry.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/direction.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/direction.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/game.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/unit.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/visualcue.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/fnval.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/id.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.ccm" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/text.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui.ccm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/uiproto.ccm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +55,7 @@
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_video.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -184,7 +162,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="6545000" />
+      <workItem from="1726175645807" duration="7164000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -354,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726178768358</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary=".">
+      <option name="closed" value="true" />
+      <created>1726229714308</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1726229714308</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
