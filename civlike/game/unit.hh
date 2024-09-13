@@ -7,17 +7,14 @@
 struct Unit {
     struct Id : ::Id<uint32_t> {};
 
-    Id           id;
-    Nation::Id   nation_id;
-    UnitType::Id unit_type_id;
-    Point        pos;
+    Id            id;
+    Nation::Id    nation_id;
+    UnitType::Id  unit_type_id;
+    Point         pos;
+    unsigned long moves_left = 0;
 
     explicit Unit(Id id, StartingUnit const& su)
         : id(id), nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos) {}
-
-    void new_round() {}
-
-    [[nodiscard]] bool can_focus() const { return true; }
 
     [[nodiscard]] static Id next_id() {
         static Id id_counter { 0 };

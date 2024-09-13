@@ -5,6 +5,8 @@ namespace r = std::ranges;
 
 void Game::new_round()
 {
+    for (auto& [_, unit]: units_)
+        unit.moves_left = unit_starting_moves(unit);
     for (auto& nation: nations_) {
         nation.focused_unit = {};
         focus_next(nation.nation_id);
@@ -30,7 +32,7 @@ void Game::focus_next(Nation::Id nation_id)
     // go to next
     while (it != units_.end()) {
         auto const& [id, unit] = *it;
-        if (unit.nation_id == nation_id and unit.can_focus()) {
+        if (unit.nation_id == nation_id and unit.moves_left > 0) {
             nation.focused_unit = id;
             return;
         }
@@ -42,7 +44,7 @@ void Game::focus_next(Nation::Id nation_id)
         it = units_.begin();
         for (; it->first != *nation.focused_unit; ++it) {
             auto const& [id, unit] = *it;
-            if (unit.nation_id == nation_id and unit.can_focus()) {
+            if (unit.nation_id == nation_id and unit.moves_left > 0) {
                 nation.focused_unit = id;
                 return;
             }

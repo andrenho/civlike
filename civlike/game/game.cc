@@ -52,3 +52,13 @@ std::optional<Unit*> Game::focused_unit(Nation::Id nation_id)
     auto f_unit = const_cast<Game const*>(this)->focused_unit(nation_id);
     return f_unit ? std::optional(const_cast<Unit *>(*f_unit)) : std::optional<Unit*>();
 }
+
+unsigned long Game::unit_starting_moves(Unit const& unit) const
+{
+    return ruleset.unit_types.at(unit.unit_type_id).move_points;
+}
+
+unsigned long Game::tile_moves_to_enter(Point p) const
+{
+    return ruleset.terrains.at(tiles_[p.x][p.y].terrain_id).cost_to_enter;
+}

@@ -9,8 +9,8 @@ static Ruleset colonization_ruleset() {
     return {
 
         .terrains = {
-                { .name = "Water", .color = { 59, 62, 163 } },
-                { .name = "Grassland", .color = { 74, 219, 48 } },
+                { .name = "Water", .color = { 59, 62, 163 }, .cost_to_enter = Terrain::Impassable },
+                { .name = "Grassland", .color = { 74, 219, 48 }, .cost_to_enter = 3 },
         },
 
         .nations = {
@@ -18,7 +18,7 @@ static Ruleset colonization_ruleset() {
         },
 
         .unit_types = {
-                { .name = "Colonist", .char_display = 'C' },
+                { .name = "Colonist", .char_display = 'C', .move_points = 6, },
         },
 
         .map = { [](Ruleset const&, GameParameters const&) {

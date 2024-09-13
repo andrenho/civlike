@@ -2,6 +2,7 @@
 #define RULES_RULESET_HH_
 
 #include <cstdint>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -11,15 +12,19 @@
 #include "fnval.hh"
 
 struct Terrain {
-    std::string name;
-    Color       color;
+    std::string  name;
+    Color        color;
+    unsigned int cost_to_enter;
 
     struct Id : ::Id<uint8_t> {};
+
+    static constexpr decltype(Terrain::cost_to_enter) Impassable = std::numeric_limits<decltype(Terrain::cost_to_enter)>::infinity();
 };
 
 struct UnitType {
-    std::string name;
-    char        char_display;
+    std::string  name;
+    char         char_display;
+    unsigned int move_points;
 
     struct Id : ::Id<uint8_t> {};
 };

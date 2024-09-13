@@ -38,25 +38,27 @@ public:
 
     // queries
 
-    [[nodiscard]] std::vector<Unit const*> units_in_xy(Point p) const;
+    [[nodiscard]] std::vector<Unit const*>   units_in_xy(Point p) const;
     [[nodiscard]] std::optional<Unit const*> focused_unit(Nation::Id nation_id) const;
-    [[nodiscard]] std::optional<Unit*> focused_unit(Nation::Id nation_id);
+    [[nodiscard]] std::optional<Unit*>       focused_unit(Nation::Id nation_id);
 
     // getters
 
-    [[nodiscard]] Size const& map_size() const { return map_size_; }
-    [[nodiscard]] Tiles const& tiles() const { return tiles_; }
-    [[nodiscard]] std::vector<GameNation> const& nations() const { return nations_; }
+    [[nodiscard]] Size const&                     map_size() const { return map_size_; }
+    [[nodiscard]] Tiles const&                    tiles() const { return tiles_; }
+    [[nodiscard]] std::vector<GameNation> const&  nations() const { return nations_; }
     [[nodiscard]] std::map<Unit::Id, Unit> const& units() const { return units_; }
-    [[nodiscard]] size_t round_nr() const { return round_nr_; }
-
-    [[nodiscard]] std::queue<VisualCue>& visual_cues() { return visual_cues_; }
+    [[nodiscard]] size_t                          round_nr() const { return round_nr_; }
+    [[nodiscard]] std::queue<VisualCue>&          visual_cues() { return visual_cues_; }
 
     // fields
 
     Ruleset const& ruleset;
 
 private:
+    [[nodiscard]] unsigned long unit_starting_moves(Unit const& unit) const;
+    [[nodiscard]] unsigned long tile_moves_to_enter(Point p) const;
+
     Size                     map_size_ { 0, 0 };
     Tiles                    tiles_;
     std::vector<GameNation>  nations_;
