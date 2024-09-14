@@ -8,6 +8,7 @@
 - [ ] Buy/sell to other nations
 - [ ] Tech tree
 - [ ] Diplomacy
+- [ ] End goal
 
 =======
 
