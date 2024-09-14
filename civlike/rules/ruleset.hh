@@ -15,16 +15,18 @@ struct Terrain {
     std::string  name;
     Color        color;
     unsigned int cost_to_enter;
+    bool         water = false;
 
     struct Id : ::Id<uint8_t> {};
 
-    static constexpr decltype(Terrain::cost_to_enter) Impassable = std::numeric_limits<decltype(Terrain::cost_to_enter)>::infinity();
+    static constexpr decltype(Terrain::cost_to_enter) Impassable = std::numeric_limits<decltype(Terrain::cost_to_enter)>::max();
 };
 
 struct UnitType {
     std::string  name;
     char         char_display;
     unsigned int move_points;
+    bool         ship = false;
 
     struct Id : ::Id<uint8_t> {};
 };
@@ -32,7 +34,7 @@ struct UnitType {
 struct Nation {
     std::string name;
     Color       color;
-    bool        playable;
+    bool        playable = true;
 
     struct Id : ::Id<uint8_t> {};
 };

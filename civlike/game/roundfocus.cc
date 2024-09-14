@@ -31,8 +31,6 @@ void Game::end_round(Nation::Id nation_id, bool auto_new_round)
 
 void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
 {
-    // TODO - what if the nation has no units available?
-
     auto& nation = nations_.at(nation_id);
 
     // find focused unit

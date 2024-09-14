@@ -9,16 +9,16 @@ static Ruleset colonization_ruleset() {
     return {
 
         .terrains = {
-                { .name = "Water", .color = { 59, 62, 163 }, .cost_to_enter = Terrain::Impassable },
+                { .name = "Water", .color = { 59, 62, 163 }, .cost_to_enter = 3, .water = true },
                 { .name = "Grassland", .color = { 74, 219, 48 }, .cost_to_enter = 3 },
         },
 
         .nations = {
-                { .name = "England", .color = { 128, 0, 0 }, .playable = true },
+                { .name = "England", .color = { 128, 0, 0 } },
         },
 
         .unit_types = {
-                { .name = "Colonist", .char_display = 'C', .move_points = 6, },
+                { .name = "Colonist", .char_display = 'C', .move_points = 6 },
         },
 
         .map = { [](Ruleset const&, GameParameters const&) {
@@ -29,6 +29,7 @@ static Ruleset colonization_ruleset() {
                     sq.push_back({ Terrain::Id { 1 } });
                 map.push_back(sq);
             }
+            map[4][4].terrain_id = Terrain::Id { 0 };
             return map;
         } },
 
