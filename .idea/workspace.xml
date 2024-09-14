@@ -26,9 +26,9 @@
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/roundfocus.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__algorithm/ranges_find_if.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__functional/invoke.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__iterator/wrap_iter.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__type_traits/invoke.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_rect.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_render.h" root0="FORCE_HIGHLIGHTING" />
@@ -167,7 +168,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="29407000" />
+      <workItem from="1726175645807" duration="29905000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -417,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726266655121</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary=".">
+      <option name="closed" value="true" />
+      <created>1726273464866</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1726273464866</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

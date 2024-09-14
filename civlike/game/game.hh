@@ -31,7 +31,8 @@ public:
     // Round/Focus (see roundfocus.cc)
 
     void new_round();
-    void focus_next(Nation::Id nation_id);
+    void focus_next(Nation::Id nation_id, bool auto_end_round=true);
+    void end_round(Nation::Id nation_id, bool auto_new_round=true);
 
     // Move unit (see moveunit.cc)
 
@@ -57,10 +58,8 @@ public:
     Ruleset const& ruleset;
 
 private:
-    void end_round(Nation::Id nation_id);
-
     [[nodiscard]] unsigned long unit_starting_moves(Unit const& unit) const;
-    [[nodiscard]] bool unit_can_focus(Unit const& unit) const;
+    [[nodiscard]] bool          unit_can_focus(Unit const& unit) const;
     [[nodiscard]] unsigned long tile_moves_to_enter(Point p) const;
 
     Size                     map_size_ { 0, 0 };

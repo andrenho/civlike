@@ -15,21 +15,21 @@ void Game::new_round()
     for (auto& nation: nations_) {
         nation.round_ended = false;
         nation.focused_unit = {};
-        focus_next(nation.nation_id);
+        focus_next(nation.nation_id, false);
     }
     ++round_nr_;
 }
 
-void Game::end_round(Nation::Id nation_id)
+void Game::end_round(Nation::Id nation_id, bool auto_new_round)
 {
     nations_.at(nation_id).round_ended = true;
 
     size_t nations_ended = r::count_if(nations_, [](GameNation const& gn) { return gn.round_ended; });
-    if (nations_ended == nations_.size())
+    if (auto_new_round && nations_ended == nations_.size())
         new_round();
 }
 
-void Game::focus_next(Nation::Id nation_id)
+void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
 {
     // TODO - what if the nation has no units available?
 
@@ -69,6 +69,7 @@ void Game::focus_next(Nation::Id nation_id)
     }
 
     // if we get here, it means no more units are available, so we end the round
-    end_round(nation_id);
+    if (auto_end_round)
+        end_round(nation_id, auto_end_round);
 }
 

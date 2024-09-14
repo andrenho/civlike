@@ -43,7 +43,6 @@ void UI::do_events(Game& game)
             case SDL_QUIT: SDL_Quit(); exit(0);
             case SDL_KEYDOWN:
                 switch (e.key.keysym.sym) {
-                    case SDLK_w: game.focus_next(player_nation_id_); break;
                     case SDLK_KP_1: game.move_focused_unit(player_nation_id_, Direction::SW); break;
                     case SDLK_KP_2: game.move_focused_unit(player_nation_id_, Direction::S); break;
                     case SDLK_KP_3: game.move_focused_unit(player_nation_id_, Direction::SE); break;
@@ -52,6 +51,8 @@ void UI::do_events(Game& game)
                     case SDLK_KP_7: game.move_focused_unit(player_nation_id_, Direction::NW); break;
                     case SDLK_KP_8: game.move_focused_unit(player_nation_id_, Direction::N); break;
                     case SDLK_KP_9: game.move_focused_unit(player_nation_id_, Direction::NE); break;
+                    case SDLK_w: game.focus_next(player_nation_id_); break;
+                    case SDLK_SPACE: game.end_round(player_nation_id_); break;
                     case SDLK_q: SDL_Quit(); exit(0);
                 }
         }
