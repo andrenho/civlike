@@ -27,7 +27,7 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
         units_.emplace(id, Unit { id, s_unit });
     }
 
-    new_round();
+    round_new();
 }
 
 std::vector<Unit const*> Game::units_in_xy(Point p) const

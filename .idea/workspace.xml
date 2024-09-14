@@ -25,17 +25,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/civlike/game/impl/unitactions.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/game.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/moveunit.cc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/visualcue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/visualcue.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/id.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/impl/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/game.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/impl/unitactions.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/unitactions.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/unit.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +176,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="32829000" />
+      <workItem from="1726175645807" duration="34084000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -467,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726275590361</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary=".">
+      <option name="closed" value="true" />
+      <created>1726315689964</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1726315689964</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

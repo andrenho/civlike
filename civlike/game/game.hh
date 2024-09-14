@@ -30,13 +30,14 @@ public:
 
     // Round/Focus (see roundfocus.cc)
 
-    void new_round();
+    void round_new();
+    void round_end(Nation::Id nation_id, bool auto_new_round=true);
     void focus_next(Nation::Id nation_id, bool auto_end_round=true);
-    void end_round(Nation::Id nation_id, bool auto_new_round=true);
 
     // Move unit (see unitactions.cc)
 
-    void move_focused_unit(Nation::Id nation_id, Direction dir);
+    void unit_move(Unit::Id unit_id, Direction dir);
+    void unit_change_state(Unit::Id unit_id, Unit::State state);
 
     // queries
 

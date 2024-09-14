@@ -15,7 +15,8 @@ UI::UI(Nation::Id player_nation_id)
     window_ = SDL_CreateWindow("civlike (uiproto)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         800, 600, SDL_WINDOW_RESIZABLE);
     ren_ = SDL_CreateRenderer(window_, -1, 0);
-    text_ = std::make_unique<Text>(ren_);
+    text_large_ = std::make_unique<Text>(ren_, 18);
+    text_small_ = std::make_unique<Text>(ren_, 12);
 }
 
 UI::~UI()
@@ -40,21 +41,35 @@ void UI::do_events(Game& game)
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         switch (e.type) {
-            case SDL_QUIT: SDL_Quit(); exit(0);
-            case SDL_KEYDOWN:
+
+            case SDL_QUIT:
+                SDL_Quit();
+                exit(0);
+
+            case SDL_KEYDOWN: {
+                auto f_unit = game.focused_unit(player_nation_id_);
+                if (f_unit) {
+                    Unit::Id unit_id = (*f_unit)->id;
+                    switch (e.key.keysym.sym) {
+                        case SDLK_KP_1: game.unit_move(unit_id, Direction::SW); break;
+                        case SDLK_KP_2: game.unit_move(unit_id, Direction::S); break;
+                        case SDLK_KP_3: game.unit_move(unit_id, Direction::SE); break;
+                        case SDLK_KP_4: game.unit_move(unit_id, Direction::W); break;
+                        case SDLK_KP_6: game.unit_move(unit_id, Direction::E); break;
+                        case SDLK_KP_7: game.unit_move(unit_id, Direction::NW); break;
+                        case SDLK_KP_8: game.unit_move(unit_id, Direction::N); break;
+                        case SDLK_KP_9: game.unit_move(unit_id, Direction::NE); break;
+                        case SDLK_f: game.unit_change_state(unit_id, Unit::State::Fortify); break;
+                    }
+                }
+
                 switch (e.key.keysym.sym) {
-                    case SDLK_KP_1: game.move_focused_unit(player_nation_id_, Direction::SW); break;
-                    case SDLK_KP_2: game.move_focused_unit(player_nation_id_, Direction::S); break;
-                    case SDLK_KP_3: game.move_focused_unit(player_nation_id_, Direction::SE); break;
-                    case SDLK_KP_4: game.move_focused_unit(player_nation_id_, Direction::W); break;
-                    case SDLK_KP_6: game.move_focused_unit(player_nation_id_, Direction::E); break;
-                    case SDLK_KP_7: game.move_focused_unit(player_nation_id_, Direction::NW); break;
-                    case SDLK_KP_8: game.move_focused_unit(player_nation_id_, Direction::N); break;
-                    case SDLK_KP_9: game.move_focused_unit(player_nation_id_, Direction::NE); break;
                     case SDLK_w: game.focus_next(player_nation_id_); break;
-                    case SDLK_SPACE: game.end_round(player_nation_id_); break;
+                    case SDLK_SPACE: game.round_end(player_nation_id_); break;
                     case SDLK_q: SDL_Quit(); exit(0);
                 }
+            }
+
         }
     }
 }
@@ -124,11 +139,13 @@ void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
     ++r.x, ++r.y, r.w -= 2, r.h -= 2;
     SDL_RenderDrawRect(ren_, &r);
 
-    // letter
+    // unit type letter
     const auto unit_char = std::string(1, game.ruleset.unit_types.at(unit.unit_type_id).char_display);
-    const auto [tx, tw, th, _] = text_->text_tx(unit_char, { color.r, color.g, color.b, SDL_ALPHA_OPAQUE });
-    r.x += 9, r.y += 4, r.w = tw, r.h = th;
-    SDL_RenderCopy(ren_, tx, nullptr, &r);
+    write(*text_large_, unit_char, r.x + 9, r.y + 4);
+
+    // state
+    if (unit.state == Unit::State::Fortify)
+        write(*text_small_, "F", r.x + 20, r.y);
 }
 
 template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
@@ -164,22 +181,23 @@ void UI::draw_status(Game const& game) const
     int sw, sh;
     SDL_GetWindowSize(window_, &sw, &sh);
 
-    auto write_line = [this](std::string const& text, int x, int y) {
-        const auto [tx, tw, th, lineskip] = text_->text_tx(text, { 0, 0, 0, SDL_ALPHA_OPAQUE });
-        const SDL_Rect r { x, y, tw, th };
-        SDL_RenderCopy(ren_, tx, nullptr, &r);
-        return y + lineskip;
-    };
-
     int x = sw - 250;
     int y = sh - 100;
 
-    y = write_line("Round: " + std::to_string(game.round_nr()), x, y);
+    y = write(*text_large_, "Round: " + std::to_string(game.round_nr()), x, y);
 
     auto f_unit = game.focused_unit(player_nation_id_);
     if (f_unit) {
         Unit const& unit = **f_unit;
-        y = write_line(game.ruleset.unit_types.at(unit.unit_type_id).name, x, y);
-        y = write_line("Moves left: " + std::to_string(unit.moves_left), x, y);
+        y = write(*text_large_, game.ruleset.unit_types.at(unit.unit_type_id).name, x, y);
+        y = write(*text_large_, "Moves left: " + std::to_string(unit.moves_left), x, y);
     }
+}
+
+int UI::write(Text& text_mgr, std::string const& text, int x, int y) const
+{
+    const auto [tx, tw, th, lineskip] = text_mgr.text_tx(text, { 0, 0, 0, SDL_ALPHA_OPAQUE });
+    const SDL_Rect r { x, y, tw, th };
+    SDL_RenderCopy(ren_, tx, nullptr, &r);
+    return y + lineskip;
 }

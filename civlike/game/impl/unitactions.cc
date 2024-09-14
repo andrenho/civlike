@@ -3,13 +3,9 @@
 #include <ranges>
 namespace r = std::ranges;
 
-void Game::move_focused_unit(Nation::Id nation_id, Direction dir)
+void Game::unit_move(Unit::Id unit_id, Direction dir)
 {
-    auto f_unit = focused_unit(nation_id);
-    if (!f_unit)
-        return;
-
-    Unit& unit = **f_unit;
+    Unit& unit = units_.at(unit_id);
     UnitType const& unit_type = ruleset.unit_types.at(unit.unit_type_id);
 
     // check if destination is outside of bounds
@@ -43,5 +39,13 @@ void Game::move_focused_unit(Nation::Id nation_id, Direction dir)
 
     // focus next unit
     if (unit.moves_left <= 0)
-        focus_next(nation_id);
+        focus_next(unit.nation_id);
+}
+
+void Game::unit_change_state(Unit::Id unit_id, Unit::State state)
+{
+    Unit& unit = units_.at(unit_id);
+    unit.state = state;
+    if (state != Unit::State::Normal)
+        focus_next(unit.nation_id);
 }

@@ -2,12 +2,12 @@
 
 #include "font.h"
 
-Text::Text(SDL_Renderer* ren)
+Text::Text(SDL_Renderer* ren, int font_size)
     : ren_(ren)
 {
     TTF_Init();
     SDL_RWops* font_mem = SDL_RWFromMem(font, font_len);
-    font_ = TTF_OpenFontRW(font_mem, 1, 18);
+    font_ = TTF_OpenFontRW(font_mem, 1, font_size);
     lineskip = TTF_FontLineSkip(font_);
 }
 

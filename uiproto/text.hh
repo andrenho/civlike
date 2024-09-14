@@ -28,7 +28,7 @@ class Text {
     };
 
 public:
-    explicit Text(SDL_Renderer* ren);
+    explicit Text(SDL_Renderer* ren, int font_size);
     ~Text();
 
     [[nodiscard]] TextTexture text_tx(std::string const& text, SDL_Color const& color);

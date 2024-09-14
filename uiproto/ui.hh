@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "SDL2/SDL.h"
+#include "text.hh"
 
 #include "civlike.hh"
 
@@ -26,15 +27,18 @@ private:
     void process_visual_cues(Game& game);
     void visual_cue_move_unit(Game const& game, MoveUnit const& mu);
 
+    int write(Text& text_mgr, std::string const& text, int x, int y) const;
+
     [[nodiscard]] std::optional<Unit const*> unit_to_draw(Game const& game, Point p) const;
 
-    Nation::Id                  player_nation_id_;
-    SDL_Window*                 window_ = nullptr;
-    SDL_Renderer*               ren_ = nullptr;
-    std::unique_ptr<class Text> text_;
-    std::optional<Unit::Id>     moving_unit_ {};
+    Nation::Id              player_nation_id_;
+    SDL_Window*             window_ = nullptr;
+    SDL_Renderer*           ren_ = nullptr;
+    std::unique_ptr<Text>   text_large_;
+    std::unique_ptr<Text>   text_small_;
+    std::optional<Unit::Id> moving_unit_ {};
 
-    static constexpr size_t     TILE_SIZE = 32;
+    static constexpr size_t TILE_SIZE = 32;
 };
 
 #endif //UI_HH

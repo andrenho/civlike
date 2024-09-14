@@ -6,10 +6,10 @@ namespace r = std::ranges;
 
 bool Game::unit_can_focus(Unit const& unit) const
 {
-    return unit.moves_left > 0;
+    return unit.moves_left > 0 && unit.state == Unit::State::Normal;
 }
 
-void Game::new_round()
+void Game::round_new()
 {
     for (auto& [_, unit]: units_)
         unit.moves_left = unit_starting_moves(unit);
@@ -21,13 +21,13 @@ void Game::new_round()
     ++round_nr_;
 }
 
-void Game::end_round(Nation::Id nation_id, bool auto_new_round)
+void Game::round_end(Nation::Id nation_id, bool auto_new_round)
 {
     nations_.at(nation_id).round_ended = true;
 
     size_t nations_ended = r::count_if(nations_, [](GameNation const& gn) { return gn.round_ended; });
     if (auto_new_round && nations_ended == nations_.size())
-        new_round();
+        round_new();
 }
 
 void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
@@ -69,6 +69,6 @@ void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
 
     // if we get here, it means no more units are available, so we end the round
     if (auto_end_round)
-        end_round(nation_id, auto_end_round);
+        round_end(nation_id, auto_end_round);
 }
 
