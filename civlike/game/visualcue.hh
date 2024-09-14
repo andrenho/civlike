@@ -1,6 +1,8 @@
 #ifndef VISUALCUE_HH
 #define VISUALCUE_HH
 
+#include <variant>
+
 #include "common/geometry.hh"
 #include "direction.hh"
 

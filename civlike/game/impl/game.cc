@@ -1,4 +1,4 @@
-#include "game.hh"
+#include "../game.hh"
 
 #include <ranges>
 namespace r = std::ranges;

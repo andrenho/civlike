@@ -1,6 +1,6 @@
 - [ ] Map
-  - [ ] Impassable terrain
-  - [ ] Different terrain cost
+  - [x] Impassable terrain
+  - [x] Different terrain cost
   - [ ] Fortify
 - [ ] Cities
 - [ ] Enemies / combat

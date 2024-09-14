@@ -11,6 +11,7 @@ static Ruleset colonization_ruleset() {
         .terrains = {
                 { .name = "Water", .color = { 59, 62, 163 }, .cost_to_enter = 3, .water = true },
                 { .name = "Grassland", .color = { 74, 219, 48 }, .cost_to_enter = 3 },
+                { .name = "Ice", .color = { 200, 200, 200 }, .cost_to_enter = 4 },
         },
 
         .nations = {
@@ -26,7 +27,7 @@ static Ruleset colonization_ruleset() {
             for (size_t x = 0; x < 10; ++x) {
                 std::vector<TerrainSquare> sq;
                 for (size_t y = 0; y < 10; ++y)
-                    sq.push_back({ Terrain::Id { 1 } });
+                    sq.push_back({ Terrain::Id { y > 5 ? 2 : 1 } });
                 map.push_back(sq);
             }
             map[4][4].terrain_id = Terrain::Id { 0 };

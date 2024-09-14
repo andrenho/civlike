@@ -34,7 +34,7 @@ public:
     void focus_next(Nation::Id nation_id, bool auto_end_round=true);
     void end_round(Nation::Id nation_id, bool auto_new_round=true);
 
-    // Move unit (see moveunit.cc)
+    // Move unit (see unitactions.cc)
 
     void move_focused_unit(Nation::Id nation_id, Direction dir);
 

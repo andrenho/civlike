@@ -5,6 +5,8 @@ template <typename T>
 struct Id {
     T id;
 
+    Id(T id) : id(id) {}
+
     operator T() const { return id; }
     bool operator==(Id const& other) const { return id == other.id; }
 
