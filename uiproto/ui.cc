@@ -4,6 +4,8 @@
 #include <variant>
 namespace r = std::ranges;
 
+using namespace cl;
+
 #include "SDL2/SDL.h"
 #include "text.hh"
 

@@ -11,13 +11,15 @@
 #include "id.hh"
 #include "fnval.hh"
 
+namespace cl {
+
 struct Terrain {
     std::string  name;
     Color        color;
     unsigned int cost_to_enter;
     bool         water = false;
 
-    struct Id : ::Id<uint8_t> {};
+    struct Id : cl::Id<uint8_t> {};
 
     static constexpr decltype(Terrain::cost_to_enter) Impassable = std::numeric_limits<decltype(Terrain::cost_to_enter)>::max();
 };
@@ -28,7 +30,7 @@ struct UnitType {
     unsigned int move_points;
     bool         ship = false;
 
-    struct Id : ::Id<uint8_t> {};
+    struct Id : cl::Id<uint8_t> {};
 };
 
 struct Nation {
@@ -36,7 +38,7 @@ struct Nation {
     Color       color;
     bool        playable = true;
 
-    struct Id : ::Id<uint8_t> {};
+    struct Id : cl::Id<uint8_t> {};
 };
 
 struct StartingUnit {
@@ -66,5 +68,7 @@ struct Ruleset {
         return ruleset;
     }
 };
+
+}
 
 #endif

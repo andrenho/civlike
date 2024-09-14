@@ -4,6 +4,8 @@
 #include <ranges>
 namespace r = std::ranges;
 
+namespace cl {
+
 bool Game::unit_can_focus(Unit const& unit) const
 {
     return unit.moves_left > 0 && unit.state == Unit::State::Normal;
@@ -72,3 +74,4 @@ void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
         round_end(nation_id, auto_end_round);
 }
 
+}

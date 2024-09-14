@@ -6,6 +6,8 @@
 #include "common/geometry.hh"
 #include "direction.hh"
 
+namespace cl {
+
 struct MoveUnit {
     Unit::Id  unit_id;
     Point     src_pos;
@@ -13,5 +15,7 @@ struct MoveUnit {
 };
 
 using VisualCue = std::variant<MoveUnit>;
+
+}
 
 #endif //VISUALCUE_HH

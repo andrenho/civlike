@@ -5,6 +5,8 @@
 #include <optional>
 #include <stdexcept>
 
+namespace cl {
+
 template <typename T, typename... P>
 struct FnValue {
     using Function = std::function<T(P...)>;
@@ -34,13 +36,15 @@ private:
 };
 
 #define EXTERN_FNVALUE(KLASS, ...) \
-    template <typename T> \
-    struct KLASS : FnValue<T, __VA_ARGS__> { \
-        using FnValue<T, __VA_ARGS__>::FnValue; \
-    };
+template <typename T> \
+struct KLASS : FnValue<T, __VA_ARGS__> { \
+using FnValue<T, __VA_ARGS__>::FnValue; \
+};
 
 EXTERN_FNVALUE(GFnValue, struct Ruleset const&, struct GameParameters const&)
 
 #undef EXTERN_FNVALUE
+
+}
 
 #endif //FNVAL_HH

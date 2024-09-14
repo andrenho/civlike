@@ -1,6 +1,8 @@
 #ifndef ID_HH
 #define ID_HH
 
+namespace cl {
+
 template <typename T>
 struct Id {
     T id;
@@ -13,5 +15,7 @@ struct Id {
     template <std::derived_from<Id> U>
     U next() { return U { ++id }; }
 };
+
+}
 
 #endif //ID_HH

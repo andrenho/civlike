@@ -3,6 +3,8 @@
 #include <ranges>
 namespace r = std::ranges;
 
+namespace cl {
+
 void Game::unit_move(Unit::Id unit_id, Direction dir)
 {
     Unit& unit = units_.at(unit_id);
@@ -32,7 +34,7 @@ void Game::unit_move(Unit::Id unit_id, Direction dir)
         unit.pos = unit.pos + directions.at(dir);
         visual_cues_.push(MoveUnit { .unit_id = unit.id, .src_pos = src_pos, .direction = dir });
 
-    // no moves left
+        // no moves left
     } else {
         unit.moves_left = 0;
     }
@@ -48,4 +50,6 @@ void Game::unit_change_state(Unit::Id unit_id, Unit::State state)
     unit.state = state;
     if (state != Unit::State::Normal)
         focus_next(unit.nation_id);
+}
+
 }

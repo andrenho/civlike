@@ -11,32 +11,32 @@
 
 class UI {
 public:
-    explicit UI(Nation::Id player_nation_id);
+    explicit UI(cl::Nation::Id player_nation_id);
     ~UI();
 
-    void run(Game& game);
+    void run(cl::Game& game);
 
 private:
-    void do_events(Game& game);
+    void do_events(cl::Game& game);
 
-    void draw(Game const& game) const;
-    void draw_tile(Game const& game, Point p) const;
-    void draw_unit(Game const& game, Unit const& unit, Point displacement={0,0}) const;
-    void draw_status(Game const& game) const;
+    void draw(cl::Game const& game) const;
+    void draw_tile(cl::Game const& game, cl::Point p) const;
+    void draw_unit(cl::Game const& game, cl::Unit const& unit, cl::Point displacement={0,0}) const;
+    void draw_status(cl::Game const& game) const;
 
-    void process_visual_cues(Game& game);
-    void visual_cue_move_unit(Game const& game, MoveUnit const& mu);
+    void process_visual_cues(cl::Game& game);
+    void visual_cue_move_unit(cl::Game const& game, cl::MoveUnit const& mu);
 
     int write(Text& text_mgr, std::string const& text, int x, int y) const;
 
-    [[nodiscard]] std::optional<Unit const*> unit_to_draw(Game const& game, Point p) const;
+    [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& game, cl::Point p) const;
 
-    Nation::Id              player_nation_id_;
-    SDL_Window*             window_ = nullptr;
-    SDL_Renderer*           ren_ = nullptr;
-    std::unique_ptr<Text>   text_large_;
-    std::unique_ptr<Text>   text_small_;
-    std::optional<Unit::Id> moving_unit_ {};
+    cl::Nation::Id              player_nation_id_;
+    SDL_Window*                 window_ = nullptr;
+    SDL_Renderer*               ren_ = nullptr;
+    std::unique_ptr<Text>       text_large_;
+    std::unique_ptr<Text>       text_small_;
+    std::optional<cl::Unit::Id> moving_unit_ {};
 
     static constexpr size_t TILE_SIZE = 32;
 };

@@ -3,8 +3,12 @@
 
 #include <cstdint>
 
+namespace cl {
+
 struct Color {
     const uint8_t r, g, b;
 };
+
+}
 
 #endif

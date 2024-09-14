@@ -4,8 +4,10 @@
 #include "common/geometry.hh"
 #include "rules/ruleset.hh"
 
+namespace cl {
+
 struct Unit {
-    struct Id : ::Id<uint32_t> {};
+    struct Id : cl::Id<uint32_t> {};
     enum class State { Normal, Fortify };
 
     Id            id;
@@ -23,5 +25,7 @@ struct Unit {
         return id_counter.next<Id>();
     }
 };
+
+}
 
 #endif //UNIT_HH

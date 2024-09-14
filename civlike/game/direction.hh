@@ -5,6 +5,8 @@
 
 #include "common/geometry.hh"
 
+namespace cl {
+
 enum class Direction {
     NW, N, NE, W, E, SW, S, SE,
 };
@@ -19,5 +21,7 @@ const inline std::unordered_map<Direction, Point> directions = {
     { Direction::N,  Point {  0, -1 } },
     { Direction::NE, Point {  1, -1 } },
 };
+
+}
 
 #endif

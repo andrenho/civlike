@@ -11,6 +11,8 @@
 #include "common/geometry.hh"
 #include "rules/ruleset.hh"
 
+namespace cl {
+
 struct Tile {
     Terrain::Id terrain_id;
 
@@ -70,5 +72,7 @@ private:
     size_t                   round_nr_ = 0;
     std::queue<VisualCue>    visual_cues_;
 };
+
+}
 
 #endif

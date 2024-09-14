@@ -4,7 +4,7 @@
 #include "civlike.hh"
 #include "uiproto/ui.hh"
 
-static Ruleset colonization_ruleset() {
+static cl::Ruleset colonization_ruleset() {
 
     return {
 
@@ -22,19 +22,19 @@ static Ruleset colonization_ruleset() {
                 { .name = "Colonist", .char_display = 'C', .move_points = 6 },
         },
 
-        .map = { [](Ruleset const&, GameParameters const&) {
-            Map map;
+        .map = { [](cl::Ruleset const&, cl::GameParameters const&) {
+            cl::Map map;
             for (size_t x = 0; x < 10; ++x) {
-                std::vector<TerrainSquare> sq;
+                std::vector<cl::TerrainSquare> sq;
                 for (size_t y = 0; y < 10; ++y)
-                    sq.push_back({ Terrain::Id { y > 5 ? 2 : 1 } });
+                    sq.push_back({ cl::Terrain::Id { y > 5 ? 2 : 1 } });
                 map.push_back(sq);
             }
-            map[4][4].terrain_id = Terrain::Id { 0 };
+            map[4][4].terrain_id = cl::Terrain::Id { 0 };
             return map;
         } },
 
-        .initial_nations = { { { Nation::Id { 0 } } } },
+        .initial_nations = { { { cl::Nation::Id { 0 } } } },
 
         .starting_units = { {
             { .nation_id = { 0 }, .unit_type_id = { 0 }, .initial_pos = { 3, 3 } },
@@ -47,8 +47,8 @@ static Ruleset colonization_ruleset() {
 
 int main()
 {
-    const GameParameters par;
-    const Ruleset ruleset = Ruleset::create_from_cpp(colonization_ruleset());
-    Game game(ruleset, par);
-    UI(Nation::Id { 0 }).run(game);
+    const cl::GameParameters par;
+    const cl::Ruleset ruleset = cl::Ruleset::create_from_cpp(colonization_ruleset());
+    cl::Game game(ruleset, par);
+    UI(cl::Nation::Id { 0 }).run(game);
 }
