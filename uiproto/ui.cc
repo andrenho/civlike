@@ -85,21 +85,26 @@ void UI::draw_tile(Game const& game, Point p) const
 
 std::optional<Unit const*> UI::unit_to_draw(Game const& game, Point p) const
 {
+    std::optional<Unit const*> unit_to_move;
+
     const auto units = game.units_in_xy(p);
 
     // find focused
     const auto focused_unit = game.focused_unit(player_nation_id_);
     if (focused_unit && focused_unit.value()->pos == p) {
-        if (moving_focused_unit_)
-            return {};
         const bool blink = (SDL_GetTicks64() / 500) % 2 == 1;
-        return blink ? *focused_unit : std::optional<Unit const*>{};
+        unit_to_move = blink ? *focused_unit : std::optional<Unit const*>{};
+    } else if (!units.empty()) {
+        // not focused, return the first found
+        unit_to_move = units.at(0);
+    } else {
+        unit_to_move = {};  // no units found
     }
 
-    if (!units.empty())   // not focused, return the first found
-        return units.at(0);
+    if (unit_to_move && moving_unit_ && (*unit_to_move)->id == *moving_unit_)
+        unit_to_move = {};
 
-    return {};  // no units found
+    return unit_to_move;
 }
 
 void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
@@ -142,7 +147,7 @@ void UI::visual_cue_move_unit(Game const& game, MoveUnit const& mu)
 {
     Unit const& unit = game.units().at(mu.unit_id);
 
-    moving_focused_unit_ = true;
+    moving_unit_ = mu.unit_id;
     for (size_t i = 0; i < TILE_SIZE; i += 2) {
         Point displacement = (-directions.at(mu.direction) * TILE_SIZE) + (directions.at(mu.direction) * i);
 
@@ -150,7 +155,7 @@ void UI::visual_cue_move_unit(Game const& game, MoveUnit const& mu)
         draw_unit(game, unit, displacement);
         SDL_RenderPresent(ren_);
     }
-    moving_focused_unit_ = false;
+    moving_unit_ = {};
 }
 
 void UI::draw_status(Game const& game) const

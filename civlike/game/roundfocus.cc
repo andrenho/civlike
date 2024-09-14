@@ -31,12 +31,9 @@ void Game::end_round(Nation::Id nation_id)
 
 void Game::focus_next(Nation::Id nation_id)
 {
-    auto& nation = nations_.at(nation_id);
+    // TODO - what if the nation has no units available?
 
-    // return if nation has no units available
-    size_t n_units_available = r::count_if(units_, [this](auto const& kv) { return unit_can_focus(kv.second); });
-    if (n_units_available == 0)
-        return;
+    auto& nation = nations_.at(nation_id);
 
     // find focused unit
     std::map<Unit::Id, Unit>::iterator it;

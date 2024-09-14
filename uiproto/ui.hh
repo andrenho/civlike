@@ -32,7 +32,7 @@ private:
     SDL_Window*                 window_ = nullptr;
     SDL_Renderer*               ren_ = nullptr;
     std::unique_ptr<class Text> text_;
-    bool                        moving_focused_unit_ = false;
+    std::optional<Unit::Id>     moving_unit_ {};
 
     static constexpr size_t     TILE_SIZE = 32;
 };
