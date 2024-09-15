@@ -22,7 +22,7 @@ private:
     void do_events(cl::Game& game);
     void select_unit_in_xy(cl::Game& game, int x, int y);
 
-    // draw
+    // draw map
 
     void draw(cl::Game const& game) const;
 

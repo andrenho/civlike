@@ -60,6 +60,8 @@ add_executable(uiproto
         uiproto/ui.hh
         uiproto/ui.cc
         uiproto/ui_draw.cc
+        uiproto/uicity.hh
+        uiproto/uicity.cc
         uiproto/text.hh
         uiproto/text.cc
         ${FONT_HEADER}
