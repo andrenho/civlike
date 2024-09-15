@@ -74,4 +74,13 @@ void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
         round_end(nation_id, auto_end_round);
 }
 
+void Game::focus_unit(Unit::Id unit_id, bool auto_end_round)
+{
+    Unit const& unit = units_.at(unit_id);
+    if (unit_can_focus(unit))
+        nations_[unit.nation_id].focused_unit = unit_id;
+    else
+        focus_next(unit.nation_id, auto_end_round);
+}
+
 }

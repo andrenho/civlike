@@ -1,18 +1,20 @@
-- [ ] Some improvements
-  - [ ] Custom namespace
-  - [ ] Use custom data structure to store ID-based items
-  - [ ] UI library
-
-
 - [ ] Map
   - [x] Impassable terrain
   - [x] Different terrain cost
-  - [ ] Fortify
-    - [ ] Unfortify
-      - [ ] Select units with mouse
-        - [ ] UI 2D library (?)
-  - [ ] Use custom data structure to store ID-based items
+  - [x] Fortify
+    - [x] Unfortify
+      - [x] Relative position
+      - [x] Select units with mouse
 - [ ] Cities
+  - [ ] Build city
+  - [ ] Units outside of city
+  - [ ] City buildings
+    - [ ] Buildings
+    - [ ] Drag to buildings and back
+  - [ ] City tiles
+    - [ ] Drag to tiles and back
+- [ ] Good production
+- [ ] Build buildings
 - [ ] Enemies / combat
 - [ ] Buy/sell to "Europe"
 - [ ] Buy/sell to other nations

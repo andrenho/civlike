@@ -24,6 +24,8 @@ private:
     void draw_unit(cl::Game const& game, cl::Unit const& unit, cl::Point displacement={0,0}) const;
     void draw_status(cl::Game const& game) const;
 
+    void select_unit_in_xy(cl::Game& game, int x, int y);
+
     void process_visual_cues(cl::Game& game);
     void visual_cue_move_unit(cl::Game const& game, cl::MoveUnit const& mu);
 
@@ -37,6 +39,8 @@ private:
     std::unique_ptr<Text>       text_large_;
     std::unique_ptr<Text>       text_small_;
     std::optional<cl::Unit::Id> moving_unit_ {};
+    int                         rel_x = 0, rel_y = 0;
+    bool                        dragging_map_ = false;
 
     static constexpr size_t TILE_SIZE = 32;
 };

@@ -20,6 +20,7 @@ add_library(civlike OBJECT
         civlike/game/impl/game.cc
         civlike/game/impl/unitactions.cc
         civlike/game/impl/roundfocus.cc
+        civlike/game/city.hh
 )
 
 add_library(civlike_shared SHARED $<TARGET_OBJECTS:civlike>)
@@ -57,6 +58,7 @@ add_executable(uiproto
         main.cc
         uiproto/ui.hh
         uiproto/ui.cc
+        uiproto/ui_draw.cc
         uiproto/text.hh
         uiproto/text.cc
         ${FONT_HEADER}
