@@ -10,19 +10,19 @@ using namespace cl;
 
 void UI::draw(Game const& game) const
 {
-    SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    // SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    // SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(ren_);
 
     int ww, wh;
     SDL_GetWindowSize(window_, &ww, &wh);
+    SDL_Rect screen_r = { 0, 0, ww, wh };
 
     for (int x = 0; x < game.map_size().w; ++x) {
         for (int y = 0; y < game.map_size().h; ++y) {
-            int px = (x * TILE_SIZE) + rel_x;
-            int py = (y * TILE_SIZE) + rel_y;
-            if (px < -TILE_SIZE || py < -TILE_SIZE || px > ww || py > wh)
-                continue;;
+            SDL_Rect tile_r = tile_rect(Point { x, y });
+            if (!SDL_HasIntersection(&screen_r, &tile_r))
+                continue;
             draw_tile(game, Point { x, y });
         }
     }
@@ -32,21 +32,26 @@ void UI::draw(Game const& game) const
 
 void UI::draw_tile(Game const& game, Point p) const
 {
-    const auto t_clr = game.ruleset.terrains.at(game.tiles().at(p.x).at(p.y).terrain_id).color;
-    SDL_SetRenderDrawColor(ren_, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
-    const SDL_Rect r {
-        .x = (int) (p.x * TILE_SIZE) + rel_x,
-        .y = (int) (p.y * TILE_SIZE) + rel_y,
-        .w = TILE_SIZE,
-        .h = TILE_SIZE
-    };
-    SDL_RenderFillRect(ren_, &r);
-    SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawPoint(ren_, r.x, r.y);
+    draw_terrain(game, p);
 
     if (auto o_unit = unit_to_draw(game, p); o_unit)
         draw_unit(game, **o_unit);
+
+    auto it = r::find_if(game.cities(), [p](auto const& kv) { return kv.second.pos == p; });
+    if (it != game.cities().end())
+        draw_city(game, it->second);
 }
+
+void UI::draw_terrain(Game const& game, Point p) const
+{
+    const auto t_clr = game.ruleset.terrains.at(game.tiles().at(p.x).at(p.y).terrain_id).color;
+    SDL_SetRenderDrawColor(ren_, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
+    const SDL_Rect r = tile_rect(p);
+    SDL_RenderFillRect(ren_, &r);
+    SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawPoint(ren_, r.x, r.y);
+}
+
 
 std::optional<Unit const*> UI::unit_to_draw(Game const& game, Point p) const
 {
@@ -77,12 +82,7 @@ void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
     const auto color = game.ruleset.nations.at(unit.nation_id).color;
 
     // define position
-    SDL_Rect r {
-        .x = (int) (unit.pos.x * TILE_SIZE) + rel_x,
-        .y = (int) (unit.pos.y * TILE_SIZE) + rel_y,
-        .w = TILE_SIZE,
-        .h = TILE_SIZE
-    };
+    SDL_Rect r = tile_rect(unit.pos);
     r.x += displacement.x, r.y += displacement.y;
 
     // square
@@ -100,6 +100,16 @@ void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
     // state
     if (unit.state == Unit::State::Fortify)
         write(*text_small_, "F", r.x + 20, r.y);
+}
+
+void UI::draw_city(cl::Game const& game, cl::City const& city) const
+{
+    SDL_Rect r = tile_rect(city.pos);
+    const auto color = game.ruleset.nations.at(city.nation_id).color;
+
+    // square
+    SDL_SetRenderDrawColor(ren_, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
+    SDL_RenderFillRect(ren_, &r);
 }
 
 template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
@@ -154,4 +164,14 @@ int UI::write(Text& text_mgr, std::string const& text, int x, int y) const
     const SDL_Rect r { x, y, tw, th };
     SDL_RenderCopy(ren_, tx, nullptr, &r);
     return y + lineskip;
+}
+
+SDL_Rect UI::tile_rect(Point p) const
+{
+    return {
+        .x = (int) (p.x * TILE_SIZE) + rel_x,
+        .y = (int) (p.y * TILE_SIZE) + rel_y,
+        .w = TILE_SIZE,
+        .h = TILE_SIZE
+    };
 }

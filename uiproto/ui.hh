@@ -17,14 +17,22 @@ public:
     void run(cl::Game& game);
 
 private:
+    // events
+
     void do_events(cl::Game& game);
+    void select_unit_in_xy(cl::Game& game, int x, int y);
+
+    // draw
 
     void draw(cl::Game const& game) const;
-    void draw_tile(cl::Game const& game, cl::Point p) const;
-    void draw_unit(cl::Game const& game, cl::Unit const& unit, cl::Point displacement={0,0}) const;
-    void draw_status(cl::Game const& game) const;
 
-    void select_unit_in_xy(cl::Game& game, int x, int y);
+    void draw_tile(cl::Game const& game, cl::Point p) const;
+
+    void draw_terrain(cl::Game const& game, cl::Point p) const;
+    void draw_unit(cl::Game const& game, cl::Unit const& unit, cl::Point displacement={0,0}) const;
+    void draw_city(cl::Game const& game, cl::City const& city) const;
+
+    void draw_status(cl::Game const& game) const;
 
     void process_visual_cues(cl::Game& game);
     void visual_cue_move_unit(cl::Game const& game, cl::MoveUnit const& mu);
@@ -32,6 +40,9 @@ private:
     int write(Text& text_mgr, std::string const& text, int x, int y) const;
 
     [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& game, cl::Point p) const;
+    [[nodiscard]] SDL_Rect tile_rect(cl::Point p) const;
+
+    // fields
 
     cl::Nation::Id              player_nation_id_;
     SDL_Window*                 window_ = nullptr;
