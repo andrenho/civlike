@@ -5,6 +5,7 @@
 #include <queue>
 #include <vector>
 
+#include "city.hh"
 #include "direction.hh"
 #include "unit.hh"
 #include "visualcue.hh"
@@ -42,6 +43,10 @@ public:
     void unit_move(Unit::Id unit_id, Direction dir);
     void unit_change_state(Unit::Id unit_id, Unit::State state);
 
+    // City management (see city.cc)
+
+    void city_build(Unit::Id unit_id, std::string const& name);
+
     // queries
 
     [[nodiscard]] std::vector<Unit const*>   units_in_xy(Point p) const;
@@ -70,6 +75,7 @@ private:
     Tiles                    tiles_;
     std::vector<GameNation>  nations_;
     std::map<Unit::Id, Unit> units_;
+    std::map<City::Id, City> cities_;
     size_t                   round_nr_ = 0;
     std::queue<VisualCue>    visual_cues_;
 };

@@ -1,5 +1,7 @@
 #include "ui.hh"
 
+#include <random>
+#include <string>
 #include <ranges>
 namespace r = std::ranges;
 
@@ -78,6 +80,10 @@ void UI::do_events(Game& game)
                         case SDLK_KP_8: game.unit_move(unit_id, Direction::N); break;
                         case SDLK_KP_9: game.unit_move(unit_id, Direction::NE); break;
                         case SDLK_f: game.unit_change_state(unit_id, Unit::State::Fortify); break;
+                        case SDLK_b:
+                            game.city_build(unit_id, "City");
+                            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "City created", "City created", window_);
+                            break;
                     }
                 }
 

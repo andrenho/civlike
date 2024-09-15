@@ -25,15 +25,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/civlike/game/city.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/game/impl/city.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/city.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/city.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,7 @@
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__iterator/wrap_iter.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__type_traits/invoke.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_events.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_hints.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_rect.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_render.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_stdinc.h" root0="FORCE_HIGHLIGHTING" />
@@ -87,7 +86,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake Application.civlike.executor": "Debug",
-    "CMake Application.uiproto.executor": "Run",
+    "CMake Application.uiproto.executor": "Debug",
     "CMake Debug.civlike.executor": "Debug",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -178,7 +177,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="39170000" />
+      <workItem from="1726175645807" duration="40618000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -492,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726318687396</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary=".">
+      <option name="closed" value="true" />
+      <created>1726368313431</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1726368313431</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,6 +513,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/uiproto/ui_draw.cc</url>
+          <line>23</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

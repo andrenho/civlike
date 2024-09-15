@@ -19,7 +19,10 @@ void UI::draw(Game const& game) const
 
     for (int x = 0; x < game.map_size().w; ++x) {
         for (int y = 0; y < game.map_size().h; ++y) {
-            // TODO - don't draw if out of bounds
+            int px = (x * TILE_SIZE) + rel_x;
+            int py = (y * TILE_SIZE) + rel_y;
+            if (px < -TILE_SIZE || py < -TILE_SIZE || px > ww || py > wh)
+                continue;;
             draw_tile(game, Point { x, y });
         }
     }

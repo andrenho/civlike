@@ -21,6 +21,7 @@ add_library(civlike OBJECT
         civlike/game/impl/unitactions.cc
         civlike/game/impl/roundfocus.cc
         civlike/game/city.hh
+        civlike/game/impl/city.cc
 )
 
 add_library(civlike_shared SHARED $<TARGET_OBJECTS:civlike>)
