@@ -21,7 +21,7 @@ struct Terrain {
 
     struct Id : cl::Id<uint8_t> {};
 
-    static constexpr decltype(Terrain::cost_to_enter) Impassable = std::numeric_limits<decltype(Terrain::cost_to_enter)>::max();
+    static constexpr decltype(cost_to_enter) Impassable = std::numeric_limits<decltype(cost_to_enter)>::max();
 };
 
 struct UnitType {

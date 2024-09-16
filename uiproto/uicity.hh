@@ -3,7 +3,6 @@
 
 class UICity {
 public:
-
 };
 
 #endif //UICITY_HH

@@ -1,6 +1,8 @@
 #ifndef ID_HH
 #define ID_HH
 
+#include <unordered_map>
+
 namespace cl {
 
 template <typename T>
