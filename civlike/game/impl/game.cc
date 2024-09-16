@@ -57,12 +57,12 @@ std::optional<Unit*> Game::focused_unit(Nation::Id nation_id)
 
 unsigned long Game::unit_starting_moves(Unit const& unit) const
 {
-    return ruleset.unit_types.at(unit.unit_type_id).move_points;
+    return ruleset.unit_types[unit.unit_type_id].move_points;
 }
 
 unsigned long Game::tile_moves_to_enter(Point p) const
 {
-    return ruleset.terrains.at(tiles_[p.x][p.y].terrain_id).cost_to_enter;
+    return ruleset.terrains[tiles_[p.x][p.y].terrain_id].cost_to_enter;
 }
 
 }

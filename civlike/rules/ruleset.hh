@@ -14,31 +14,33 @@
 namespace cl {
 
 struct Terrain {
+    ID(char)
     std::string  name;
     Color        color;
     unsigned int cost_to_enter;
     bool         water = false;
 
-    struct Id : cl::Id<uint8_t> {};
-
     static constexpr decltype(cost_to_enter) Impassable = std::numeric_limits<decltype(cost_to_enter)>::max();
 };
 
 struct UnitType {
+    ID(char)
     std::string  name;
     char         char_display;
     unsigned int move_points;
     bool         ship = false;
-
-    struct Id : cl::Id<uint8_t> {};
 };
 
 struct Nation {
+    ID(char)
     std::string name;
     Color       color;
     bool        playable = true;
+};
 
-    struct Id : cl::Id<uint8_t> {};
+struct Test {
+    struct Id : cl::Id<char> {} id;
+    std::string name;
 };
 
 struct StartingUnit {
@@ -56,9 +58,9 @@ struct GameParameters {};   // TODO - ???
 
 struct Ruleset {
 
-    const std::vector<Terrain>                terrains;
-    const std::vector<Nation>                 nations;
-    const std::vector<UnitType>               unit_types;
+    const Collection<Terrain>                 terrains;
+    const Collection<Nation>                  nations;
+    const Collection<UnitType>                unit_types;
 
     const GFnValue<Map>                       map;
     const GFnValue<std::vector<Nation::Id>>   initial_nations;

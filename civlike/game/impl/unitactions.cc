@@ -8,7 +8,7 @@ namespace cl {
 void Game::unit_move(Unit::Id unit_id, Direction dir)
 {
     Unit& unit = units_.at(unit_id);
-    UnitType const& unit_type = ruleset.unit_types.at(unit.unit_type_id);
+    UnitType const& unit_type = ruleset.unit_types[unit.unit_type_id];
 
     // check if destination is outside of bounds
     Point dest = unit.pos + directions.at(dir);
@@ -21,7 +21,7 @@ void Game::unit_move(Unit::Id unit_id, Direction dir)
         return;
 
     // is it water or land
-    Terrain dest_terrain = ruleset.terrains.at(tiles_[dest.x][dest.y].terrain_id);
+    Terrain dest_terrain = ruleset.terrains[tiles_[dest.x][dest.y].terrain_id];
     if (unit_type.ship && !dest_terrain.water)
         return;
     if (!unit_type.ship && dest_terrain.water)

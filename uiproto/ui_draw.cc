@@ -44,7 +44,7 @@ void UI::draw_tile(Game const& game, Point p) const
 
 void UI::draw_terrain(Game const& game, Point p) const
 {
-    const auto t_clr = game.ruleset.terrains.at(game.tiles().at(p.x).at(p.y).terrain_id).color;
+    const auto t_clr = game.ruleset.terrains[game.tiles().at(p.x).at(p.y).terrain_id].color;
     SDL_SetRenderDrawColor(ren_, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
     const SDL_Rect r = tile_rect(p);
     SDL_RenderFillRect(ren_, &r);
@@ -79,7 +79,7 @@ std::optional<Unit const*> UI::unit_to_draw(Game const& game, Point p) const
 
 void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
 {
-    const auto color = game.ruleset.nations.at(unit.nation_id).color;
+    const auto color = game.ruleset.nations[unit.nation_id].color;
 
     // define position
     SDL_Rect r = tile_rect(unit.pos);
@@ -94,7 +94,7 @@ void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
     SDL_RenderDrawRect(ren_, &r);
 
     // unit type letter
-    const auto unit_char = std::string(1, game.ruleset.unit_types.at(unit.unit_type_id).char_display);
+    const auto unit_char = std::string(1, game.ruleset.unit_types[unit.unit_type_id].char_display);
     write(*text_large_, unit_char, r.x + 9, r.y + 4);
 
     // state
@@ -105,7 +105,7 @@ void UI::draw_unit(Game const& game, Unit const& unit, Point displacement) const
 void UI::draw_city(cl::Game const& game, cl::City const& city) const
 {
     SDL_Rect r = tile_rect(city.pos);
-    const auto color = game.ruleset.nations.at(city.nation_id).color;
+    const auto color = game.ruleset.nations[city.nation_id].color;
 
     // square
     SDL_SetRenderDrawColor(ren_, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
@@ -153,7 +153,7 @@ void UI::draw_status(Game const& game) const
     auto f_unit = game.focused_unit(player_nation_id_);
     if (f_unit) {
         Unit const& unit = **f_unit;
-        y = write(*text_large_, game.ruleset.unit_types.at(unit.unit_type_id).name, x, y);
+        y = write(*text_large_, game.ruleset.unit_types[unit.unit_type_id].name, x, y);
         write(*text_large_, "Moves left: " + std::to_string(unit.moves_left), x, y);
     }
 }
