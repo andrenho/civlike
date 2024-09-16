@@ -34,13 +34,14 @@ void Game::round_end(Nation::Id nation_id, bool auto_new_round)
 
 void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
 {
+    /*
     auto& nation = nations_.at(nation_id);
 
     // find focused unit
     std::map<Unit::Id, Unit>::iterator it;
     auto f_unit = nation.focused_unit;
     if (nation.focused_unit) {
-        it = units_.find(*nation.focused_unit);
+        auto it = std::find(units_.begin(), units_.end(), *nation.focused_unit);
         nation.focused_unit = {};
         ++it;
     } else {
@@ -72,11 +73,12 @@ void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
     // if we get here, it means no more units are available, so we end the round
     if (auto_end_round)
         round_end(nation_id, auto_end_round);
+        */
 }
 
 void Game::focus_unit(Unit::Id unit_id, bool auto_end_round)
 {
-    Unit const& unit = units_.at(unit_id);
+    Unit const& unit = units_[unit_id];
     if (unit_can_focus(unit))
         nations_.at(unit.nation_id).focused_unit = unit_id;
     else

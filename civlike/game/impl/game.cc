@@ -26,7 +26,7 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
 
     for (auto const& s_unit: ruleset.starting_units(ruleset, game_par)) {
         Unit::Id id = Unit::next_id();
-        units_.emplace(id, Unit { id, s_unit });
+        units_.emplace(Unit { id, s_unit });
     }
 
     round_new();
@@ -45,7 +45,7 @@ std::optional<Unit const*> Game::focused_unit(Nation::Id nation_id) const
 {
     const auto& funit = nations_.at(nation_id).focused_unit;
     if (funit)
-        return &units_.at(*funit);
+        return &units_[*funit];
     return {};
 }
 

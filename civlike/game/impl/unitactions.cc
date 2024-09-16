@@ -7,7 +7,7 @@ namespace cl {
 
 void Game::unit_move(Unit::Id unit_id, Direction dir)
 {
-    Unit& unit = units_.at(unit_id);
+    Unit& unit = units_[unit_id];
     UnitType const& unit_type = ruleset.unit_types[unit.unit_type_id];
 
     // check if destination is outside of bounds
@@ -46,7 +46,7 @@ void Game::unit_move(Unit::Id unit_id, Direction dir)
 
 void Game::unit_change_state(Unit::Id unit_id, Unit::State state)
 {
-    Unit& unit = units_.at(unit_id);
+    Unit& unit = units_[unit_id];
     unit.state = state;
     if (state != Unit::State::Normal)
         focus_next(unit.nation_id);

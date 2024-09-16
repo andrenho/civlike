@@ -37,9 +37,9 @@ void UI::draw_tile(Game const& game, Point p) const
     if (auto o_unit = unit_to_draw(game, p); o_unit)
         draw_unit(game, **o_unit);
 
-    auto it = r::find_if(game.cities(), [p](auto const& kv) { return kv.second.pos == p; });
-    if (it != game.cities().end())
-        draw_city(game, it->second);
+    auto city = game.cities().find_first_value([p](auto const& c) { return c.pos == p; });
+    if (city)
+        draw_city(game, **city);
 }
 
 void UI::draw_terrain(Game const& game, Point p) const
@@ -127,7 +127,7 @@ void UI::process_visual_cues(Game& game)
 
 void UI::visual_cue_move_unit(Game const& game, MoveUnit const& mu)
 {
-    Unit const& unit = game.units().at(mu.unit_id);
+    Unit const& unit = game.units()[mu.unit_id];
 
     moving_unit_ = mu.unit_id;
     for (size_t i = 0; i < TILE_SIZE; i += 2) {

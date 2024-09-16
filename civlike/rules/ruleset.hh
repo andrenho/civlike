@@ -8,8 +8,10 @@
 
 #include "common/color.hh"
 #include "common/geometry.hh"
-#include "id.hh"
+#include "collections/id.hh"
 #include "fnval.hh"
+#include "collections/idmap.hh"
+
 
 namespace cl {
 
@@ -58,9 +60,9 @@ struct GameParameters {};   // TODO - ???
 
 struct Ruleset {
 
-    const Collection<Terrain>                 terrains;
-    const Collection<Nation>                  nations;
-    const Collection<UnitType>                unit_types;
+    const IdMap<Terrain>                 terrains;
+    const IdMap<Nation>                  nations;
+    const IdMap<UnitType>                unit_types;
 
     const GFnValue<Map>                       map;
     const GFnValue<std::vector<Nation::Id>>   initial_nations;

@@ -1,8 +1,10 @@
 #ifndef ID_HH
 #define ID_HH
 
-#include <unordered_map>
+#include <functional>
 #include <memory>
+#include <optional>
+#include <unordered_map>
 
 namespace cl {
 
@@ -31,21 +33,6 @@ concept HasId = requires(T t) {
     typename T::Id;
     std::is_class_v<typename T::Id>;
     { t.id } -> std::convertible_to<typename T::Id>;
-};
-
-template <HasId T>
-struct Collection {
-    Collection(std::initializer_list<T> ts) {
-        for (auto& t: ts)
-            hashmap_.emplace(t.id, std::move(t));
-    }
-
-    T const& operator[](typename T::Id id) const {
-        return hashmap_.at(id);
-    }
-
-private:
-    std::unordered_map<typename T::Id, T, IdHash<T>> hashmap_;
 };
 
 }

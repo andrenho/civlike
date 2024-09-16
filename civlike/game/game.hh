@@ -9,6 +9,7 @@
 #include "direction.hh"
 #include "unit.hh"
 #include "visualcue.hh"
+#include "collections/countermap.hh"
 #include "common/geometry.hh"
 #include "rules/ruleset.hh"
 
@@ -55,13 +56,13 @@ public:
 
     // getters
 
-    [[nodiscard]] Size const&                     map_size() const { return map_size_; }
-    [[nodiscard]] Tiles const&                    tiles() const { return tiles_; }
-    [[nodiscard]] std::map<City::Id, City> const& cities() const { return cities_; }
-    [[nodiscard]] size_t                          round_nr() const { return round_nr_; }
-    [[nodiscard]] std::queue<VisualCue>&          visual_cues() { return visual_cues_; }
-    [[nodiscard]] std::map<Unit::Id, Unit> const& units() const { return units_; }
-    [[nodiscard]] std::unordered_map<Nation::Id, GameNation, IdHash<Nation>> const&  nations() const { return nations_; }
+    [[nodiscard]] Size const&                                                       map_size() const { return map_size_; }
+    [[nodiscard]] Tiles const&                                                      tiles() const { return tiles_; }
+    [[nodiscard]] CounterMap<City> const&                                           cities() const { return cities_; }
+    [[nodiscard]] CounterMap<Unit> const&                                           units() const { return units_; }
+    [[nodiscard]] size_t                                                            round_nr() const { return round_nr_; }
+    [[nodiscard]] std::queue<VisualCue>&                                            visual_cues() { return visual_cues_; }
+    [[nodiscard]] std::unordered_map<Nation::Id, GameNation, IdHash<Nation>> const& nations() const { return nations_; }
 
     // fields
 
@@ -75,8 +76,8 @@ private:
     Size                                       map_size_ { 0, 0 };
     Tiles                                      tiles_;
     std::unordered_map<Nation::Id, GameNation, IdHash<Nation>> nations_;
-    std::map<Unit::Id, Unit>                   units_;
-    std::map<City::Id, City>                   cities_;
+    CounterMap<Unit>                           units_;
+    CounterMap<City>                           cities_;
     size_t                                     round_nr_ = 0;
     std::queue<VisualCue>                      visual_cues_;
 };
