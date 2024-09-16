@@ -17,7 +17,7 @@ struct IdMap {
     }
 
 private:
-    std::unordered_map<typename T::Id, T, IdHash<T>> hashmap_;
+    std::unordered_map<typename T::Id, T, ClassIdHash<T>> hashmap_;
 };
 
 }

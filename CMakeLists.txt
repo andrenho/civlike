@@ -12,7 +12,6 @@ add_library(civlike OBJECT
         civlike/common/geometry.hh
         civlike/rules/fnval.hh
         civlike/rules/ruleset.hh
-        civlike/collections/id.hh
         civlike/game/direction.hh
         civlike/game/game.hh
         civlike/game/unit.hh
@@ -22,7 +21,9 @@ add_library(civlike OBJECT
         civlike/game/impl/roundfocus.cc
         civlike/game/city.hh
         civlike/game/impl/city.cc
-        civlike/collections/IdMap.hh
+        civlike/collections/id.hh
+        civlike/collections/idmap.hh
+        civlike/collections/idrefmap.hh
         civlike/collections/countermap.hh
 )
 

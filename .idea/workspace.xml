@@ -25,17 +25,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/civlike/collections/idrefmap.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/collections/countermap.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/collections/countermap.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/collections/id.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/collections/id.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/collections/idmap.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/collections/idmap.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/impl/city.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/city.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/impl/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/game.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/unit.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +100,7 @@
     "cidr.known.project.marker": "true",
     "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "id",
-    "last_opened_file_path": "/Users/aw98156/prj/civlike/uiproto",
+    "last_opened_file_path": "/Users/aw98156/prj/civlike/civlike/collections",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -118,6 +115,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/civlike/collections" />
       <recent name="$PROJECT_DIR$/uiproto" />
       <recent name="$PROJECT_DIR$/civlike/game" />
       <recent name="$PROJECT_DIR$/civlike/common" />
@@ -187,7 +185,7 @@
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
       <workItem from="1726175645807" duration="64831000" />
-      <workItem from="1726516641568" duration="2146000" />
+      <workItem from="1726516641568" duration="3509000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -565,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726508425612</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary=".">
+      <option name="closed" value="true" />
+      <created>1726518821289</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1726518821289</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,17 +585,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/civlike/collections/countermap.hh</url>
-          <line>39</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

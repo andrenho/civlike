@@ -11,6 +11,8 @@ template <typename T>
 struct Id {
     T id;
 
+    using underlying_type = T;
+
     Id(T id) : id(id) {}
 
     operator T() const { return id; }
@@ -21,9 +23,16 @@ struct Id {
 };
 
 template <typename T>
-struct IdHash {
+struct ClassIdHash {
     std::size_t operator()(typename T::Id const& k) const {
         return std::hash<decltype(k.id)>()(k.id);
+    }
+};
+
+template <typename T>
+struct IdHash {
+    std::size_t operator()(const T& id) const {
+        return std::hash<typename T::underlying_type>()(id.id);
     }
 };
 

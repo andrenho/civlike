@@ -42,7 +42,7 @@ std::vector<Unit const*> Game::units_in_xy(Point p) const
 
 std::optional<Unit const*> Game::focused_unit(Nation::Id nation_id) const
 {
-    const auto& funit = nations_.at(nation_id).focused_unit;
+    const auto& funit = nations_[nation_id].focused_unit;
     if (funit)
         return &units_[*funit];
     return {};
