@@ -7,10 +7,9 @@
 namespace cl {
 
 struct Unit {
-    struct Id : cl::Id<uint32_t> {};
     enum class State { Normal, Fortify };
 
-    Id            id;
+    ID(uint32_t)
     Nation::Id    nation_id;
     UnitType::Id  unit_type_id;
     Point         pos;

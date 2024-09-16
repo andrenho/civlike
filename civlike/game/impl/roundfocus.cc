@@ -15,7 +15,7 @@ void Game::round_new()
 {
     for (auto& [_, unit]: units_)
         unit.moves_left = unit_starting_moves(unit);
-    for (auto& nation: nations_) {
+    for (auto& [_, nation]: nations_) {
         nation.round_ended = false;
         nation.focused_unit = {};
         focus_next(nation.nation_id, false);
@@ -27,7 +27,7 @@ void Game::round_end(Nation::Id nation_id, bool auto_new_round)
 {
     nations_.at(nation_id).round_ended = true;
 
-    size_t nations_ended = r::count_if(nations_, [](GameNation const& gn) { return gn.round_ended; });
+    size_t nations_ended = r::count_if(nations_, [](auto const& pair) { return pair.second.round_ended; });
     if (auto_new_round && nations_ended == nations_.size())
         round_new();
 }
@@ -78,7 +78,7 @@ void Game::focus_unit(Unit::Id unit_id, bool auto_end_round)
 {
     Unit const& unit = units_.at(unit_id);
     if (unit_can_focus(unit))
-        nations_[unit.nation_id].focused_unit = unit_id;
+        nations_.at(unit.nation_id).focused_unit = unit_id;
     else
         focus_next(unit.nation_id, auto_end_round);
 }

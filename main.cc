@@ -50,5 +50,5 @@ int main()
     const cl::GameParameters par;
     const cl::Ruleset ruleset = cl::Ruleset::create_from_cpp(colonization_ruleset());
     cl::Game game(ruleset, par);
-    UI(cl::Nation::Id { 0 }).run(game);
+    UI(cl::Nation::Id { 'E' }).run(game);
 }

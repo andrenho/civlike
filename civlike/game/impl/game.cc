@@ -22,7 +22,7 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
     }
 
     for (auto const& initial_nation: ruleset.initial_nations(ruleset, game_par))
-        nations_.push_back(GameNation(initial_nation));
+        nations_.emplace(initial_nation, GameNation(initial_nation));
 
     for (auto const& s_unit: ruleset.starting_units(ruleset, game_par)) {
         Unit::Id id = Unit::next_id();

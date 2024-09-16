@@ -26,12 +26,12 @@
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/city.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/city.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/impl/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/game.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/impl/unitactions.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/unitactions.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/id.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/id.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/unit.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +86,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake Application.civlike.executor": "Debug",
-    "CMake Application.uiproto.executor": "Run",
+    "CMake Application.uiproto.executor": "Debug",
     "CMake Debug.civlike.executor": "Debug",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -96,15 +96,17 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "id",
     "last_opened_file_path": "/Users/aw98156/prj/civlike/uiproto",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "CPPToolchains",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -177,7 +179,7 @@
       <workItem from="1726081091027" duration="86000" />
       <workItem from="1726081180883" duration="6020000" />
       <workItem from="1726087222139" duration="25973000" />
-      <workItem from="1726175645807" duration="52127000" />
+      <workItem from="1726175645807" duration="56490000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -531,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726446022715</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary=".">
+      <option name="closed" value="true" />
+      <created>1726448545136</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1726448545136</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

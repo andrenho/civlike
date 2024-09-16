@@ -8,9 +8,7 @@
 namespace cl {
 
 struct City {
-    struct Id : cl::Id<uint16_t> {};
-
-    Id          id;
+    ID(uint16_t)
     std::string name;
     Nation::Id  nation_id;
     Point       pos;
