@@ -4,7 +4,6 @@
 #include <functional>
 #include <memory>
 #include <optional>
-#include <unordered_map>
 
 namespace cl {
 
@@ -15,7 +14,7 @@ struct Id {
     Id(T id) : id(id) {}
 
     operator T() const { return id; }
-    bool operator==(Id const& other) const { return id == other.id; }
+    auto operator<=>(Id const& other) const = default;
 
     template <std::derived_from<Id> U>
     U next() { return U { ++id }; }
@@ -37,6 +36,6 @@ concept HasId = requires(T t) {
 
 }
 
-#define ID(TYPE) struct Id : cl::Id<TYPE> {} id;
+#define ID(TYPE) struct Id : cl::Id<TYPE> {} id = { 0 };
 
 #endif //ID_HH

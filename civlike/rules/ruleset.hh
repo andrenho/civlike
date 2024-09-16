@@ -6,10 +6,10 @@
 #include <string>
 #include <vector>
 
+#include "fnval.hh"
 #include "common/color.hh"
 #include "common/geometry.hh"
 #include "collections/id.hh"
-#include "fnval.hh"
 #include "collections/idmap.hh"
 
 

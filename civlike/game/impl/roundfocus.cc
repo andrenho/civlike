@@ -34,46 +34,18 @@ void Game::round_end(Nation::Id nation_id, bool auto_new_round)
 
 void Game::focus_next(Nation::Id nation_id, bool auto_end_round)
 {
-    /*
     auto& nation = nations_.at(nation_id);
 
-    // find focused unit
-    std::map<Unit::Id, Unit>::iterator it;
-    auto f_unit = nation.focused_unit;
-    if (nation.focused_unit) {
-        auto it = std::find(units_.begin(), units_.end(), *nation.focused_unit);
-        nation.focused_unit = {};
-        ++it;
+    auto o_unit_id = units_.circular_next_id(nation.focused_unit,
+        [this, nation_id](Unit const& u) { return u.nation_id == nation_id && unit_can_focus(u); });
+
+    if (o_unit_id) {
+        nation.focused_unit = *o_unit_id;
     } else {
-        it = units_.begin();  // if not a focused unit, start from the beginning
+        nation.focused_unit = {};
+        if (auto_end_round)
+            round_end(nation_id, auto_end_round);
     }
-
-    // go to next
-    while (it != units_.end()) {
-        auto const& [id, unit] = *it;
-        if (unit.nation_id == nation_id and unit_can_focus(unit)) {
-            nation.focused_unit = id;
-            return;
-        }
-        ++it;
-    }
-
-    // if not found, but there was a focused one, try again
-    if (f_unit) {
-        it = units_.begin();
-        for (; it->first != *nation.focused_unit && it != units_.end(); ++it) {
-            auto const& [id, unit] = *it;
-            if (unit.nation_id == nation_id and unit_can_focus(unit)) {
-                nation.focused_unit = id;
-                return;
-            }
-        }
-    }
-
-    // if we get here, it means no more units are available, so we end the round
-    if (auto_end_round)
-        round_end(nation_id, auto_end_round);
-        */
 }
 
 void Game::focus_unit(Unit::Id unit_id, bool auto_end_round)

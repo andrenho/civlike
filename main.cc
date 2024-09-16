@@ -8,19 +8,19 @@ static cl::Ruleset colonization_ruleset() {
 
     return {
 
-        .terrains = {
-                { .id = '~', .name = "Water",     .color = { 59, 62, 163 },   .cost_to_enter = 3, .water = true },
-                { .id = 'G', .name = "Grassland", .color = { 74, 219, 48 },   .cost_to_enter = 3 },
-                { .id = 'I', .name = "Ice",       .color = { 200, 200, 200 }, .cost_to_enter = 4 },
-        },
+        .terrains = {{
+                cl::Terrain { .id = '~', .name = "Water",     .color = { 59, 62, 163 },   .cost_to_enter = 3, .water = true },
+                cl::Terrain { .id = 'G', .name = "Grassland", .color = { 74, 219, 48 },   .cost_to_enter = 3 },
+                cl::Terrain { .id = 'I', .name = "Ice",       .color = { 200, 200, 200 }, .cost_to_enter = 4 },
+        }},
 
-        .nations = {
+        .nations = {{
                 { .id = 'E', .name = "England", .color = { 128, 0, 0 } },
-        },
+        }},
 
-        .unit_types = {
+        .unit_types = {{
                 { .id = 'C', .name = "Colonist", .char_display = 'C', .move_points = 6 },
-        },
+        }},
 
         .map = { [](cl::Ruleset const&, cl::GameParameters const&) {
             cl::Map map;

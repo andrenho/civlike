@@ -16,8 +16,8 @@ struct Unit {
     unsigned long moves_left = 0;
     State         state = State::Normal;
 
-    explicit Unit(Id id, StartingUnit const& su)
-        : id(id), nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos) {}
+    explicit Unit(StartingUnit const& su)
+        : nation_id(su.nation_id), unit_type_id(su.unit_type_id), pos(su.initial_pos) {}
 
     [[nodiscard]] static Id next_id() {
         static Id id_counter { 0 };

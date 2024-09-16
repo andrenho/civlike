@@ -7,7 +7,7 @@ namespace cl {
 
 template <HasId T>
 struct IdMap {
-    IdMap(std::initializer_list<T> ts) {
+    IdMap(std::initializer_list<T> const& ts) {
         for (auto& t: ts)
             hashmap_.emplace(t.id, std::move(t));
     }

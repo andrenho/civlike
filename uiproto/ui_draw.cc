@@ -153,6 +153,7 @@ void UI::draw_status(Game const& game) const
     auto f_unit = game.focused_unit(player_nation_id_);
     if (f_unit) {
         Unit const& unit = **f_unit;
+        y = write(*text_large_, "Unit #" + std::to_string(unit.id), x, y);
         y = write(*text_large_, game.ruleset.unit_types[unit.unit_type_id].name, x, y);
         write(*text_large_, "Moves left: " + std::to_string(unit.moves_left), x, y);
     }

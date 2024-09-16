@@ -25,8 +25,7 @@ Game::Game(Ruleset const& ruleset, GameParameters const& game_par)
         nations_.emplace(initial_nation, GameNation(initial_nation));
 
     for (auto const& s_unit: ruleset.starting_units(ruleset, game_par)) {
-        Unit::Id id = Unit::next_id();
-        units_.emplace(Unit { id, s_unit });
+        units_.emplace(Unit { s_unit });
     }
 
     round_new();
