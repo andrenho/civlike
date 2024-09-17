@@ -29,9 +29,18 @@ UI::~UI()
 void UI::run(Game& G)
 {
     while (true) {
-        do_events(G);
+
+        if (ui_city_.selected_city)
+            ui_city_.do_events(G);
+        else
+            do_events(G);
+
         process_visual_cues(G);
+
         draw(G);
+        if (ui_city_.selected_city)
+            ui_city_.draw(G);
+
         SDL_RenderPresent(ren_);
     }
 }

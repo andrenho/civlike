@@ -8,6 +8,7 @@
 #include "text.hh"
 
 #include "civlike.hh"
+#include "uicity.hh"
 
 class UI {
 public:
@@ -52,6 +53,7 @@ private:
     std::optional<cl::Unit::Id> moving_unit_ {};
     int                         rel_x = 0, rel_y = 0;
     bool                        dragging_map_ = false;
+    UICity                      ui_city_;
 
     static constexpr size_t TILE_SIZE = 32;
 };
