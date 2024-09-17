@@ -14,32 +14,32 @@ public:
     explicit UI(cl::Nation::Id player_nation_id);
     ~UI();
 
-    void run(cl::Game& game);
+    void run(cl::Game& G);
 
 private:
     // events
 
-    void do_events(cl::Game& game);
-    void select_unit_in_xy(cl::Game& game, int x, int y);
+    void do_events(cl::Game& G);
+    void select_unit_in_xy(cl::Game& G, int x, int y);
 
     // draw map
 
-    void draw(cl::Game const& game) const;
+    void draw(cl::Game const& G) const;
 
-    void draw_tile(cl::Game const& game, cl::Point p) const;
+    void draw_tile(cl::Game const& G, cl::Point p) const;
 
-    void draw_terrain(cl::Game const& game, cl::Point p) const;
-    void draw_unit(cl::Game const& game, cl::Unit const& unit, cl::Point displacement={0,0}) const;
-    void draw_city(cl::Game const& game, cl::City const& city) const;
+    void draw_terrain(cl::Game const& G, cl::Point p) const;
+    void draw_unit(cl::Game const& G, cl::Unit const& unit, cl::Point displacement={0,0}) const;
+    void draw_city(cl::Game const& G, cl::City const& city) const;
 
-    void draw_status(cl::Game const& game) const;
+    void draw_status(cl::Game const& G) const;
 
-    void process_visual_cues(cl::Game& game);
-    void visual_cue_move_unit(cl::Game const& game, cl::MoveUnit const& mu);
+    void process_visual_cues(cl::Game& G);
+    void visual_cue_move_unit(cl::Game const& G, cl::MoveUnit const& mu);
 
     int write(Text& text_mgr, std::string const& text, int x, int y) const;
 
-    [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& game, cl::Point p) const;
+    [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& G, cl::Point p) const;
     [[nodiscard]] SDL_Rect tile_rect(cl::Point p) const;
 
     // fields

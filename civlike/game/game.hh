@@ -30,56 +30,33 @@ struct GameNation {
 
 class Game {
 public:
-    Game(Ruleset const& ruleset, GameParameters const& game_par);
+    Game(Ruleset const& ruleset) : ruleset(ruleset) {}
 
-    // Round/Focus (see roundfocus.cc)
+    Ruleset const&                   ruleset;
+    Size                             map_size { 0, 0 };
+    Tiles                            tiles;
+    IdRefMap<Nation::Id, GameNation> nations;
+    CounterMap<Unit>                 units;
+    CounterMap<City>                 cities;
+    size_t                           round_nr = 0;
+    std::queue<VisualCue>            visual_cues;
 
-    void round_new();
-    void round_end(Nation::Id nation_id, bool auto_new_round=true);
-    void focus_next(Nation::Id nation_id, bool auto_end_round=true);
-    void focus_unit(Unit::Id unit_id, bool auto_end_round);
 
-    // Move unit (see unitactions.cc)
+    std::vector<Unit const*> units_in_xy(Point p) const {
+        std::vector<Unit const*> r;
+        for (auto const& [_, unit]: units)
+            if (unit.pos == p)
+                r.push_back(&unit);
+        return r;
+    }
 
-    void unit_move(Unit::Id unit_id, Direction dir);
-    void unit_change_state(Unit::Id unit_id, Unit::State state);
+    std::optional<Unit const*> focused_unit(Nation::Id nation_id) const {
+        const auto& funit = nations[nation_id].focused_unit;
+        if (funit)
+            return &units[*funit];
+        return {};
+    }
 
-    // City management (see city.cc)
-
-    void city_build(Unit::Id unit_id, std::string const& name);
-
-    // queries
-
-    [[nodiscard]] std::vector<Unit const*>   units_in_xy(Point p) const;
-    [[nodiscard]] std::optional<Unit const*> focused_unit(Nation::Id nation_id) const;
-    [[nodiscard]] std::optional<Unit*>       focused_unit(Nation::Id nation_id);
-
-    // getters
-
-    [[nodiscard]] Size const&                             map_size() const { return map_size_; }
-    [[nodiscard]] Tiles const&                            tiles() const { return tiles_; }
-    [[nodiscard]] CounterMap<City> const&                 cities() const { return cities_; }
-    [[nodiscard]] CounterMap<Unit> const&                 units() const { return units_; }
-    [[nodiscard]] size_t                                  round_nr() const { return round_nr_; }
-    [[nodiscard]] std::queue<VisualCue>&                  visual_cues() { return visual_cues_; }
-    [[nodiscard]] IdRefMap<Nation::Id, GameNation> const& nations() const { return nations_; }
-
-    // fields
-
-    Ruleset const& ruleset;
-
-private:
-    [[nodiscard]] unsigned long unit_starting_moves(Unit const& unit) const;
-    [[nodiscard]] bool          unit_can_focus(Unit const& unit) const;
-    [[nodiscard]] unsigned long tile_moves_to_enter(Point p) const;
-
-    Size                             map_size_ { 0, 0 };
-    Tiles                            tiles_;
-    IdRefMap<Nation::Id, GameNation> nations_;
-    CounterMap<Unit>                 units_;
-    CounterMap<City>                 cities_;
-    size_t                           round_nr_ = 0;
-    std::queue<VisualCue>            visual_cues_;
 };
 
 }

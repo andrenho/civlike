@@ -1,6 +1,6 @@
 #ifndef CIVLIKE_HH_
 #define CIVLIKE_HH_
 
-#include "game/game.hh"
+#include "command/command.hh"
 
 #endif

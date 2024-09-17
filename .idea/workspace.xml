@@ -25,14 +25,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/civlike/collections/idrefmap.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/command/city.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/command/command.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/command/focus.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/command/new_game.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/command/round.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/civlike/command/unit_actions.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/collections/id.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/collections/id.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/collections/idmap.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/collections/idmap.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/civlike.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/civlike.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/impl/game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/game.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/impl/roundfocus.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,12 +54,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file:///Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/math.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/civlike/collections/id.hh" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/civlike/game/impl/unitactions.cc" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/civlike/game/impl/city.cc" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/civlike/game/impl/game.cc" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/civlike/game/impl/unitactions.cc" root0="SKIP_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_algo.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__algorithm/ranges_find_if.h" root0="FORCE_HIGHLIGHTING" />
@@ -99,7 +102,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "id",
+    "git-widget-placeholder": "command",
     "last_opened_file_path": "/Users/aw98156/prj/civlike/civlike/collections",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -109,7 +112,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CPPToolchains",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

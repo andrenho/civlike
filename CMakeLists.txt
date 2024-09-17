@@ -16,15 +16,17 @@ add_library(civlike OBJECT
         civlike/game/game.hh
         civlike/game/unit.hh
         civlike/game/visualcue.hh
-        civlike/game/impl/game.cc
-        civlike/game/impl/unitactions.cc
-        civlike/game/impl/roundfocus.cc
         civlike/game/city.hh
-        civlike/game/impl/city.cc
         civlike/collections/id.hh
         civlike/collections/idmap.hh
         civlike/collections/idrefmap.hh
         civlike/collections/countermap.hh
+        civlike/command/command.hh
+        civlike/command/new_game.cc
+        civlike/command/round.cc
+        civlike/command/focus.cc
+        civlike/command/unit_actions.cc
+        civlike/command/city.cc
 )
 
 add_library(civlike_shared SHARED $<TARGET_OBJECTS:civlike>)

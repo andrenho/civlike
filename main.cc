@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "civlike.hh"
+#include "command/command.hh"
 #include "uiproto/ui.hh"
 
 static cl::Ruleset colonization_ruleset() {
@@ -47,8 +48,9 @@ static cl::Ruleset colonization_ruleset() {
 
 int main()
 {
-    const cl::GameParameters par;
-    const cl::Ruleset ruleset = cl::Ruleset::create_from_cpp(colonization_ruleset());
-    cl::Game game(ruleset, par);
-    UI(cl::Nation::Id { 'E' }).run(game);
+    using namespace cl;;
+    const GameParameters par;
+    const Ruleset ruleset = Ruleset::create_from_cpp(colonization_ruleset());
+    Game game = cmd::new_game(ruleset, par);
+    UI(Nation::Id { 'E' }).run(game);
 }

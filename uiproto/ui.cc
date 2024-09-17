@@ -26,17 +26,17 @@ UI::~UI()
     SDL_Quit();
 }
 
-void UI::run(Game& game)
+void UI::run(Game& G)
 {
     while (true) {
-        do_events(game);
-        process_visual_cues(game);
-        draw(game);
+        do_events(G);
+        process_visual_cues(G);
+        draw(G);
         SDL_RenderPresent(ren_);
     }
 }
 
-void UI::do_events(Game& game)
+void UI::do_events(Game& G)
 {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
@@ -48,7 +48,7 @@ void UI::do_events(Game& game)
 
             case SDL_MOUSEBUTTONDOWN:
                 switch (e.button.button) {
-                    case 1: select_unit_in_xy(game, (e.button.x - rel_x) / TILE_SIZE, (e.button.y - rel_y) / TILE_SIZE); break;
+                    case 1: select_unit_in_xy(G, (e.button.x - rel_x) / TILE_SIZE, (e.button.y - rel_y) / TILE_SIZE); break;
                     case 2: dragging_map_ = true; break;
                 }
                 break;
@@ -67,30 +67,30 @@ void UI::do_events(Game& game)
                 break;
 
             case SDL_KEYDOWN: {
-                auto f_unit = game.focused_unit(player_nation_id_);
+                auto f_unit = G.focused_unit(player_nation_id_);
                 if (f_unit) {
                     Unit::Id unit_id = (*f_unit)->id;
                     switch (e.key.keysym.sym) {
-                        case SDLK_KP_1: game.unit_move(unit_id, Direction::SW); break;
-                        case SDLK_KP_2: game.unit_move(unit_id, Direction::S); break;
-                        case SDLK_KP_3: game.unit_move(unit_id, Direction::SE); break;
-                        case SDLK_KP_4: game.unit_move(unit_id, Direction::W); break;
-                        case SDLK_KP_6: game.unit_move(unit_id, Direction::E); break;
-                        case SDLK_KP_7: game.unit_move(unit_id, Direction::NW); break;
-                        case SDLK_KP_8: game.unit_move(unit_id, Direction::N); break;
-                        case SDLK_KP_9: game.unit_move(unit_id, Direction::NE); break;
-                        case SDLK_f: game.unit_change_state(unit_id, Unit::State::Fortify); break;
+                        case SDLK_KP_1: cmd::move_unit(G, unit_id, Direction::SW); break;
+                        case SDLK_KP_2: cmd::move_unit(G, unit_id, Direction::S); break;
+                        case SDLK_KP_3: cmd::move_unit(G, unit_id, Direction::SE); break;
+                        case SDLK_KP_4: cmd::move_unit(G, unit_id, Direction::W); break;
+                        case SDLK_KP_6: cmd::move_unit(G, unit_id, Direction::E); break;
+                        case SDLK_KP_7: cmd::move_unit(G, unit_id, Direction::NW); break;
+                        case SDLK_KP_8: cmd::move_unit(G, unit_id, Direction::N); break;
+                        case SDLK_KP_9: cmd::move_unit(G, unit_id, Direction::NE); break;
+                        case SDLK_f:    cmd::fortify_unit(G, unit_id); break;
                         case SDLK_b:
-                            game.city_build(unit_id, "City");
+                            cmd::build_city(G, unit_id, "City");
                             SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "City created", "City created", window_);
                             break;
                     }
                 }
 
                 switch (e.key.keysym.sym) {
-                    case SDLK_w: game.focus_next(player_nation_id_); break;
-                    case SDLK_SPACE: game.round_end(player_nation_id_); break;
-                    case SDLK_q: SDL_Quit(); exit(0);
+                    case SDLK_w:     cmd::focus_next(G, player_nation_id_, false); break;
+                    case SDLK_SPACE: cmd::end_round(G, player_nation_id_, true); break;
+                    case SDLK_q:     SDL_Quit(); exit(0);
                 }
             }
 
@@ -98,12 +98,11 @@ void UI::do_events(Game& game)
     }
 }
 
-void UI::select_unit_in_xy(Game& game, int x, int y)
+void UI::select_unit_in_xy(Game& G, int x, int y)
 {
-    auto o_unit = unit_to_draw(game, Point { x, y }); // TODO - open a unit selector
+    auto o_unit = unit_to_draw(G, Point { x, y }); // TODO - open a unit selector
     if (o_unit) {
         const Unit::Id unit_id = (*o_unit)->id;
-        game.unit_change_state(unit_id, Unit::State::Normal);
-        game.focus_unit(unit_id, false);
+        cmd::focus_unit(G, unit_id, false);
     }
 }
