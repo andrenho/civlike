@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.28)
 project(civlike LANGUAGES CXX)
 
 set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 ##### LIBRARY #####
 
@@ -69,6 +69,7 @@ add_executable(uiproto
         uiproto/uicity.cc
         uiproto/text.hh
         uiproto/text.cc
+        uiproto/sdl.hh
         ${FONT_HEADER}
 )
 add_dependencies(uiproto generate_font)

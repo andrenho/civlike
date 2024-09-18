@@ -2,10 +2,11 @@
 #define GAME_GAME_HH_
 
 #include <queue>
+#include <ranges>
 #include <vector>
+namespace r = std::ranges;
 
 #include "city.hh"
-#include "direction.hh"
 #include "unit.hh"
 #include "visualcue.hh"
 #include "collections/countermap.hh"
@@ -50,11 +51,14 @@ public:
         return r;
     }
 
+    std::optional<City const*> city_in_xy(Point p) {
+        auto it = r::find_if(cities, [&p](auto const& pair) { return pair.second.pos == p; });
+        return it == cities.end() ? std::optional<City const*>{} : &it->second;
+    }
+
     std::optional<Unit const*> focused_unit(Nation::Id nation_id) const {
         const auto& funit = nations[nation_id].focused_unit;
-        if (funit)
-            return &units[*funit];
-        return {};
+        return funit ? &units[*funit] : std::optional<Unit const*>{};
     }
 
 };

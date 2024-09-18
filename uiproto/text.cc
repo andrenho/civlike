@@ -17,7 +17,7 @@ Text::~Text()
     TTF_Quit();
 }
 
-TextTexture Text::text_tx(std::string const& text, SDL_Color const& color)
+TextTexture Text::text_tx(std::string const& text, SDL_Color const& color) const
 {
     clear_cache();
 
@@ -38,7 +38,7 @@ TextTexture Text::text_tx(std::string const& text, SDL_Color const& color)
     return { .tx = tx, .w = r.w, .h = r.h, .lineskip = lineskip };
 }
 
-void Text::clear_cache()
+void Text::clear_cache() const
 {
     ++call_count_;
     if (call_count_ % 1000 == 0) {
@@ -50,4 +50,12 @@ void Text::clear_cache()
                 ++it;
         }
     }
+}
+
+int Text::write(SDL const& sdl, std::string const& text, int x, int y) const
+{
+    const auto [tx, tw, th, lineskip] = text_tx(text, { 0, 0, 0, SDL_ALPHA_OPAQUE });
+    const SDL_Rect r { x, y, tw, th };
+    SDL_RenderCopy(sdl.ren, tx, nullptr, &r);
+    return y + lineskip;
 }

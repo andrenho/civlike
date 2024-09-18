@@ -8,6 +8,7 @@
 #include "text.hh"
 
 #include "civlike.hh"
+#include "sdl.hh"
 #include "uicity.hh"
 
 class UI {
@@ -21,7 +22,8 @@ private:
     // events
 
     void do_events(cl::Game& G);
-    void select_unit_in_xy(cl::Game& G, int x, int y);
+    void select_unit_in_xy(cl::Game& G, cl::Point tile);
+    bool select_city_in_xy(cl::Game& G, cl::Point tile);
 
     // draw map
 
@@ -38,18 +40,13 @@ private:
     void process_visual_cues(cl::Game& G);
     void visual_cue_move_unit(cl::Game const& G, cl::MoveUnit const& mu);
 
-    int write(Text& text_mgr, std::string const& text, int x, int y) const;
-
     [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& G, cl::Point p) const;
     [[nodiscard]] SDL_Rect tile_rect(cl::Point p) const;
 
     // fields
 
     cl::Nation::Id              player_nation_id_;
-    SDL_Window*                 window_ = nullptr;
-    SDL_Renderer*               ren_ = nullptr;
-    std::unique_ptr<Text>       text_large_;
-    std::unique_ptr<Text>       text_small_;
+    SDL                         sdl;
     std::optional<cl::Unit::Id> moving_unit_ {};
     int                         rel_x = 0, rel_y = 0;
     bool                        dragging_map_ = false;

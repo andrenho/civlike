@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 
+#include "sdl.hh"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
 
@@ -31,15 +32,17 @@ public:
     explicit Text(SDL_Renderer* ren, int font_size);
     ~Text();
 
-    [[nodiscard]] TextTexture text_tx(std::string const& text, SDL_Color const& color);
+    int write(SDL const& sdl, std::string const& text, int x, int y) const;
+
+    [[nodiscard]] TextTexture text_tx(std::string const& text, SDL_Color const& color) const;
 
 private:
-    void clear_cache();
+    void clear_cache() const;
 
     TTF_Font* font_ = nullptr;
     SDL_Renderer* ren_ = nullptr;
-    std::unordered_map<std::string, CachedText> cache_;
-    size_t call_count_ = 0;
+    mutable std::unordered_map<std::string, CachedText> cache_;
+    mutable size_t call_count_ = 0;
     int    lineskip = 0;
 
     static constexpr uint64_t CACHE_KEEP_SECONDS = 10;

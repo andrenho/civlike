@@ -25,9 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/uiproto/sdl.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/text.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/uicity.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uicity.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/uicity.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uicity.hh" afterDir="false" />
     </list>
@@ -45,9 +51,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file:///Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/math.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/civlike/game/impl/city.cc" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/civlike/game/impl/game.cc" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/civlike/game/impl/unitactions.cc" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/ranges_algo.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_algo.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__algorithm/ranges_find_if.h" root0="FORCE_HIGHLIGHTING" />
@@ -122,9 +126,9 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.uiproto">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="civlike" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="civlike" TARGET_NAME="civlike" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="civlike" RUN_TARGET_NAME="civlike">
@@ -180,14 +184,7 @@
       <workItem from="1726087222139" duration="25973000" />
       <workItem from="1726175645807" duration="64831000" />
       <workItem from="1726516641568" duration="3509000" />
-    </task>
-    <task id="LOCAL-00001" summary=".">
-      <option name="closed" value="true" />
-      <created>1726065475412</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726065475413</updated>
+      <workItem from="1726589886078" duration="8626000" />
     </task>
     <task id="LOCAL-00002" summary=".">
       <option name="closed" value="true" />
@@ -573,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726537698294</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary=".">
+      <option name="closed" value="true" />
+      <created>1726578931905</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1726578931906</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

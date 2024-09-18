@@ -10,12 +10,12 @@ using namespace cl;
 
 void UI::draw(Game const& G) const
 {
-    // SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_SetRenderDrawColor(ren_, 255, 255, 255, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(ren_);
+    // SDL_SetRenderDrawColor(sdl.ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(sdl.ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(sdl.ren);
 
     int ww, wh;
-    SDL_GetWindowSize(window_, &ww, &wh);
+    SDL_GetWindowSize(sdl.window, &ww, &wh);
     SDL_Rect screen_r = { 0, 0, ww, wh };
 
     for (int x = 0; x < G.map_size.w; ++x) {
@@ -45,11 +45,11 @@ void UI::draw_tile(Game const& G, Point p) const
 void UI::draw_terrain(Game const& G, Point p) const
 {
     const auto t_clr = G.ruleset.terrains[G.tiles.at(p.x).at(p.y).terrain_id].color;
-    SDL_SetRenderDrawColor(ren_, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(sdl.ren, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
     const SDL_Rect r = tile_rect(p);
-    SDL_RenderFillRect(ren_, &r);
-    SDL_SetRenderDrawColor(ren_, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawPoint(ren_, r.x, r.y);
+    SDL_RenderFillRect(sdl.ren, &r);
+    SDL_SetRenderDrawColor(sdl.ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawPoint(sdl.ren, r.x, r.y);
 }
 
 
@@ -86,20 +86,20 @@ void UI::draw_unit(Game const& G, Unit const& unit, Point displacement) const
     r.x += displacement.x, r.y += displacement.y;
 
     // square
-    SDL_SetRenderDrawColor(ren_, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawRect(ren_, &r);
+    SDL_SetRenderDrawColor(sdl.ren, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawRect(sdl.ren, &r);
     ++r.x, ++r.y, r.w -= 2, r.h -= 2;
-    SDL_RenderDrawRect(ren_, &r);
+    SDL_RenderDrawRect(sdl.ren, &r);
     ++r.x, ++r.y, r.w -= 2, r.h -= 2;
-    SDL_RenderDrawRect(ren_, &r);
+    SDL_RenderDrawRect(sdl.ren, &r);
 
     // unit type letter
     const auto unit_char = std::string(1, G.ruleset.unit_types[unit.unit_type_id].char_display);
-    write(*text_large_, unit_char, r.x + 9, r.y + 4);
+    sdl.text_large->write(sdl, unit_char, r.x + 9, r.y + 4);
 
     // state
     if (unit.state == Unit::State::Fortify)
-        write(*text_small_, "F", r.x + 20, r.y);
+        sdl.text_small->write(sdl, "F", r.x + 20, r.y);
 }
 
 void UI::draw_city(cl::Game const& G, cl::City const& city) const
@@ -108,8 +108,8 @@ void UI::draw_city(cl::Game const& G, cl::City const& city) const
     const auto color = G.ruleset.nations[city.nation_id].color;
 
     // square
-    SDL_SetRenderDrawColor(ren_, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
-    SDL_RenderFillRect(ren_, &r);
+    SDL_SetRenderDrawColor(sdl.ren, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
+    SDL_RenderFillRect(sdl.ren, &r);
 }
 
 template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
@@ -135,7 +135,7 @@ void UI::visual_cue_move_unit(Game const& G, MoveUnit const& mu)
 
         draw(G);
         draw_unit(G, unit, displacement);
-        SDL_RenderPresent(ren_);
+        SDL_RenderPresent(sdl.ren);
     }
     moving_unit_ = {};
 }
@@ -143,28 +143,20 @@ void UI::visual_cue_move_unit(Game const& G, MoveUnit const& mu)
 void UI::draw_status(Game const& G) const
 {
     int sw, sh;
-    SDL_GetWindowSize(window_, &sw, &sh);
+    SDL_GetWindowSize(sdl.window, &sw, &sh);
 
     int x = sw - 250;
     int y = sh - 100;
 
-    y = write(*text_large_, "Round: " + std::to_string(G.round_nr), x, y);
+    y = sdl.text_large->write(sdl, "Round: " + std::to_string(G.round_nr), x, y);
 
     auto f_unit = G.focused_unit(player_nation_id_);
     if (f_unit) {
         Unit const& unit = **f_unit;
-        y = write(*text_large_, "Unit #" + std::to_string(unit.id), x, y);
-        y = write(*text_large_, G.ruleset.unit_types[unit.unit_type_id].name, x, y);
-        write(*text_large_, "Moves left: " + std::to_string(unit.moves_left), x, y);
+        y = sdl.text_large->write(sdl, "Unit #" + std::to_string(unit.id), x, y);
+        y = sdl.text_large->write(sdl, G.ruleset.unit_types[unit.unit_type_id].name, x, y);
+        sdl.text_large->write(sdl, "Moves left: " + std::to_string(unit.moves_left), x, y);
     }
-}
-
-int UI::write(Text& text_mgr, std::string const& text, int x, int y) const
-{
-    const auto [tx, tw, th, lineskip] = text_mgr.text_tx(text, { 0, 0, 0, SDL_ALPHA_OPAQUE });
-    const SDL_Rect r { x, y, tw, th };
-    SDL_RenderCopy(ren_, tx, nullptr, &r);
-    return y + lineskip;
 }
 
 SDL_Rect UI::tile_rect(Point p) const
