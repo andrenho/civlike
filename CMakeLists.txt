@@ -61,16 +61,17 @@ add_custom_command(
 add_custom_target(generate_font DEPENDS ${FONT_FILE})
 
 add_executable(uiproto
-        main.cc
-        uiproto/ui.hh
+        ${FONT_HEADER}
+        uiproto/main.cc
         uiproto/ui.cc
-        uiproto/ui_draw.cc
-        uiproto/uicity.hh
-        uiproto/uicity.cc
+        uiproto/ui.hh
+        uiproto/resources.cc
+        uiproto/resources.hh
         uiproto/text.hh
         uiproto/text.cc
-        uiproto/sdl.hh
-        ${FONT_HEADER}
+        uiproto/screen/screen.hh
+        uiproto/screen/mainmap.cc
+        uiproto/screen/mainmap.hh
 )
 add_dependencies(uiproto generate_font)
 

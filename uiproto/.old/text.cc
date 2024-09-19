@@ -52,10 +52,10 @@ void Text::clear_cache() const
     }
 }
 
-int Text::write(std::string const& text, int x, int y) const
+int Text::write(SDL const& sdl, std::string const& text, int x, int y) const
 {
     const auto [tx, tw, th, lineskip] = text_tx(text, { 0, 0, 0, SDL_ALPHA_OPAQUE });
     const SDL_Rect r { x, y, tw, th };
-    SDL_RenderCopy(ren_, tx, nullptr, &r);
+    SDL_RenderCopy(sdl.ren, tx, nullptr, &r);
     return y + lineskip;
 }

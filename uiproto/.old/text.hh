@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 
+#include "sdl.hh"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
 
@@ -31,7 +32,7 @@ public:
     explicit Text(SDL_Renderer* ren, int font_size);
     ~Text();
 
-    int write(std::string const& text, int x, int y) const;
+    int write(SDL const& sdl, std::string const& text, int x, int y) const;
 
     [[nodiscard]] TextTexture text_tx(std::string const& text, SDL_Color const& color) const;
 

@@ -25,17 +25,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/uiproto/sdl.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/.old/text.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/.old/text.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/.old/ui.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/.old/ui.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/main.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/resources.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/resources.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/screen/mainmap.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/screen/mainmap.hh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uiproto/screen/screen.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/variants/colonization.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/sdl.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/.old/sdl.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/text.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/text.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/text.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/ui.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/ui_draw.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/uicity.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uicity.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/uicity.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/uicity.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/ui_draw.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/.old/ui_draw.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/uicity.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/.old/uicity.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/uicity.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/.old/uicity.hh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +62,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file:///Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/math.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/ranges_algo.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/uiproto/screen/screen.hh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/uiproto/ui.cc" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/uiproto/ui.hh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/variants/colonization.hh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/ranges_algo.h" root0="SKIP_INSPECTION" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_algo.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/gcc/14.2.0/include/c++/14/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///opt/homebrew/Cellar/llvm@17/17.0.6/include/c++/v1/__algorithm/ranges_find_if.h" root0="FORCE_HIGHLIGHTING" />
@@ -98,7 +113,7 @@
     "cidr.known.project.marker": "true",
     "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/aw98156/prj/civlike/civlike/collections",
+    "last_opened_file_path": "/Users/aw98156/prj/civlike/uiproto",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -113,16 +128,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/civlike/collections" />
       <recent name="$PROJECT_DIR$/uiproto" />
+      <recent name="$PROJECT_DIR$/civlike/collections" />
       <recent name="$PROJECT_DIR$/civlike/game" />
       <recent name="$PROJECT_DIR$/civlike/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/civlike/collections" />
-      <recent name="$PROJECT_DIR$/civlike/game/game" />
-      <recent name="$PROJECT_DIR$/civlike" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/uiproto/screen" />
+      <recent name="$PROJECT_DIR$/uiproto" />
+      <recent name="$PROJECT_DIR$/ui" />
+      <recent name="$PROJECT_DIR$/variants" />
+      <recent name="$PROJECT_DIR$/uiproto/.old" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.uiproto">
@@ -184,15 +200,7 @@
       <workItem from="1726087222139" duration="25973000" />
       <workItem from="1726175645807" duration="64831000" />
       <workItem from="1726516641568" duration="3509000" />
-      <workItem from="1726589886078" duration="8626000" />
-    </task>
-    <task id="LOCAL-00002" summary=".">
-      <option name="closed" value="true" />
-      <created>1726081492644</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726081492644</updated>
+      <workItem from="1726589886078" duration="17906000" />
     </task>
     <task id="LOCAL-00003" summary=".">
       <option name="closed" value="true" />
@@ -578,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726578931906</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary=".">
+      <option name="closed" value="true" />
+      <created>1726624840217</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1726624840217</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
