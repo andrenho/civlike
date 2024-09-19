@@ -16,8 +16,7 @@ public:
     [[nodiscard]] bool running() const { return running_; }
 
 private:
-    std::unique_ptr<Screen> main_map = std::make_unique<MainMap>();
-    Resources               res_ { main_map.get() };
+    Resources               res_;
     bool                    running_ = true;
 
 };

@@ -1,7 +1,6 @@
 #include "resources.hh"
 
-Resources::Resources(Screen* initial_screen)
-    : current_screen(initial_screen)
+Resources::Resources()
 {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER);
     SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
