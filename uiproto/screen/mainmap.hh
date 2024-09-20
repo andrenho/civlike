@@ -8,9 +8,7 @@ public:
     using Screen::Screen;
 
     void screen_event(cl::Game& G, SDL_Event* e) override;
-    void draw(cl::Game const& G) const override;
-
-    static constexpr size_t TILE_SIZE = 32;
+    void screen_draw(cl::Game const& G) const override;
 
 private:
     // events
@@ -38,6 +36,7 @@ private:
 
     [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& G, cl::Point p) const;
     [[nodiscard]] SDL_Rect tile_rect(cl::Point p) const;
+    [[nodiscard]] SDL_Point tile_pos(cl::Point p) const;
 
     // fields
 

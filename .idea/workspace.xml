@@ -25,15 +25,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/uiproto/screen/citymanagement.cc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/screen/citymanagement.hh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiproto/screen/screen.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/resources.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/resources.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/screen/citymanagement.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/citymanagement.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/screen/citymanagement.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/citymanagement.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/screen/mainmap.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/mainmap.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/screen/mainmap.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/mainmap.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/screen/screen.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/screen.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/screen/screen.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/screen.hh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,23 +189,7 @@
       <workItem from="1726516641568" duration="3509000" />
       <workItem from="1726589886078" duration="24089000" />
       <workItem from="1726843410842" duration="2000" />
-      <workItem from="1726844859861" duration="4086000" />
-    </task>
-    <task id="LOCAL-00005" summary=".">
-      <option name="closed" value="true" />
-      <created>1726084292260</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726084292260</updated>
-    </task>
-    <task id="LOCAL-00006" summary=".">
-      <option name="closed" value="true" />
-      <created>1726087323846</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726087323846</updated>
+      <workItem from="1726844859861" duration="12264000" />
     </task>
     <task id="LOCAL-00007" summary=".">
       <option name="closed" value="true" />
@@ -585,7 +567,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726746169059</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary=".">
+      <option name="closed" value="true" />
+      <created>1726850791390</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1726850791390</updated>
+    </task>
+    <task id="LOCAL-00055" summary=".">
+      <option name="closed" value="true" />
+      <created>1726850817366</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1726850817366</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

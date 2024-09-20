@@ -80,7 +80,7 @@ bool MainMap::select_city_in_xy(Game& G, Point tile)
 {
     auto o_city = G.city_in_xy(tile);
     if (o_city) {
-        res.city_management->city = *o_city;
+        res.city_management->set_city(G, *o_city);
         res.current_screen = res.city_management.get();
     }
     return !!o_city;
@@ -90,7 +90,7 @@ bool MainMap::select_city_in_xy(Game& G, Point tile)
 
 #pragma region Draw
 
-void MainMap::draw(cl::Game const& G) const
+void MainMap::screen_draw(cl::Game const& G) const
 {
     process_visual_cues(G);
     draw_map(G);
@@ -142,27 +142,9 @@ void MainMap::draw_terrain(Game const& G, Point p) const
 
 void MainMap::draw_unit(Game const& G, Unit const& unit, Point displacement) const
 {
-    const auto color = G.ruleset.nations[unit.nation_id].color;
-
-    // define position
-    SDL_Rect r = tile_rect(unit.pos);
-    r.x += displacement.x, r.y += displacement.y;
-
-    // square
-    SDL_SetRenderDrawColor(res.ren, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawRect(res.ren, &r);
-    ++r.x, ++r.y, r.w -= 2, r.h -= 2;
-    SDL_RenderDrawRect(res.ren, &r);
-    ++r.x, ++r.y, r.w -= 2, r.h -= 2;
-    SDL_RenderDrawRect(res.ren, &r);
-
-    // unit type letter
-    const auto unit_char = std::string(1, G.ruleset.unit_types[unit.unit_type_id].char_display);
-    res.text_large->write(unit_char, r.x + 9, r.y + 4);
-
-    // state
-    if (unit.state == Unit::State::Fortify)
-        res.text_small->write("F", r.x + 20, r.y);
+    SDL_Point p = tile_pos(unit.pos);
+    p.x += displacement.x, p.y += displacement.y;
+    draw_unit_at_pos(G, unit.id, p);
 }
 
 void MainMap::draw_city(cl::Game const& G, cl::City const& city) const
@@ -261,6 +243,14 @@ SDL_Rect MainMap::tile_rect(Point p) const
         .y = (int) (p.y * TILE_SIZE) + rel_y,
         .w = TILE_SIZE,
         .h = TILE_SIZE
+    };
+}
+
+SDL_Point MainMap::tile_pos(cl::Point p) const
+{
+    return {
+        .x = (int) (p.x * TILE_SIZE) + rel_x,
+        .y = (int) (p.y * TILE_SIZE) + rel_y,
     };
 }
 
