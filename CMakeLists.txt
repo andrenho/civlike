@@ -72,6 +72,9 @@ add_executable(uiproto
         uiproto/screen/screen.hh
         uiproto/screen/mainmap.cc
         uiproto/screen/mainmap.hh
+        uiproto/screen/citymanagement.hh
+        uiproto/screen/citymanagement.cc
+        uiproto/screen/screen.cc
 )
 add_dependencies(uiproto generate_font)
 

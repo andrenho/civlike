@@ -7,7 +7,7 @@ using namespace cl;
 
 #pragma region Events
 
-void MainMap::do_event(Game& G, SDL_Event* e)
+void MainMap::screen_event(Game& G, SDL_Event* e)
 {
     switch (e->type) {
 
@@ -79,8 +79,10 @@ void MainMap::select_unit_in_xy(Game& G, Point tile)
 bool MainMap::select_city_in_xy(Game& G, Point tile)
 {
     auto o_city = G.city_in_xy(tile);
-    if (o_city)
-        ; // TODO ui_city_.selected_city = (*o_city)->id;
+    if (o_city) {
+        res.city_management->city = *o_city;
+        res.current_screen = res.city_management.get();
+    }
     return !!o_city;
 }
 
@@ -89,6 +91,12 @@ bool MainMap::select_city_in_xy(Game& G, Point tile)
 #pragma region Draw
 
 void MainMap::draw(cl::Game const& G) const
+{
+    process_visual_cues(G);
+    draw_map(G);
+}
+
+void MainMap::draw_map(cl::Game const& G) const
 {
     // SDL_SetRenderDrawColor(res.ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_SetRenderDrawColor(res.ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
@@ -167,9 +175,13 @@ void MainMap::draw_city(cl::Game const& G, cl::City const& city) const
     SDL_RenderFillRect(res.ren, &r);
 }
 
+#pragma endregion
+
+#pragma region Visual Cues
+
 template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
 
-void MainMap::process_visual_cues(Game& G)
+void MainMap::process_visual_cues(Game const& G) const
 {
     auto& vc = G.visual_cues;
     while (!vc.empty()) {
@@ -180,7 +192,7 @@ void MainMap::process_visual_cues(Game& G)
     }
 }
 
-void MainMap::visual_cue_move_unit(Game const& G, MoveUnit const& mu)
+void MainMap::visual_cue_move_unit(Game const& G, MoveUnit const& mu) const
 {
     Unit const& unit = G.units[mu.unit_id];
 
@@ -188,7 +200,7 @@ void MainMap::visual_cue_move_unit(Game const& G, MoveUnit const& mu)
     for (size_t i = 0; i < TILE_SIZE; i += 2) {
         Point displacement = (-directions.at(mu.direction) * TILE_SIZE) + (directions.at(mu.direction) * i);
 
-        draw(G);
+        draw_map(G);
         draw_unit(G, unit, displacement);
         SDL_RenderPresent(res.ren);
     }

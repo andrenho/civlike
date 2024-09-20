@@ -5,6 +5,7 @@
 
 #include "SDL2/SDL.h"
 #include "text.hh"
+#include "screen/citymanagement.hh"
 #include "screen/mainmap.hh"
 #include "screen/screen.hh"
 
@@ -16,7 +17,9 @@ public:
     Resources(Resources const&) = delete;
     Resources& operator=(Resources const&) = delete;
 
-    std::unique_ptr<Screen> main_map = std::make_unique<MainMap>(*this);
+    // screens
+    std::unique_ptr<MainMap>        main_map        = std::make_unique<MainMap>(*this);
+    std::unique_ptr<CityManagement> city_management = std::make_unique<CityManagement>(*this);
 
     SDL_Window*           window;
     SDL_Renderer*         ren;

@@ -1,12 +1,13 @@
 #ifndef MAINMAP_HH
 #define MAINMAP_HH
+
 #include "screen.hh"
 
 class MainMap : public Screen {
 public:
     using Screen::Screen;
 
-    void do_event(cl::Game& G, SDL_Event* e) override;
+    void screen_event(cl::Game& G, SDL_Event* e) override;
     void draw(cl::Game const& G) const override;
 
     static constexpr size_t TILE_SIZE = 32;
@@ -19,6 +20,7 @@ private:
 
     // draw
 
+    void draw_map(cl::Game const& G) const;
     void draw_tile(cl::Game const& G, cl::Point p) const;
 
     void draw_terrain(cl::Game const& G, cl::Point p) const;
@@ -27,8 +29,10 @@ private:
 
     void draw_status(cl::Game const& G) const;
 
-    void process_visual_cues(cl::Game& G);
-    void visual_cue_move_unit(cl::Game const& G, cl::MoveUnit const& mu);
+    // visual cues
+
+    void process_visual_cues(cl::Game const& G) const;
+    void visual_cue_move_unit(cl::Game const& G, cl::MoveUnit const& mu) const;
 
     // query
 
@@ -39,7 +43,7 @@ private:
 
     int  rel_x = 0, rel_y = 0;
     bool dragging_map_ = false;
-    std::optional<cl::Unit::Id> moving_unit_ {};
+    mutable std::optional<cl::Unit::Id> moving_unit_ {};
 
 };
 

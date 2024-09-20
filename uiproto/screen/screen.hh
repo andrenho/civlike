@@ -8,14 +8,29 @@ class Resources;
 
 class Screen {
 public:
-    explicit Screen(Resources const& res) : res(res) {}
+    explicit Screen(Resources& res) : res(res) {}
     virtual ~Screen() = default;
 
-    virtual void do_event(cl::Game& G, SDL_Event* e) = 0;
+    void do_event(cl::Game& G, SDL_Event* e);
     virtual void draw(cl::Game const& G) const = 0;
 
 protected:
-    Resources const& res;
+    virtual void screen_event(cl::Game& G, SDL_Event* e) = 0;
+    void draw_hotspots(cl::Game& G);
+
+    Resources& res;
+
+    enum class HotSpotArea { OutOfCity };
+    struct HotSpotRect {
+        HotSpotArea area;
+        SDL_Rect    rect;
+    };
+    struct HotSpotUnit {
+        cl::Unit::Id unit;
+        SDL_Point    point;
+    };
+    using HotSpot = std::variant<HotSpotRect, HotSpotUnit>;
+    std::vector<HotSpot> hotspots_;
 };
 
 #endif //SCREEN_HH

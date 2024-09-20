@@ -40,7 +40,7 @@ public:
     CounterMap<Unit>                 units;
     CounterMap<City>                 cities;
     size_t                           round_nr = 0;
-    std::queue<VisualCue>            visual_cues;
+    mutable std::queue<VisualCue>    visual_cues;
 
 
     std::vector<Unit const*> units_in_xy(Point p) const {
