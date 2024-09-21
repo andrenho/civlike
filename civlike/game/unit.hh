@@ -12,7 +12,7 @@ struct Unit {
     ID(uint32_t)
     Nation::Id    nation_id;
     UnitType::Id  unit_type_id;
-    Point         pos;
+    MapPos         pos;
     unsigned long moves_left = 0;
     State         state = State::Normal;
 

@@ -12,7 +12,7 @@ void MainMap::screen_event(Game& G, SDL_Event* e)
     switch (e->type) {
 
         case SDL_MOUSEBUTTONDOWN: {
-            Point tile { .x = (int)((e->button.x - rel_x) / TILE_SIZE), .y = (int)((e->button.y - rel_y) / TILE_SIZE) };
+            MapPos tile { .x = (int)((e->button.x - rel_x) / TILE_SIZE), .y = (int)((e->button.y - rel_y) / TILE_SIZE) };
             switch (e->button.button) {
                 case 1:
                     if (!select_city_in_xy(G, tile))
@@ -67,7 +67,7 @@ void MainMap::screen_event(Game& G, SDL_Event* e)
     }
 }
 
-void MainMap::select_unit_in_xy(Game& G, Point tile)
+void MainMap::select_unit_in_xy(Game& G, MapPos tile)
 {
     auto o_unit = unit_to_draw(G, tile); // TODO - open a unit selector
     if (o_unit) {
@@ -76,7 +76,7 @@ void MainMap::select_unit_in_xy(Game& G, Point tile)
     }
 }
 
-bool MainMap::select_city_in_xy(Game& G, Point tile)
+bool MainMap::select_city_in_xy(Game& G, MapPos tile)
 {
     auto o_city = G.city_in_xy(tile);
     if (o_city) {
@@ -108,43 +108,27 @@ void MainMap::draw_map(cl::Game const& G) const
 
     for (int x = 0; x < G.map_size.w; ++x) {
         for (int y = 0; y < G.map_size.h; ++y) {
-            SDL_Rect tile_r = tile_rect(Point { x, y });
+            SDL_Rect tile_r = tile_rect(MapPos { x, y });
             if (!SDL_HasIntersection(&screen_r, &tile_r))
                 continue;
-            draw_tile(G, Point { x, y });
+            draw_tile(G, MapPos { x, y });
         }
     }
 
     draw_status(G);
 }
 
-void MainMap::draw_tile(Game const& G, Point p) const
+void MainMap::draw_tile(Game const& G, MapPos p) const
 {
-    draw_terrain(G, p);
+    SDL_Point pt = tile_pos(p);
+    draw_tile_at_point(G, G.tiles[p.x][p.y], pt);
 
     if (auto o_unit = unit_to_draw(G, p); o_unit)
-        draw_unit(G, **o_unit);
+        draw_unit_at_point(G, (*o_unit)->id, pt);
 
     auto city = G.cities.find_first_value([p](auto const& c) { return c.pos == p; });
     if (city)
         draw_city(G, **city);
-}
-
-void MainMap::draw_terrain(Game const& G, Point p) const
-{
-    const auto t_clr = G.ruleset.terrains[G.tiles.at(p.x).at(p.y).terrain_id].color;
-    SDL_SetRenderDrawColor(res.ren, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
-    const SDL_Rect r = tile_rect(p);
-    SDL_RenderFillRect(res.ren, &r);
-    SDL_SetRenderDrawColor(res.ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawPoint(res.ren, r.x, r.y);
-}
-
-void MainMap::draw_unit(Game const& G, Unit const& unit, Point displacement) const
-{
-    SDL_Point p = tile_pos(unit.pos);
-    p.x += displacement.x, p.y += displacement.y;
-    draw_unit_at_pos(G, unit.id, p);
 }
 
 void MainMap::draw_city(cl::Game const& G, cl::City const& city) const
@@ -180,10 +164,11 @@ void MainMap::visual_cue_move_unit(Game const& G, MoveUnit const& mu) const
 
     moving_unit_ = mu.unit_id;
     for (size_t i = 0; i < TILE_SIZE; i += 2) {
-        Point displacement = (-directions.at(mu.direction) * TILE_SIZE) + (directions.at(mu.direction) * i);
+        MapPos displacement = (-directions.at(mu.direction) * TILE_SIZE) + (directions.at(mu.direction) * i);
 
         draw_map(G);
-        draw_unit(G, unit, displacement);
+        SDL_Point pt = tile_pos(unit.pos);
+        draw_unit_at_point(G, unit.id, { pt.x + displacement.x, pt.y + displacement.y });
         SDL_RenderPresent(res.ren);
     }
     moving_unit_ = {};
@@ -212,7 +197,7 @@ void MainMap::draw_status(Game const& G) const
 
 #pragma region Query
 
-std::optional<Unit const*> MainMap::unit_to_draw(Game const& G, Point p) const
+std::optional<Unit const*> MainMap::unit_to_draw(Game const& G, MapPos p) const
 {
     std::optional<Unit const*> unit_to_move;
 
@@ -236,7 +221,7 @@ std::optional<Unit const*> MainMap::unit_to_draw(Game const& G, Point p) const
     return unit_to_move;
 }
 
-SDL_Rect MainMap::tile_rect(Point p) const
+SDL_Rect MainMap::tile_rect(MapPos p) const
 {
     return {
         .x = (int) (p.x * TILE_SIZE) + rel_x,
@@ -246,7 +231,7 @@ SDL_Rect MainMap::tile_rect(Point p) const
     };
 }
 
-SDL_Point MainMap::tile_pos(cl::Point p) const
+SDL_Point MainMap::tile_pos(cl::MapPos p) const
 {
     return {
         .x = (int) (p.x * TILE_SIZE) + rel_x,

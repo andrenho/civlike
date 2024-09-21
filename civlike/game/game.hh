@@ -43,7 +43,7 @@ public:
     mutable std::queue<VisualCue>    visual_cues;
 
 
-    std::vector<Unit const*> units_in_xy(Point p) const {
+    std::vector<Unit const*> units_in_xy(MapPos p) const {
         std::vector<Unit const*> r;
         for (auto const& [_, unit]: units)
             if (unit.pos == p)
@@ -51,7 +51,7 @@ public:
         return r;
     }
 
-    std::optional<City const*> city_in_xy(Point p) {
+    std::optional<City const*> city_in_xy(MapPos p) {
         auto it = r::find_if(cities, [&p](auto const& pair) { return pair.second.pos == p; });
         return it == cities.end() ? std::optional<City const*>{} : &it->second;
     }

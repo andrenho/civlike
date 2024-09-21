@@ -5,18 +5,27 @@
 
 inline static cl::Ruleset colonization {
 
+    .goods = {{
+        { .id = 'F', .name = "Food", .initial_value = 1.0 },
+    }},
+
     .terrains = {{
-            cl::Terrain { .id = '~', .name = "Water",     .color = { 59, 62, 163 },   .cost_to_enter = 3, .water = true },
-            cl::Terrain { .id = 'G', .name = "Grassland", .color = { 74, 219, 48 },   .cost_to_enter = 3 },
-            cl::Terrain { .id = 'I', .name = "Ice",       .color = { 200, 200, 200 }, .cost_to_enter = 4 },
+        { .id = '~', .name = "Water",     .color = { 59, 62, 163 },   .cost_to_enter = 3, .water = true },
+        { .id = 'G', .name = "Grassland", .color = { 74, 219, 48 },   .cost_to_enter = 3, .production = {
+            { .good_id = 'F', .production = 3 },
+        }},
+        { .id = 'I', .name = "Ice",       .color = { 200, 200, 200 }, .cost_to_enter = 4 },
+    }},
+
+    .buildings = {{
     }},
 
     .nations = {{
-            { .id = 'E', .name = "England", .color = { 128, 0, 0 } },
+        { .id = 'E', .name = "England", .color = { 128, 0, 0 } },
     }},
 
     .unit_types = {{
-            { .id = 'C', .name = "Colonist", .char_display = 'C', .move_points = 6 },
+        { .id = 'C', .name = "Colonist", .char_display = 'C', .move_points = 6 },
     }},
 
     .map = { [](cl::Ruleset const&, cl::GameParameters const&) {

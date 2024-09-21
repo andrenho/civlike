@@ -10,7 +10,7 @@ namespace cl {
 
 struct MoveUnit {
     Unit::Id  unit_id;
-    Point     src_pos;
+    MapPos     src_pos;
     Direction direction;
 };
 

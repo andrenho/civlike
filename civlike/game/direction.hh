@@ -11,15 +11,15 @@ enum class Direction {
     NW, N, NE, W, E, SW, S, SE,
 };
 
-const inline std::unordered_map<Direction, Point> directions = {
-    { Direction::SW, Point { -1,  1 } },
-    { Direction::S,  Point {  0,  1 } },
-    { Direction::SE, Point {  1,  1 } },
-    { Direction::W,  Point { -1,  0 } },
-    { Direction::E,  Point {  1,  0 } },
-    { Direction::NW, Point { -1, -1 } },
-    { Direction::N,  Point {  0, -1 } },
-    { Direction::NE, Point {  1, -1 } },
+const inline std::unordered_map<Direction, MapPos> directions = {
+    { Direction::SW, MapPos { -1,  1 } },
+    { Direction::S,  MapPos {  0,  1 } },
+    { Direction::SE, MapPos {  1,  1 } },
+    { Direction::W,  MapPos { -1,  0 } },
+    { Direction::E,  MapPos {  1,  0 } },
+    { Direction::NW, MapPos { -1, -1 } },
+    { Direction::N,  MapPos {  0, -1 } },
+    { Direction::NE, MapPos {  1, -1 } },
 };
 
 }

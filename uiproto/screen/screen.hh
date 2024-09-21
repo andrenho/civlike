@@ -49,7 +49,8 @@ protected:
     virtual void drop([[maybe_unused]] DraggableFrom from, [[maybe_unused]] DraggableTo to) {}
 
     void draw_draggable(cl::Game const& G, DraggableFrom from, SDL_Point p) const;
-    void draw_unit_at_pos(cl::Game const& G, cl::Unit::Id unit_id, SDL_Point point) const;
+    void draw_unit_at_point(cl::Game const& G, cl::Unit::Id unit_id, SDL_Point p) const;
+    void draw_tile_at_point(cl::Game const& G, cl::Tile const& tile, SDL_Point p) const;
     void draw_hotspots(cl::Game const& G) const;
 };
 

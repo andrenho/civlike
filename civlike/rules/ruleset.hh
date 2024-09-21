@@ -15,14 +15,42 @@
 
 namespace cl {
 
+struct Good {
+    ID(char)
+    std::string name;
+    double      initial_value;
+    enum class Type { Physical, Conceptual } type = Type::Physical;
+};
+
+struct TerrainProduction {
+    Good::Id good_id;
+    int      production;
+};
+
 struct Terrain {
     ID(char)
-    std::string  name;
-    Color        color;
-    unsigned int cost_to_enter;
-    bool         water = false;
+    std::string                    name;
+    Color                          color;
+    unsigned int                   cost_to_enter;
+    std::vector<TerrainProduction> production;
+    bool                           water = false;
 
     static constexpr decltype(cost_to_enter) Impassable = std::numeric_limits<decltype(cost_to_enter)>::max();
+};
+
+struct BuildingProduction {
+    std::vector<Good::Id> goods_required;
+    Good::Id              good_produced;
+    double                rate = 1.0;
+};
+
+struct Building {
+    ID(char)
+    std::string           name;
+    uint8_t               max_units;
+    BuildingProduction            production;
+    uint8_t               productivity;
+    bool                  default_ = false;
 };
 
 struct UnitType {
@@ -48,7 +76,7 @@ struct Test {
 struct StartingUnit {
     Nation::Id   nation_id;
     UnitType::Id unit_type_id;
-    Point        initial_pos;
+    MapPos        initial_pos;
 };
 
 struct TerrainSquare {
@@ -60,9 +88,11 @@ struct GameParameters {};   // TODO - ???
 
 struct Ruleset {
 
-    const IdMap<Terrain>                 terrains;
-    const IdMap<Nation>                  nations;
-    const IdMap<UnitType>                unit_types;
+    const IdMap<Good>                         goods;
+    const IdMap<Terrain>                      terrains;
+    const IdMap<Building>                     buildings;
+    const IdMap<Nation>                       nations;
+    const IdMap<UnitType>                     unit_types;
 
     const GFnValue<Map>                       map;
     const GFnValue<std::vector<Nation::Id>>   initial_nations;

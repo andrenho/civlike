@@ -13,16 +13,14 @@ public:
 private:
     // events
 
-    void select_unit_in_xy(cl::Game& G, cl::Point tile);
-    bool select_city_in_xy(cl::Game& G, cl::Point tile);
+    void select_unit_in_xy(cl::Game& G, cl::MapPos tile);
+    bool select_city_in_xy(cl::Game& G, cl::MapPos tile);
 
     // draw
 
     void draw_map(cl::Game const& G) const;
-    void draw_tile(cl::Game const& G, cl::Point p) const;
+    void draw_tile(cl::Game const& G, cl::MapPos p) const;
 
-    void draw_terrain(cl::Game const& G, cl::Point p) const;
-    void draw_unit(cl::Game const& G, cl::Unit const& unit, cl::Point displacement={0,0}) const;
     void draw_city(cl::Game const& G, cl::City const& city) const;
 
     void draw_status(cl::Game const& G) const;
@@ -34,9 +32,9 @@ private:
 
     // query
 
-    [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& G, cl::Point p) const;
-    [[nodiscard]] SDL_Rect tile_rect(cl::Point p) const;
-    [[nodiscard]] SDL_Point tile_pos(cl::Point p) const;
+    [[nodiscard]] std::optional<cl::Unit const*> unit_to_draw(cl::Game const& G, cl::MapPos p) const;
+    [[nodiscard]] SDL_Rect tile_rect(cl::MapPos p) const;
+    [[nodiscard]] SDL_Point tile_pos(cl::MapPos p) const;
 
     // fields
 

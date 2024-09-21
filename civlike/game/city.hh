@@ -11,7 +11,7 @@ struct City {
     ID(uint16_t)
     std::string name;
     Nation::Id  nation_id;
-    Point       pos;
+    MapPos       pos;
 
     [[nodiscard]] static Id next_id() {
         static Id id_counter { 0 };

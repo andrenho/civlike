@@ -74,12 +74,12 @@ void Screen::draw_draggable(Game const& G, DraggableFrom from, SDL_Point p) cons
 {
     std::visit(overloaded {
         [this, p, G](Unit::Id const& unit_id) {
-            draw_unit_at_pos(G, unit_id, p);
+            draw_unit_at_point(G, unit_id, p);
         },
     }, from);
 }
 
-void Screen::draw_unit_at_pos(Game const& G, Unit::Id unit_id, SDL_Point point) const
+void Screen::draw_unit_at_point(Game const& G, Unit::Id unit_id, SDL_Point point) const
 {
     auto const& unit = G.units[unit_id];
     const auto color = G.ruleset.nations[unit.nation_id].color;
@@ -102,4 +102,14 @@ void Screen::draw_unit_at_pos(Game const& G, Unit::Id unit_id, SDL_Point point) 
     // state
     if (unit.state == Unit::State::Fortify)
         res.text_small->write("F", r.x + 20, r.y);
+}
+
+void Screen::draw_tile_at_point(Game const& G, Tile const& tile, SDL_Point p) const
+{
+    const auto t_clr = G.ruleset.terrains[tile.terrain_id].color;
+    SDL_SetRenderDrawColor(res.ren, t_clr.r, t_clr.g, t_clr.b, SDL_ALPHA_OPAQUE);
+    const SDL_Rect r = { p.x, p.y, TILE_SIZE, TILE_SIZE };
+    SDL_RenderFillRect(res.ren, &r);
+    SDL_SetRenderDrawColor(res.ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawPoint(res.ren, r.x, r.y);
 }
