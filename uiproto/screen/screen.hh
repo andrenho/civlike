@@ -25,7 +25,7 @@ protected:
     enum class HotSpotArea { OutOfCity };
 
     using DraggableFrom = std::variant<cl::Unit::Id>;
-    using DraggableTo = std::variant<HotSpotArea>;
+    using DraggableTo = std::variant<HotSpotArea, cl::Tile const*>;
 
     struct HotSpotDraggableFrom {
         DraggableFrom from;
@@ -46,7 +46,7 @@ protected:
     // implement these
     virtual void screen_draw(cl::Game const& G) const = 0;
     virtual void screen_event(cl::Game& G, SDL_Event* e) = 0;
-    virtual void drop([[maybe_unused]] DraggableFrom from, [[maybe_unused]] DraggableTo to) {}
+    virtual void drop([[maybe_unused]] cl::Game& G, [[maybe_unused]] DraggableFrom from, [[maybe_unused]] DraggableTo to) {}
 
     void draw_draggable(cl::Game const& G, DraggableFrom from, SDL_Point p) const;
     void draw_unit_at_point(cl::Game const& G, cl::Unit::Id unit_id, SDL_Point p) const;

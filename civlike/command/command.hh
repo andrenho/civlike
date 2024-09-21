@@ -22,6 +22,7 @@ void focus_unit(Game& G, Unit::Id unit_id, bool auto_end_round);
 // unit actions
 
 void move_unit(Game& G, Unit::Id unit_id, Direction dir);
+void move_unit_to_city_tile(Game& G, Unit::Id, City::Id city_id, MapPos tile_pos, std::optional<Good::Id> production={});
 void fortify_unit(Game& G, Unit::Id unit_id);
 
 // city

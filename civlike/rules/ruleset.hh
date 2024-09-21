@@ -32,8 +32,9 @@ struct Terrain {
     std::string                    name;
     Color                          color;
     unsigned int                   cost_to_enter;
-    std::vector<TerrainProduction> production;
+    Good::Id                       default_good;
     bool                           water = false;
+    std::vector<TerrainProduction> production;
 
     static constexpr decltype(cost_to_enter) Impassable = std::numeric_limits<decltype(cost_to_enter)>::max();
 };

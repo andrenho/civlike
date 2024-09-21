@@ -10,6 +10,10 @@ public:
     void screen_event(cl::Game& G, SDL_Event* e) override;
     void screen_draw(cl::Game const& G) const override;
 
+protected:
+    void drop(cl::Game& G, DraggableFrom from, DraggableTo to) override;
+
+public:
     [[nodiscard]] cl::City const* city() const { return city_; }
     void                          set_city(cl::Game const& G, cl::City const* city);
 

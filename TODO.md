@@ -5,14 +5,16 @@
     - [x] Unfortify
       - [x] Relative position
       - [x] Select units with mouse
-- [ ] Cities
-  - [ ] Build city
-  - [ ] Units outside of city
+- [x] Cities
+  - [x] Build city
+  - [x] Units outside of city
+  - [ ] City tiles
+    - [ ] Drag to tiles and back
   - [ ] City buildings
     - [ ] Buildings
     - [ ] Drag to buildings and back
-  - [ ] City tiles
-    - [ ] Drag to tiles and back
+- [ ] Return bool from all commands (or throw)    
+- [ ] Debugging information
 - [ ] Good production
 - [ ] Build buildings
 - [ ] Enemies / combat

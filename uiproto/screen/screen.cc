@@ -28,7 +28,7 @@ void Screen::do_event(Game& G, SDL_Event* e)
         for (auto const& hotspot: hotspots_) {
             if (auto hs = std::get_if<HotSpotDraggableTo>(&hotspot)) {
                 if (SDL_PointInRect(&click, &hs->rect)) {
-                    drop(*dragging_, hs->to);
+                    drop(G, *dragging_, hs->to);
                     break;
                 }
             }
@@ -46,28 +46,40 @@ void Screen::draw(Game const& G) const
 
 void Screen::draw_hotspots(Game const& G) const
 {
+    struct Draggable {
+        SDL_Point     mouse_pos;
+        DraggableFrom from;
+    };
+    std::optional<Draggable> o_draggable;
+
     for (auto const& hotspot: hotspots_) {
         std::visit(overloaded {
 
-            [this](HotSpotDraggableTo const& hs) {
-                SDL_SetRenderDrawColor(res.ren, 255, 0, 0, SDL_ALPHA_OPAQUE);
-                SDL_RenderDrawRect(res.ren, &hs.rect);
-                if (hs.name)
-                    res.text_large->write(*hs.name, hs.rect.x + 5, hs.rect.y + 5);
-            },
-
-            [this, G](HotSpotDraggableFrom const& hs) {
+            [this, G, &o_draggable](HotSpotDraggableFrom const& hs) {
                 if (dragging_ && *dragging_ == hs.from) {
                     int x, y;
                     SDL_GetMouseState(&x, &y);
-                    draw_draggable(G, hs.from, { x - (int)(TILE_SIZE/2), y - (int)(TILE_SIZE/2) });
+                    o_draggable = { .mouse_pos = { x, y }, .from = hs.from };
                 } else {
                     draw_draggable(G, hs.from, hs.point);
                 }
             },
 
+            [this, G](HotSpotDraggableTo const& hs) {
+                SDL_SetRenderDrawColor(res.ren, 255, 0, 0, SDL_ALPHA_OPAQUE);
+                SDL_RenderDrawRect(res.ren, &hs.rect);
+                if (hs.name)
+                    res.text_large->write(*hs.name, hs.rect.x + 5, hs.rect.y + 5);
+                if (auto tile = std::get_if<Tile const*>(&hs.to))
+                    draw_tile_at_point(G, **tile, { hs.rect.x, hs.rect.y });
+            },
+
         }, hotspot);
     }
+
+    // draw object being dragged in top of everything
+    if (o_draggable)
+        draw_draggable(G, o_draggable->from, { o_draggable->mouse_pos.x - (int)(TILE_SIZE/2), o_draggable->mouse_pos.y - (int)(TILE_SIZE/2) });
 }
 
 void Screen::draw_draggable(Game const& G, DraggableFrom from, SDL_Point p) const

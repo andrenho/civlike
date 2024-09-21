@@ -16,7 +16,7 @@ Game new_game(Ruleset const& ruleset, GameParameters const& game_par)
         auto& tt = G.tiles.emplace_back();
         tt.reserve(G.map_size.h);
         for (size_t y = 0; y < G.map_size.h; ++y)
-            tt.emplace_back(Tile(map[x][y]));
+            tt.emplace_back(Tile({ (int) x, (int) y }, map[x][y]));
     }
 
     for (auto const& initial_nation: ruleset.initial_nations(ruleset, game_par))

@@ -10,11 +10,11 @@ inline static cl::Ruleset colonization {
     }},
 
     .terrains = {{
-        { .id = '~', .name = "Water",     .color = { 59, 62, 163 },   .cost_to_enter = 3, .water = true },
-        { .id = 'G', .name = "Grassland", .color = { 74, 219, 48 },   .cost_to_enter = 3, .production = {
+        { .id = '~', .name = "Water",     .color = { 59, 62, 163 },   .cost_to_enter = 3, .default_good = 'F', .water = true },
+        { .id = 'G', .name = "Grassland", .color = { 74, 219, 48 },   .cost_to_enter = 3, .default_good = 'F', .production = {
             { .good_id = 'F', .production = 3 },
         }},
-        { .id = 'I', .name = "Ice",       .color = { 200, 200, 200 }, .cost_to_enter = 4 },
+        { .id = 'I', .name = "Ice",       .color = { 200, 200, 200 }, .cost_to_enter = 4, .default_good = 'F' },
     }},
 
     .buildings = {{

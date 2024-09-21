@@ -1,5 +1,7 @@
 #include "command.hh"
 
+#include <variant>
+
 namespace cl::cmd {
 
 static unsigned int tile_moves_to_enter(Game const& G, MapPos p)
@@ -52,5 +54,32 @@ void fortify_unit(Game& G, Unit::Id unit_id)
     unit.state = Unit::State::Fortify;
     focus_next(G, unit.nation_id, true);
 }
+
+void move_unit_to_city_tile(Game& G, Unit::Id unit_id, City::Id city_id, MapPos tile_pos, std::optional<Good::Id> production)
+{
+    Unit& unit = G.units[unit_id];
+    City const& city = G.cities[city_id];
+
+    // check if unit is in city tile
+    if (unit.pos != city.pos)
+        return;
+
+    // check tile position
+    if (tile_pos.x < (city.pos.x - 1) || tile_pos.x > (city.pos.x + 1) || tile_pos.y < (city.pos.y - 1) || tile_pos.y > (city.pos.y + 1))
+        return;
+    if (tile_pos == city.pos)
+        return;
+
+    // is there another unit in that tile
+    for (auto const& [_, ounit]: G.units) {
+        if (unit.workplace)
+            if (FieldWork const* fw = std::get_if<FieldWork>(&*unit.workplace); fw && fw->pos == tile_pos)
+                return;
+    }
+
+    auto default_good = G.terrain(tile_pos).default_good;
+    unit.workplace = FieldWork { .pos = tile_pos, .production = production.value_or(default_good) };
+}
+
 
 }

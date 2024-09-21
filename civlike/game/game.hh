@@ -18,8 +18,9 @@ namespace cl {
 
 struct Tile {
     Terrain::Id terrain_id;
+    MapPos      pos;
 
-    explicit Tile(TerrainSquare const& ts) : terrain_id(ts.terrain_id) {}
+    explicit Tile(MapPos pos, TerrainSquare const& ts) : pos(pos), terrain_id(ts.terrain_id) {}
 };
 using Tiles = std::vector<std::vector<Tile>>;
 
@@ -31,7 +32,7 @@ struct GameNation {
 
 class Game {
 public:
-    Game(Ruleset const& ruleset) : ruleset(ruleset) {}
+    explicit Game(Ruleset const& ruleset) : ruleset(ruleset) {}
 
     Ruleset const&                   ruleset;
     Size                             map_size { 0, 0 };
@@ -42,6 +43,9 @@ public:
     size_t                           round_nr = 0;
     mutable std::queue<VisualCue>    visual_cues;
 
+    Terrain const& terrain(MapPos p) const {
+        return ruleset.terrains[tiles[p.x][p.y].terrain_id];
+    }
 
     std::vector<Unit const*> units_in_xy(MapPos p) const {
         std::vector<Unit const*> r;

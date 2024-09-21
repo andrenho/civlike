@@ -26,16 +26,16 @@
   <component name="ChangeListManager">
     <list default="true" id="832b1328-a3ca-468a-abed-a552b7cfea01" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/command/city.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/command/city.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/command/command.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/command/command.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/civlike/command/new_game.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/command/new_game.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/command/unit_actions.cc" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/command/unit_actions.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/common/geometry.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/common/geometry.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/city.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/city.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/direction.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/direction.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/game.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/game.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/game/unit.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/unit.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/civlike/game/visualcue.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/game/visualcue.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/civlike/rules/ruleset.hh" beforeDir="false" afterPath="$PROJECT_DIR$/civlike/rules/ruleset.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/screen/mainmap.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/mainmap.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiproto/screen/mainmap.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/mainmap.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/screen/citymanagement.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/citymanagement.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiproto/screen/citymanagement.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/citymanagement.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/screen/screen.cc" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/screen.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uiproto/screen/screen.hh" beforeDir="false" afterPath="$PROJECT_DIR$/uiproto/screen/screen.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/variants/colonization.hh" beforeDir="false" afterPath="$PROJECT_DIR$/variants/colonization.hh" afterDir="false" />
@@ -115,7 +115,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CppCodeGenerationId",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -195,15 +195,7 @@
       <workItem from="1726516641568" duration="3509000" />
       <workItem from="1726589886078" duration="24089000" />
       <workItem from="1726843410842" duration="2000" />
-      <workItem from="1726844859861" duration="17035000" />
-    </task>
-    <task id="LOCAL-00008" summary=".">
-      <option name="closed" value="true" />
-      <created>1726091505475</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726091505475</updated>
+      <workItem from="1726844859861" duration="24582000" />
     </task>
     <task id="LOCAL-00009" summary=".">
       <option name="closed" value="true" />
@@ -589,7 +581,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726864727682</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary=".">
+      <option name="closed" value="true" />
+      <created>1726884746732</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1726884746732</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
