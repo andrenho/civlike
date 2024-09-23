@@ -1,0 +1,22 @@
+@startuml
+
+package ruleset {
+
+Ruleset --o{ Good
+Ruleset --o{ Terrain
+Ruleset --o{ Building
+Ruleset --o{ Nation
+Ruleset --o{ UnitType
+
+}
+
+package game {
+
+Game --o{ Tile
+Game --o{ Unit
+Game --o{ City
+Game --o{ GameNation
+
+}
+
+@enduml

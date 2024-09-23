@@ -69,11 +69,6 @@ struct Nation {
     bool        playable = true;
 };
 
-struct Test {
-    struct Id : cl::Id<char> {} id;
-    std::string name;
-};
-
 struct StartingUnit {
     Nation::Id   nation_id;
     UnitType::Id unit_type_id;

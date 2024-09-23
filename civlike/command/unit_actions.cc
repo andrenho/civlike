@@ -70,15 +70,9 @@ void move_unit_to_city_tile(Game& G, Unit::Id unit_id, City::Id city_id, MapPos 
     if (tile_pos == city.pos)
         return;
 
-    // is there another unit in that tile
-    for (auto const& [_, ounit]: G.units) {
-        if (unit.workplace)
-            if (FieldWork const* fw = std::get_if<FieldWork>(&*unit.workplace); fw && fw->pos == tile_pos)
-                return;
-    }
+    // TODO - is there another unit in that tile?
 
-    auto default_good = G.terrain(tile_pos).default_good;
-    unit.workplace = FieldWork { .pos = tile_pos, .production = production.value_or(default_good) };
+    // TODO - move unit to tile
 }
 
 

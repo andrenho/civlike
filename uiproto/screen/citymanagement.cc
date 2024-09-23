@@ -35,11 +35,13 @@ void CityManagement::reset_hotspots(Game const& G)
 
     int x = START + 10;
     for (auto unit: G.units_in_xy(city_->pos)) {
-        hotspots_.push_back(HotSpotDraggableFrom {
-            .from = unit->id,
-            .point = { x, OUT_OF_CITY_Y + 30 },
-        });
-        x += 40;
+        if (!unit->city) {
+            hotspots_.push_back(HotSpotDraggableFrom {
+                .from = unit->id,
+                .point = { x, OUT_OF_CITY_Y + 30 },
+            });
+            x += 40;
+        }
     }
 
     // tiles
@@ -93,4 +95,6 @@ void CityManagement::drop(Game& G, DraggableFrom from, DraggableTo to)
             cmd::move_unit_to_city_tile(G, *unit_id, city_->id, (*tile)->pos);
         }
     }
+
+    reset_hotspots(G);
 }

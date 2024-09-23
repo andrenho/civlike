@@ -9,12 +9,6 @@
 
 namespace cl {
 
-struct FieldWork {
-    MapPos   pos;
-    Good::Id production;
-};
-using Workplace = std::optional<std::variant<FieldWork, Building::Id>>;
-
 struct Unit {
     enum class State { Normal, Fortify };
 
@@ -23,7 +17,6 @@ struct Unit {
     UnitType::Id            unit_type_id;
     MapPos                  pos;
     std::optional<City::Id> city {};
-    Workplace               workplace {};
     unsigned long           moves_left = 0;
     State                   state = State::Normal;
 

@@ -43,11 +43,11 @@ public:
     size_t                           round_nr = 0;
     mutable std::queue<VisualCue>    visual_cues;
 
-    Terrain const& terrain(MapPos p) const {
+    [[nodiscard]] Terrain const& terrain(MapPos p) const {
         return ruleset.terrains[tiles[p.x][p.y].terrain_id];
     }
 
-    std::vector<Unit const*> units_in_xy(MapPos p) const {
+    [[nodiscard]] std::vector<Unit const*> units_in_xy(MapPos p) const {
         std::vector<Unit const*> r;
         for (auto const& [_, unit]: units)
             if (unit.pos == p)
@@ -55,16 +55,15 @@ public:
         return r;
     }
 
-    std::optional<City const*> city_in_xy(MapPos p) {
+    [[nodiscard]] std::optional<City const*> city_in_xy(MapPos p) {
         auto it = r::find_if(cities, [&p](auto const& pair) { return pair.second.pos == p; });
         return it == cities.end() ? std::optional<City const*>{} : &it->second;
     }
 
-    std::optional<Unit const*> focused_unit(Nation::Id nation_id) const {
+    [[nodiscard]] std::optional<Unit const*> focused_unit(Nation::Id nation_id) const {
         const auto& funit = nations[nation_id].focused_unit;
         return funit ? &units[*funit] : std::optional<Unit const*>{};
     }
-
 };
 
 }
